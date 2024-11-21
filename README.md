@@ -50,6 +50,27 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Summary: This paper introduces a supervised learning method for modular networks composed of multiple expert networks. Each network specializes in a subset of the task, controlled by a gating network. It bridges modular multilayer networks and competitive learning models. The methodology ensures task-specific specialization, reducing interference and improving generalization. A vowel recognition task demonstrates the system's efficacy, showing faster learning and robust performance compared to traditional backpropagation networks.
   - 摘要: 本文提出了一种用于模块化网络的新型监督学习方法，该网络由多个专家网络组成，每个网络专注于任务的一部分，由一个门控网络进行控制。这种方法将模块化多层网络与竞争学习模型相结合，通过减少干扰和提高泛化能力实现任务特定的专业化，与传统的反向传播网络相比，该系统学习更快，性能更加稳健。
 
+- MoEC: Mixture of Expert Clusters
+
+  <div align="center">
+    <img src="./assets/image_29.png" width="80%">
+  </div>
+
+  - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
+  - Link: https://arxiv.org/pdf/2207.09094
+  - Code: Not available
+  - Summary: This paper introduces Mixture of Expert Clusters (MoEC), a novel approach to improve the performance and scalability of **Mixture of Experts (MoE)** models. MoE models, while efficient in scaling model capacity, suffer from **overfitting** and **sparse data allocation** as the number of experts increases, especially with limited data. MoEC addresses these issues by introducing **variance-based constraints** on the routing stage to encourage the formation of **expert clusters**. Experts within a cluster are designed to be similar, sharing similar input tokens, while experts across clusters are more diverse. Furthermore, MoEC incorporates a **cluster-level expert dropout** strategy. This strategy randomly drops entire clusters of experts during training, ensuring that tokens are consistently routed to suitable experts even with the dropout. Experiments on **machine translation** and **natural language understanding** tasks demonstrate that MoEC improves performance and raises the performance upper bound for scaling up experts, mitigating overfitting and sparse data allocation problems observed in standard MoE models. The results show that MoEC successfully addresses the limitations of scaling up MoE models by improving the diversity of data allocation among experts and preventing overfitting.
+
+  - 摘要：本文介绍了一种名为混合专家集群 (MoEC) 的新方法，用于改进混合专家 (MoE) 模型的性能和可扩展性。尽管 MoE 模型在扩展模型容量方面效率很高，但随着专家数量的增加，尤其是在数据有限的情况下，它们会遭受过拟合和数据分配稀疏的问题。MoEC 通过在路由阶段引入基于方差的约束来解决这些问题，从而鼓励形成专家集群。集群内的专家设计为相似，共享相似的输入标记，而跨集群的专家则更加多样化。此外，MoEC 还包含了一个集群级专家 dropout 策略。该策略在训练期间随机丢弃整个专家集群，确保即使在 dropout 情况下，标记也始终被路由到合适的专家。在机器翻译和自然语言理解任务上的实验表明，MoEC 提高了性能，并提高了扩展专家数量的性能上限，从而减轻了在标准 MoE 模型中观察到的过拟合和数据分配稀疏问题。结果表明，MoEC 通过改善专家之间的数据分配多样性和防止过拟合，成功地解决了扩展 MoE 模型的局限性。
+
+- OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models
+
+  - Authors: Fuzhao Xue, Zian Zheng, Yao Fu, Jinjie Ni, Zangwei Zheng, Wangchunshu Zhou, Yang You
+  - Link: https://arxiv.org/html/2402.01739
+  - Code: Not available in the provided text.
+  - Summary: This paper introduces OpenMoE, a series of open-sourced and reproducible **decoder-only Mixture-of-Experts (MoE)** large language models (LLMs). The models range from 650M to 34B parameters and were trained on datasets of up to 1 trillion tokens. The authors demonstrate that MoE-based LLMs offer a potentially more **cost-effective** trade-off compared to dense LLMs. A key contribution is an in-depth analysis of the MoE routing mechanisms, revealing three significant findings: **Context-Independent Specialization** (routing primarily based on token IDs), **Early Routing Learning** (token-to-expert assignments determined early in training and remaining largely unchanged), and **Drop-towards-the-End** (tokens later in a sequence are more likely to be dropped, impacting performance on sequential tasks). These findings highlight potential limitations of current MoE designs, particularly for tasks like multi-turn conversations. The paper also explores advanced training strategies, including using a substantial proportion of code data (up to 52.25%) and the **UL2 training objective**. OpenMoE models, specifically OpenMoE-8B/32E, achieved comparable performance to dense models like OpenLLaMA-3B and TinyLLaMA-1.1B, with even better performance on single-turn conversations in MT-Bench. The authors conclude by proposing strategies to mitigate the identified issues and improve future MoE LLM designs, aiming to stimulate the growth of the open-source MoE community. Specific models released include OpenMoE-Base/16E (0.65B parameters), OpenMoE-8B/32E, OpenMoE-8B/32E-Chat (fine-tuned on WildChat), and OpenMoE-34B/32E. Intermediate checkpoints of OpenMoE-8B/32E are also released to facilitate further research.
+  - 摘要：本文介绍了 OpenMoE，一系列开源且可复现的**仅解码器混合专家（MoE）**大型语言模型（LLM）。这些模型的参数量从 6.5 亿到 340 亿不等，并在高达 1 万亿个 token 的数据集上进行训练。作者证明了基于 MoE 的 LLM 与密集型 LLM 相比，具有更具**成本效益**的优势。一个关键贡献是对 MoE 路由机制的深入分析，揭示了三个重要发现：**上下文无关的特化**（主要基于 token ID 进行路由）、**早期路由学习**（token 到专家的分配在训练早期确定，并且基本保持不变）以及**结尾丢弃**（序列中较后的 token 更容易被丢弃，影响顺序任务的性能）。这些发现突出了当前 MoE 设计中的潜在局限性，特别是对于多轮对话等任务。本文还探讨了先进的训练策略，包括使用大量代码数据（高达 52.25%）和**UL2 训练目标**。OpenMoE 模型，特别是 OpenMoE-8B/32E，达到了与 OpenLLaMA-3B 和 TinyLLaMA-1.1B 等密集型模型相当的性能，在 MT-Bench 的单轮对话中甚至表现更好。作者最后提出了减轻已识别问题的策略并改进未来 MoE LLM 设计的策略，旨在促进开源 MoE 社区的发展。发布的具体模型包括 OpenMoE-Base/16E（6.5 亿参数）、OpenMoE-8B/32E、OpenMoE-8B/32E-Chat（在 WildChat 上微调）和 OpenMoE-34B/32E。还发布了 OpenMoE-8B/32E 的中间检查点以促进进一步的研究。
+
 - Mixtral 8x7B: A Sparse Mixture of Experts Language Model
 
   <div align="center">
