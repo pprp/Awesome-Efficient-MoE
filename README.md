@@ -241,6 +241,45 @@ This collection focuses particularly on methods to make MoE models more efficien
 
   - 摘要：本文解决了**稀疏专家混合模型 (SMoE)** 的局限性，即由于专家复制导致的高内存使用率以及基于学习的路由策略中由于表示崩溃导致的冗余。作者提出了**MC-SMoE（合并，然后压缩 SMoE）**，这是一种创建更紧凑和高效的 SMoE 模型的新方法。MC-SMoE 包括两个阶段：**专家合并**和**压缩**。合并阶段使用路由统计信息来指导专家的整合。它首先通过置换来对齐专家之间的神经元，然后根据其路由策略对专家进行分组，最后将每个组合并成一个由激活频率加权的单个专家。此过程减少了不重要专家的影响。有趣的是，这种合并导致合并专家权重空间的维数降低，从而实现进一步的压缩。压缩阶段使用低秩和结构化稀疏技术分解合并的专家。在 8 个基准测试中的实验表明，MC-SMoE 在性能损失最小的前提下，实现了高达**80% 的内存减少**和**20% 的 FLOPs 减少**。本文强调，由于冗余信息掩盖了关键专家以及缺乏适当的神经元置换对齐，因此传统的模型合并技术对于 SMoE 是无效的。作者通过将 MC-SMoE 与标准 SMoE 和其他基线进行比较，展示了其方法的有效性，在内存效率方面取得了显著改进，而不会牺牲准确性。核心创新在于利用路由统计信息智能地合并专家，然后进行压缩步骤，利用合并过程产生的较低维数。
 
+## Distillation
+
+- One Student Knows All Experts Know: From Sparse to Dense
+  <div align="center">
+    <img src="./assets/image_27.png" width="80%">
+  </div>
+
+  - Authors: Fuzhao Xue, Xiaoxin He, Xiaozhe Ren, Yuxuan Lou, Yang You
+  - Link: https://arxiv.org/pdf/2201.10890
+  - Code: Not available
+  - Summary: This paper proposes a novel method for training a **dense** student model that matches the performance of a **sparse Mixture-of-Experts (MoE)** model. Inspired by the human education system where a student learns from multiple experts, the authors introduce a **knowledge integration** framework. This framework consists of two stages: **knowledge gathering** and **knowledge distillation**. In the knowledge gathering stage, four methods are explored to extract knowledge from the pre-trained MoE experts: summation, averaging, **Top-K Knowledge Gathering (Top-KG)**, and **Singular Value Decomposition Knowledge Gathering (SVD-KG)**. Top-KG and SVD-KG aim to select the most crucial knowledge from each expert. The gathered knowledge is then used to initialize the feed-forward network (FFN) layers of a dense student model. Subsequently, **knowledge distillation** is employed to refine the student model using the entire MoE as a teacher, mitigating noise introduced during the knowledge gathering phase. Experiments on ImageNet and four natural language processing datasets demonstrate that the resulting OneS (One Student) model achieves significant performance gains compared to dense baselines, retaining a substantial portion of the MoE's performance (61.7% on ImageNet and 88.2% on NLP datasets) while offering a 3.7x inference speedup due to its **hardware-friendly** dense architecture. The OneS model significantly outperforms the best baseline by 51.7% on NLP tasks with the same architecture and training data.
+  - 摘要：本文提出了一种新颖的方法，用于训练一个能够匹敌**稀疏专家混合模型 (MoE)** 性能的**稠密**学生模型。受人类教育体系（学生向多个专家学习）的启发，作者提出了一个**知识整合**框架。该框架包含两个阶段：**知识收集**和**知识蒸馏**。在知识收集阶段，探索了四种从预训练的 MoE 专家中提取知识的方法：求和、平均、**Top-K 知识收集 (Top-KG)** 和**奇异值分解知识收集 (SVD-KG)**。Top-KG 和 SVD-KG 旨在从每个专家中选择最关键的知识。然后，收集到的知识用于初始化稠密学生模型的前馈网络 (FFN) 层。随后，使用整个 MoE 作为教师进行**知识蒸馏**，以改进学生模型，减轻知识收集阶段引入的噪声。在 ImageNet 和四个自然语言处理数据集上的实验表明，生成的 OneS（一位学生）模型与稠密基线相比取得了显著的性能提升，保留了 MoE 很大一部分性能（ImageNet 上为 61.7%，NLP 数据集上为 88.2%），同时由于其**硬件友好型**稠密架构，推理速度提高了 3.7 倍。OneS 模型在 NLP 任务上使用相同的架构和训练数据，比最佳基线高出 51.7%。
+
+- LLaVA-MoD: Making LLaVA Tiny via MoE-Knowledge Distillation
+  <div align="center">
+    <img src="./assets/image_25.png" width="80%">
+  </div>
+  <div align="center">
+    <img src="./assets/image_26.png" width="80%">
+  </div>
+
+  - Authors: Fangxun Shu, Yue Liao, Le Zhuo, Chenning Xu, Lei Zhang, Guanghao Zhang, Haonan Shi, Long Chen, Tao Zhong, Wanggui He, Siming Fu, Haoyuan Li, Bolin Li, Zhelun Yu, Si Liu, Hongsheng Li, Hao Jiang
+  - Link: https://arxiv.org/pdf/2408.15881
+  - Code: https://github.com/shufangxun/LLaVA-MoD
+  - Summary: This paper introduces LLaVA-MoD, a novel framework for efficiently training **small-scale Multimodal Language Models (s-MLLMs)** by distilling knowledge from a **large-scale MLLM (l-MLLM)**. LLaVA-MoD addresses two key challenges in MLLM distillation: architecture design and effective knowledge transfer. To address the architectural challenge, it integrates a **sparse Mixture of Experts (MoE)** architecture into the s-MLLM, balancing computational efficiency with model expressiveness. Multiple feedforward networks (FFNs) act as experts, and a linear gate dynamically selects the top-k experts for optimal knowledge transfer. For effective knowledge transfer, LLaVA-MoD employs a **progressive knowledge transfer strategy**. This begins with **mimic distillation**, minimizing the Kullback-Leibler (KL) divergence between the output distributions of the s-MLLM and l-MLLM. It then proceeds to **preference distillation** using **Preference Optimization (PO)**, treating the l-MLLM as a reference model. This enhances the s-MLLM's ability to discriminate between good and bad examples, often surpassing the l-MLLM's performance, particularly in hallucination benchmarks. Experiments show LLaVA-MoD outperforms existing methods across various benchmarks with minimal activated parameters and low computational costs. Specifically, LLaVA-MoD-2B surpasses Qwen-VL-Chat-7B by an average of 8.8% using only 0.3% of the training data and 23% of the trainable parameters. The results highlight LLaVA-MoD's effectiveness in distilling knowledge from a teacher model, enabling the development of efficient MLLMs.
+  - 摘要：本文介绍了 LLaVA-MoD，这是一个新颖的框架，通过从大型多模态语言模型（**l-MLLM**）中蒸馏知识来高效训练**小型多模态语言模型（s-MLLMs）**。LLaVA-MoD 解决了 MLLM 蒸馏中的两个关键挑战：架构设计和有效的知识转移。为了解决架构挑战，它将**稀疏专家混合（MoE）**架构集成到 s-MLLM 中，平衡了计算效率和模型表达能力。多个前馈网络（FFNs）充当专家，线性门动态选择前 k 个专家以实现最佳的知识转移。为了有效地转移知识，LLaVA-MoD 采用**渐进式知识转移策略**。这从**模仿蒸馏**开始，最小化 s-MLLM 和 l-MLLM 输出分布之间的 Kullback-Leibler (KL) 散度。然后，它继续使用**偏好优化（PO）**进行**偏好蒸馏**，将 l-MLLM 作为参考模型。这增强了 s-MLLM 区分好坏示例的能力，通常超过 l-MLLM 的性能，尤其是在幻觉基准测试中。实验表明，LLaVA-MoD 在各种基准测试中都优于现有方法，同时具有最少的激活参数和较低的计算成本。具体而言，LLaVA-MoD-2B 使用仅 0.3%的训练数据和 23%的可训练参数，其性能优于 Qwen-VL-Chat-7B，平均提高了 8.8%。结果突出了 LLaVA-MoD 在从教师模型中蒸馏知识方面的有效性，从而能够开发高效的 MLLMs。
+
+- Dense Training, Sparse Inference: Rethinking Training of Mixture-of-Experts Language Models
+  <div align="center">
+    <img src="./assets/image_28.png" width="80%">
+  </div>
+
+  - Authors: Bowen Pan, Yikang Shen, Haokun Liu, Mayank Mishra, Gaoyuan Zhang, Aude Oliva, Colin Raffel, Rameswar Panda
+  - Link: https://arxiv.org/html/2404.05567
+  - Code: Not available
+  - Summary: This paper proposes a novel hybrid training framework, **DS-MoE (Dense training, Sparse Inference Mixture-of-Experts)**, for Mixture-of-Experts (MoE) language models to improve both **computational** and **parameter efficiency**. Unlike traditional sparse MoE training which only activates a subset of experts during training, DS-MoE utilizes **dense computation** across all experts during training, followed by **sparse inference**. This approach addresses the issue of MoE models requiring 2-4x more parameters than dense models for comparable performance, a problem particularly pronounced in I/O-bounded scenarios like autoregressive generation. The authors incorporate a **Mutual Information (MI) loss** to balance expert usage and encourage sparse activation during inference. During inference, the top K experts (either a fixed number or dynamically determined by a threshold) are activated per layer based on router scores. Experimental results demonstrate that DS-MoE achieves performance comparable to dense models of the same size, while activating only 30-40% of the parameters during inference. Specifically, the DS-MoE-6B model shows a speedup of up to 1.86x compared to Mistral-7B and 1.50x to 1.71x compared to DeepSeekMoE-16B and Qwen1.5-MoE-A2.7B, showcasing significant improvements in inference speed and parameter efficiency. The paper highlights that this method effectively bridges the gap between dense and sparse MoE models, offering a more efficient and practical solution for large language model training and deployment.
+
+  - 摘要：本文提出了一种新颖的混合训练框架**DS-MoE（密集训练，稀疏推理混合专家）**，用于混合专家（MoE）大型语言模型，以提高**计算**和**参数效率**。与传统稀疏 MoE 训练只在训练期间激活一部分专家不同，DS-MoE 在训练期间对所有专家使用**密集计算**，然后进行**稀疏推理**。这种方法解决了 MoE 模型为了获得可比的性能而需要比密集模型多 2-4 倍参数的问题，这个问题在像自回归生成这样的 I/O 受限场景中尤其突出。作者引入了**互信息（MI）损失**来平衡专家使用，并在推理过程中鼓励稀疏激活。在推理过程中，根据路由器分数，每层激活前 K 个专家（固定数量或由阈值动态确定）。实验结果表明，DS-MoE 实现了与相同大小的密集模型相当的性能，同时在推理过程中只激活了 30%-40%的参数。具体来说，DS-MoE-6B 模型与 Mistral-7B 相比速度提高了高达 1.86 倍，与 DeepSeekMoE-16B 和 Qwen1.5-MoE-A2.7B 相比速度提高了 1.50 倍到 1.71 倍，展示了推理速度和参数效率的显著改进。本文强调，这种方法有效地弥合了密集型和稀疏型 MoE 模型之间的差距，为大型语言模型的训练和部署提供了一种更有效和实用的解决方案。
+
 ### System Optimization
 
 - Fast Inference of Mixture-of-Experts Language Models with Offloading
@@ -258,6 +297,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   <div align="center">
     <img src="./assets/image_9.png" width="80%">
   </div>
+
   - Authors: Taehyun Kim, Kwanseok Choi, Youngmock Cho, Jaehoon Cho, Hyuk-Jae Lee, Jaewoong Sim
   - Link: https://arxiv.org/pdf/2405.18832
   - Code: Not available
@@ -337,6 +377,16 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: This paper explores efficient methods for **upcycling** pre-trained dense large language models (LLMs) into sparse **Mixture-of-Experts (MoE)** models. The authors conduct a large-scale study on billion-parameter LLMs, focusing on optimizing upcycling techniques and hyperparameters. Key contributions include: a novel "**virtual group**" initialization scheme and weight scaling approach improving loss by 1.5%; a comparison of **softmax-then-topK** and **topK-then-softmax** expert routing methods, favoring the former; an analysis of the benefits of higher granularity MoEs and higher topK values; and a demonstration that upcycling outperforms continued dense model training. Specifically, upcycling the Nemotron-4 15B model on 1 trillion tokens yielded a 67.6% MMLU score, surpassing the 65.3% achieved by continued training of the same model on the same data. The work utilizes Megatron-LM4 for upcycling and training, focusing on MoEs applied to the transformer's MLP layer to maximize efficiency. The paper provides practical recommendations and best practices for upcycling billion-parameter LLMs, contributing to the advancement of large-scale MoE model development.
   - 摘要：本文探讨了将预训练的密集型大型语言模型（LLM）高效地升级到稀疏**混合专家（MoE）**模型的方法。作者对数十亿参数的 LLM 进行了大规模研究，重点是优化升级技术和超参数。主要贡献包括：一种新颖的“**虚拟组**”初始化方案和权重缩放方法，将损失提高了 1.5%；比较了**softmax-then-topK**和**topK-then-softmax**专家路由方法，前者更胜一筹；分析了更高粒度 MoE 和更高 topK 值的优势；以及证明了升级优于持续密集模型训练。具体来说，在 1 万亿个 token 上对 Nemotron-4 15B 模型进行升级，获得了 67.6%的 MMLU 分数，超过了在相同数据上持续训练该模型所获得的 65.3%。这项工作利用 Megatron-LM4 进行升级和训练，重点是应用于 Transformer 的 MLP 层的 MoE，以最大限度地提高效率。本文为升级数十亿参数的 LLM 提供了实用建议和最佳实践，推动了大规模 MoE 模型发展。
+
+- LLaVA-MoD: Making LLaVA Tiny via MoE-Knowledge Distillation
+  <div align="center">
+    <img src="./assets/image_25.png" width="80%">
+  </div>
+  - Authors: Fangxun Shu, Yue Liao, Le Zhuo, Chenning Xu, Lei Zhang, Guanghao Zhang, Haonan Shi, Long Chen, Tao Zhong, Wanggui He, Siming Fu, Haoyuan Li, Bolin Li, Zhelun Yu, Si Liu, Hongsheng Li, Hao Jiang
+  - Link: https://arxiv.org/pdf/2408.15881
+  - Code: https://github.com/shufangxun/LLaVA-MoD
+  - Summary: This paper introduces LLaVA-MoD, a novel framework for efficiently training **small-scale Multimodal Language Models (s-MLLMs)** by distilling knowledge from a **large-scale MLLM (l-MLLM)**. LLaVA-MoD addresses two key challenges in MLLM distillation: architecture design and effective knowledge transfer. To address the architectural challenge, it integrates a **sparse Mixture of Experts (MoE)** architecture into the s-MLLM, balancing computational efficiency with model expressiveness. Multiple feedforward networks (FFNs) act as experts, and a linear gate dynamically selects the top-k experts for optimal knowledge transfer. For effective knowledge transfer, LLaVA-MoD employs a **progressive knowledge transfer strategy**. This begins with **mimic distillation**, minimizing the Kullback-Leibler (KL) divergence between the output distributions of the s-MLLM and l-MLLM. It then proceeds to **preference distillation** using **Preference Optimization (PO)**, treating the l-MLLM as a reference model. This enhances the s-MLLM's ability to discriminate between good and bad examples, often surpassing the l-MLLM's performance, particularly in hallucination benchmarks. Experiments show LLaVA-MoD outperforms existing methods across various benchmarks with minimal activated parameters and low computational costs. Specifically, LLaVA-MoD-2B surpasses Qwen-VL-Chat-7B by an average of 8.8% using only 0.3% of the training data and 23% of the trainable parameters. The results highlight LLaVA-MoD's effectiveness in distilling knowledge from a teacher model, enabling the development of efficient MLLMs.
+  - 摘要：本文介绍了 LLaVA-MoD，这是一个新颖的框架，通过从大型多模态语言模型（**l-MLLM**）中蒸馏知识来高效训练**小型多模态语言模型（s-MLLMs）**。LLaVA-MoD 解决了 MLLM 蒸馏中的两个关键挑战：架构设计和有效的知识转移。为了解决架构挑战，它将**稀疏专家混合（MoE）**架构集成到 s-MLLM 中，平衡了计算效率和模型表达能力。多个前馈网络（FFNs）充当专家，线性门动态选择前 k 个专家以实现最佳的知识转移。为了有效地转移知识，LLaVA-MoD 采用**渐进式知识转移策略**。这从**模仿蒸馏**开始，最小化 s-MLLM 和 l-MLLM 输出分布之间的 Kullback-Leibler (KL) 散度。然后，它继续使用**偏好优化（PO）**进行**偏好蒸馏**，将 l-MLLM 作为参考模型。这增强了 s-MLLM 区分好坏示例的能力，通常超过 l-MLLM 的性能，尤其是在幻觉基准测试中。实验表明，LLaVA-MoD 在各种基准测试中都优于现有方法，同时具有最少的激活参数和较低的计算成本。具体而言，LLaVA-MoD-2B 使用仅 0.3%的训练数据和 23%的可训练参数，其性能优于 Qwen-VL-Chat-7B，平均提高了 8.8%。结果突出了 LLaVA-MoD 在从教师模型中蒸馏知识方面的有效性，从而能够开发高效的 MLLMs。
 
 ## MoE Survey
 
