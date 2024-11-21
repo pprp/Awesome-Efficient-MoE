@@ -12,7 +12,7 @@
 
 This repository collects research papers and resources about Mixture-of-Experts (MoE) models and their efficient variants. MoE is a machine learning technique that divides a complex task among multiple "expert" neural networks, each specializing in handling different aspects of the input space, coordinated by a gating network that decides which expert(s) to use for each input. The contents of papers are in both Chinese and English.
 
-You can treat it as a blog, and I will update it regularly. If you want me to add some papers, please submit an issue or pull request.
+**You can treat it as a blog, and I will update it regularly. If you want me to add some papers, please submit an issue or pull request.**
 
 MoE models have gained significant attention in recent years due to their:
 
@@ -50,6 +50,42 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Summary: This paper introduces a supervised learning method for modular networks composed of multiple expert networks. Each network specializes in a subset of the task, controlled by a gating network. It bridges modular multilayer networks and competitive learning models. The methodology ensures task-specific specialization, reducing interference and improving generalization. A vowel recognition task demonstrates the system's efficacy, showing faster learning and robust performance compared to traditional backpropagation networks.
   - 摘要: 本文提出了一种用于模块化网络的新型监督学习方法，该网络由多个专家网络组成，每个网络专注于任务的一部分，由一个门控网络进行控制。这种方法将模块化多层网络与竞争学习模型相结合，通过减少干扰和提高泛化能力实现任务特定的专业化，与传统的反向传播网络相比，该系统学习更快，性能更加稳健。
 
+- Mixtral 8x7B: A Sparse Mixture of Experts Language Model
+
+  <div align="center">
+    <img src="./assets/image_22.png" width="80%">
+  </div>
+
+  - Authors: Albert Q. Jiang, Alexandre Sablayrolles, Antoine Roux, Arthur Mensch, etc.
+  - Link: https://arxiv.org/pdf/2401.04088
+  - Code: https://github.com/mistralai/mistral-src
+  - Summary: This paper introduces Mixtral 8x7B, a **Sparse Mixture of Experts (SMoE)** language model based on the Mistral 7B architecture. The key difference is that each layer in Mixtral employs 8 **feedforward blocks** (**experts**). A **router network** selects two experts per token at each layer, resulting in each token accessing only a subset (13B) of the total 47B parameters during inference. Despite this sparsity, Mixtral, trained with a 32k token context window, matches or surpasses the performance of Llama 2 70B and GPT-3.5 across various benchmarks. It significantly outperforms Llama 2 70B in **mathematics**, **code generation**, and **multilingual** tasks. A fine-tuned instruction-following version, Mixtral 8x7B – Instruct, surpasses GPT-3.5 Turbo, Claude-2.1, Gemini Pro, and Llama 2 70B – chat model in human evaluations, showing reduced bias and a more balanced sentiment profile. Both base and instruct models are released under the Apache 2.0 license. The model architecture details include: `dim: 4096`, `n_layers: 32`, `head_dim: 128`, `hidden_dim: 14336`, `n_heads: 32`, `n_kv_heads: 8`, `context_len: 32768`, `vocab_size: 32000`, `num_experts: 8`, `top_k_experts: 2`. The Mixture of Experts layer uses a softmax over the top-k logits of a linear layer to determine the weights for combining expert outputs.
+  - 摘要：本文介绍了 Mixtral 8x7B，一个基于 Mistral 7B 架构的**稀疏专家混合 (SMoE)** 大型语言模型。其主要区别在于 Mixtral 的每一层都使用了 8 个**前馈块**（**专家**）。一个**路由网络**在每一层为每个 token 选择两个专家，导致每个 token 在推理过程中只访问总参数的子集（130 亿参数），而总参数为 470 亿。尽管如此，Mixtral 在 32k token 的上下文窗口下训练，在各种基准测试中其性能与 Llama 2 70B 和 GPT-3.5 相匹配甚至超越。在**数学**、**代码生成**和**多语言**任务方面，它显著优于 Llama 2 70B。经过微调的指令遵循版本 Mixtral 8x7B – Instruct 在人工评估基准测试中超越了 GPT-3.5 Turbo、Claude-2.1、Gemini Pro 和 Llama 2 70B——聊天模型，展现出减少的偏差和更平衡的情感特征。基础模型和指令遵循模型都以 Apache 2.0 许可证发布。模型架构细节包括：`dim: 4096`，`n_layers: 32`，`head_dim: 128`，`hidden_dim: 14336`，`n_heads: 32`，`n_kv_heads: 8`，`context_len: 32768`，`vocab_size: 32000`，`num_experts: 8`，`top_k_experts: 2`。专家混合层使用线性层的 top-k logits 上的 softmax 来确定组合专家输出的权重。
+
+- DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models
+
+  <div align="center">
+    <img src="./assets/image_23.png" width="80%">
+  </div>
+
+  - Authors: Damai Dai, Chengqi Deng, Chenggang Zhao, R.X. Xu, Huazuo Gao, Deli Chen, Jiashi Li, Wangding Zeng, Xingkai Yu, Y. Wu, Zhenda Xie, Y.K. Li, Panpan Huang, Fuli Luo, Chong Ruan, Zhifang Sui, Wenfeng Liang
+  - Link: https://arxiv.org/pdf/2401.06066
+  - Code: https://github.com/deepseek-ai/DeepSeek-MoE
+  - Summary: This paper introduces DeepSeekMoE, a novel **Mixture-of-Experts (MoE)** architecture designed to improve **expert specialization** in large language models (LLMs). Existing MoE architectures, like GShard, suffer from **knowledge hybridity** (experts learning diverse, overlapping knowledge) and **knowledge redundancy** (multiple experts learning the same knowledge). DeepSeekMoE addresses these issues through two key strategies: (1) **finer expert segmentation**: instead of activating the top-K experts out of N, it finely segments experts into mN and activates mK, allowing for more flexible combinations; and (2) **shared expert isolation**: K<sub>s</sub> experts are designated as shared experts to capture common knowledge, reducing redundancy in the routed experts. Experiments show that DeepSeekMoE 2B (2 billion parameters) achieves comparable performance to GShard 2.9B (with 1.5x more expert parameters and computation). Furthermore, DeepSeekMoE 2B nearly matches the performance of its dense counterpart with the same total parameters. Scaling DeepSeekMoE to 16B parameters shows comparable performance to LLaMA2 7B with only about 40% of the computation. Preliminary results with a 145B parameter model demonstrate significant advantages over GShard, achieving performance comparable to a 67B parameter DeepSeek model while using only 28.5% (potentially 18.2%) of the computation. The paper highlights DeepSeekMoE's ability to achieve strong performance with significantly reduced computational costs compared to existing MoE and dense models.
+
+  - 摘要：本文介绍了 DeepSeekMoE，这是一种新颖的**混合专家（MoE）**架构，旨在提高大型语言模型（LLM）中的**专家专业化**。现有的 MoE 架构，如 GShard，存在**知识混合性**（专家学习多样化、重叠的知识）和**知识冗余**（多个专家学习相同的知识）的问题。DeepSeekMoE 通过两种主要策略解决了这些问题：（1）**更精细的专家分割**：它不是从 N 个专家中激活前 K 个，而是将专家细分为 mN 个，并激活 mK 个，从而允许更灵活的激活专家组合；（2）**共享专家隔离**：Ks 个专家被指定为共享专家，以捕捉共同知识，减少路由专家的冗余。实验表明，DeepSeekMoE 2B（20 亿参数）达到了与 GShard 2.9B（专家参数和计算量是其 1.5 倍）相当的性能。此外，DeepSeekMoE 2B 几乎达到了与其具有相同总参数量的密集型模型相当的性能。将 DeepSeekMoE 扩展到 160 亿参数，其性能与 LLaMA2 7B 相当，但计算量只有大约 40%。使用 1450 亿参数模型的初步结果表明，与 GShard 相比具有显著优势，其性能与 670 亿参数的 DeepSeek 模型相当，而计算量仅为 28.5%（可能为 18.2%）。本文强调了 DeepSeekMoE 能够以比现有 MoE 和密集模型低得多的计算成本实现强大的性能。
+
+- Qwen1.5-MoE-A2.7B: Matching 7B Model Performance with 1/3 Activated Parameters
+
+  <div align="center">
+    <img src="./assets/image_24.png" width="80%">
+  </div>
+
+  - Link: https://qwenlm.github.io/blog/qwen-moe/
+  - Code: https://github.com/QwenLM/Qwen1.5
+  - Summary: This blog post introduces Qwen1.5-MoE-A2.7B, a **Mixture-of-Experts (MoE)** model with only 2.7 billion activated parameters. Despite its significantly smaller size (approximately one-third the size of Qwen1.5-7B, which has 6.5 billion non-embedding parameters and 2.0 billion for Qwen1.5-MoE-A2.7B), it achieves comparable performance to state-of-the-art 7B models like Mistral 7B and Qwen1.5-7B on various benchmarks. The model achieves a 75% reduction in training costs and a 1.74x speedup in inference. Key architectural improvements include: **fine-grained experts** (partitioning a single FFN into multiple experts), an "**upcycling**" **initialization** method using a pre-trained Qwen-1.8B model with added randomness, and a **routing mechanism** incorporating both shared and routing-specific experts (4 shared and 60 routing experts with 4 activated). Benchmark results across MMLU, GSM8K, HumanEval, and a multilingual evaluation show performance on par with or exceeding other 7B models, and even outperforming the larger DeepSeekMoE 16B model in some cases. A chat model variant was also evaluated using MT-Bench.
+  - 摘要：这篇博文介绍了 Qwen1.5-MoE-A2.7B，这是一个仅具有 27 亿激活参数的**混合专家（MoE）**模型。尽管其规模显著较小（大约是具有 65 亿非嵌入参数的 Qwen1.5-7B 模型的三分之一，Qwen1.5-MoE-A2.7B 为 20 亿），但在各种基准测试中，其性能与 Mistral 7B 和 Qwen1.5-7B 等最先进的 7B 模型相当。该模型将训练成本降低了 75%，推理速度提高了 1.74 倍。关键的架构改进包括：**细粒度专家**（将单个 FFN 划分为多个专家）、使用预训练的 Qwen-1.8B 模型并添加随机性的“**升级**”**初始化**方法，以及包含共享和特定于路由的专家的**路由机制**（4 个共享专家和 60 个路由专家，激活 4 个）。在 MMLU、GSM8K、HumanEval 和多语言评估中的基准测试结果表明，其性能与其他 7B 模型相当甚至超过，在某些情况下甚至超过更大的 DeepSeekMoE 16B 模型。还使用 MT-Bench 评估了聊天模型变体。
+
 - Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer
 
   <div align="center">
@@ -65,7 +101,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   <div align="center">
     <img src="./assets/image_18.png" width="80%">
   </div>
-  - Label: <img src=https://img.shields.io/badge/semi_structured-brightgreen.svg > <img src=https://img.shields.io/badge/benchmark-purple.svg >
+
   - Authors: Jiachen Li, Xinyao Wang, Sijie Zhu, Chia-Wen Kuo, Lu Xu, Fan Chen, Jitesh Jain, Humphrey Shi, Longyin Wen
   - Link: https://arxiv.org/pdf/2405.05949
   - Code: https://github.com/SHI-Labs/CuMo
@@ -103,7 +139,6 @@ This collection focuses particularly on methods to make MoE models more efficien
     <img src="./assets/image_4.png" width="80%">
   </div>
 
-  - Label: `<img src=https://img.shields.io/badge/semi_structured-brightgreen.svg >` `<img src=https://img.shields.io/badge/benchmark-purple.svg >`
   - Authors: Wei Huang, Yue Liao, Jianhui Liu, Ruifei He, Haoru Tan, Shiming Zhang, Hongsheng Li, Si Liu, Xiaojuan Qi
   - Link: https://arxiv.org/html/2410.06270
   - Code: https://github.com/Aaronhuang-778/MC-MoE
@@ -132,6 +167,19 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Summary: This paper proposes a unified framework for compressing **Mixture-of-Experts (MoE)** models in large language models (LLMs). The framework addresses the redundancy and computational overhead inherent in MoE by integrating two complementary compression strategies: **Expert Slimming** and **Expert Trimming**. **Expert Slimming** focuses on compressing individual experts using techniques like **network pruning** and **quantization**. **Expert Trimming** involves structurally removing entire experts or groups of experts. The authors introduce novel aggressive **Expert Trimming** methods: **Layer Drop** (removing entire MoE layers) and **Block Drop** (removing both attention and MoE layers within transformer blocks). These methods are motivated by the observation that communication overhead and computation within MoE layers are significant bottlenecks. The framework is evaluated on Mixtral-8x7B and DeepSeek-MoE-16B, demonstrating significant improvements. **Quantization** is shown to be the most effective **Expert Slimming** technique, while **Layer Drop** and **Block Drop** outperform **Expert Drop** (removing individual experts) in terms of speed and memory reduction. The combined approach achieves a 6.05x speedup and reduces memory usage to 20.0GB while maintaining over 92% of the original performance on Mixtral-8x7B. The paper provides a comprehensive recipe for effectively compressing MoE models.
 
   - 摘要：本文提出了一种用于压缩大型语言模型（LLM）中**混合专家（MoE）**模型的统一框架。该框架通过整合两种互补的压缩策略来解决 MoE 模型中固有的冗余和计算开销：**专家精简（Expert Slimming）**和**专家修剪（Expert Trimming）**。**专家精简**侧重于使用**网络剪枝**和**量化**等技术来压缩单个专家。**专家修剪**涉及结构化地移除整个专家或专家组。作者引入了新颖的积极**专家修剪**方法：**层丢弃（Layer Drop）**（移除整个 MoE 层）和**块丢弃（Block Drop）**（移除 Transformer 块中的注意力层和 MoE 层）。这些方法的动机是观察到 MoE 层中的通信开销和计算是重要的瓶颈。该框架在 Mixtral-8x7B 和 DeepSeek-MoE-16B 上进行了评估，证明了显著的改进。结果表明，**量化**是最有效的**专家精简**技术，而**层丢弃**和**块丢弃**在速度和内存减少方面优于**专家丢弃（Expert Drop）**（移除单个专家）。组合方法在 Mixtral-8x7B 上实现了 6.05 倍的加速，并将内存使用量减少到 20.0GB，同时保持了 92%以上的原始性能。本文提供了一个有效压缩 MoE 模型的综合方案。
+
+- Merge, then compress: demystify efficient sparse mixture-of-experts with hints from its routing policy
+
+  <div align="center">
+    <img src="./assets/image_21.png" width="80%">
+  </div>
+
+  - Authors: Pingzhi Li, Zhenyu Zhang, Prateek Yadav, Yi-Lin Sung, Yu Cheng, Mohit Bansal, Tianlong Chen
+  - Link: https://arxiv.org/pdf/2310.01334
+  - Code: https://github.com/UNITES-Lab/MC-SMoE
+  - Summary: This paper addresses the limitations of **Sparse Mixture-of-Experts (SMoE)** models, namely high memory usage due to expert duplication and redundancy due to representational collapse in learning-based routing policies. The authors propose **MC-SMoE (Merge, then Compress SMoE)**, a novel method to create more compact and efficient SMoE models. MC-SMoE consists of two stages: **expert merging** and **compression**. The merging stage uses routing statistics to guide the consolidation of experts. It begins by aligning neurons across experts through permutation, then groups experts based on their routing policies, finally merging each group into a single expert weighted by activation frequency. This process reduces the impact of insignificant experts. Interestingly, this merging leads to a lower dimensionality in the merged expert's weight space, enabling further compression. The compression stage decomposes the merged experts using low-rank and structural sparse techniques. Experiments across 8 benchmarks show that MC-SMoE achieves up to **80% memory reduction** and **20% FLOPs reduction** with minimal performance loss. The paper highlights that conventional model merging techniques are ineffective for SMoE due to redundant information overshadowing critical experts and the lack of appropriate neuron permutation alignment. The authors demonstrate the effectiveness of their approach by comparing MC-SMoE to standard SMoE and other baselines, showcasing significant improvements in memory efficiency without sacrificing accuracy. The core innovation lies in leveraging routing statistics to intelligently merge experts, followed by a compression step that capitalizes on the lower dimensionality resulting from the merging process.
+
+  - 摘要：本文解决了**稀疏专家混合模型 (SMoE)** 的局限性，即由于专家复制导致的高内存使用率以及基于学习的路由策略中由于表示崩溃导致的冗余。作者提出了**MC-SMoE（合并，然后压缩 SMoE）**，这是一种创建更紧凑和高效的 SMoE 模型的新方法。MC-SMoE 包括两个阶段：**专家合并**和**压缩**。合并阶段使用路由统计信息来指导专家的整合。它首先通过置换来对齐专家之间的神经元，然后根据其路由策略对专家进行分组，最后将每个组合并成一个由激活频率加权的单个专家。此过程减少了不重要专家的影响。有趣的是，这种合并导致合并专家权重空间的维数降低，从而实现进一步的压缩。压缩阶段使用低秩和结构化稀疏技术分解合并的专家。在 8 个基准测试中的实验表明，MC-SMoE 在性能损失最小的前提下，实现了高达**80% 的内存减少**和**20% 的 FLOPs 减少**。本文强调，由于冗余信息掩盖了关键专家以及缺乏适当的神经元置换对齐，因此传统的模型合并技术对于 SMoE 是无效的。作者通过将 MC-SMoE 与标准 SMoE 和其他基线进行比较，展示了其方法的有效性，在内存效率方面取得了显著改进，而不会牺牲准确性。核心创新在于利用路由统计信息智能地合并专家，然后进行压缩步骤，利用合并过程产生的较低维数。
 
 ### Quantization
 
@@ -162,7 +210,6 @@ This collection focuses particularly on methods to make MoE models more efficien
     <img src="./assets/image_4.png" width="80%">
   </div>
 
-  - Label: `<img src=https://img.shields.io/badge/semi_structured-brightgreen.svg >` `<img src=https://img.shields.io/badge/benchmark-purple.svg >`
   - Authors: Wei Huang, Yue Liao, Jianhui Liu, Ruifei He, Haoru Tan, Shiming Zhang, Hongsheng Li, Si Liu, Xiaojuan Qi
   - Link: https://arxiv.org/html/2410.06270
   - Code: https://github.com/Aaronhuang-778/MC-MoE
@@ -180,6 +227,19 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: https://github.com/xiaochengsky/MoEI-2
   - Summary: The emergence of Mixture of Experts (MoE) LLMs has significantly advanced the development of language models. Compared to traditional LLMs, MoE LLMs outperform traditional LLMs by achieving higher performance with considerably fewer activated parameters. Despite this efficiency, their enormous parameter size still leads to high deployment costs. In this paper, we introduce a two-stage compression method tailored for MoE to reduce the model size and decrease the computational cost. First, in the inter-expert pruning stage, we analyze the importance of each layer and propose the Layer-wise Genetic Search and Block-wise KT-Reception Field with the non-uniform pruning ratio to prune the individual expert. Second, in the intra-expert decomposition stage, we apply the low-rank decomposition to further compress the parameters within the remaining experts. Extensive experiments on Qwen1.5-MoE-A2.7B, DeepSeek-V2-Lite, and Mixtral-8×7B demonstrate that our proposed methods can both reduce the model size and enhance inference efficiency while maintaining performance in various zero-shot tasks.
   - 摘要：混合专家（MoE）大语言模型的出现显著推进了语言模型的发展。与传统的大语言模型相比，MoE 大语言模型通过较少的激活参数实现了更高的性能。尽管具有这种效率，但其庞大的参数规模仍然导致部署成本高昂。在本文中，我们引入了一种专门针对 MoE 的两阶段压缩方法，以减少模型大小并降低计算成本。首先，在专家间剪枝阶段，我们分析每一层的重要性，并提出了具有非均匀剪枝比率的层级遗传搜索和块级 KT 感受野，用于剪枝单个专家。其次，在专家内分解阶段，我们应用低秩分解进一步压缩剩余专家中的参数。在 Qwen1.5-MoE-A2.7B、DeepSeek-V2-Lite 和 Mixtral-8×7B 上的大量实验表明，我们提出的方法既可以减少模型大小，又可以提高推理效率，同时在各种零样本任务中保持性能。
+
+- Merge, then compress: demystify efficient sparse mixture-of-experts with hints from its routing policy
+
+  <div align="center">
+    <img src="./assets/image_21.png" width="80%">
+  </div>
+
+  - Authors: Pingzhi Li, Zhenyu Zhang, Prateek Yadav, Yi-Lin Sung, Yu Cheng, Mohit Bansal, Tianlong Chen
+  - Link: https://arxiv.org/pdf/2310.01334
+  - Code: https://github.com/UNITES-Lab/MC-SMoE
+  - Summary: This paper addresses the limitations of **Sparse Mixture-of-Experts (SMoE)** models, namely high memory usage due to expert duplication and redundancy due to representational collapse in learning-based routing policies. The authors propose **MC-SMoE (Merge, then Compress SMoE)**, a novel method to create more compact and efficient SMoE models. MC-SMoE consists of two stages: **expert merging** and **compression**. The merging stage uses routing statistics to guide the consolidation of experts. It begins by aligning neurons across experts through permutation, then groups experts based on their routing policies, finally merging each group into a single expert weighted by activation frequency. This process reduces the impact of insignificant experts. Interestingly, this merging leads to a lower dimensionality in the merged expert's weight space, enabling further compression. The compression stage decomposes the merged experts using low-rank and structural sparse techniques. Experiments across 8 benchmarks show that MC-SMoE achieves up to **80% memory reduction** and **20% FLOPs reduction** with minimal performance loss. The paper highlights that conventional model merging techniques are ineffective for SMoE due to redundant information overshadowing critical experts and the lack of appropriate neuron permutation alignment. The authors demonstrate the effectiveness of their approach by comparing MC-SMoE to standard SMoE and other baselines, showcasing significant improvements in memory efficiency without sacrificing accuracy. The core innovation lies in leveraging routing statistics to intelligently merge experts, followed by a compression step that capitalizes on the lower dimensionality resulting from the merging process.
+
+  - 摘要：本文解决了**稀疏专家混合模型 (SMoE)** 的局限性，即由于专家复制导致的高内存使用率以及基于学习的路由策略中由于表示崩溃导致的冗余。作者提出了**MC-SMoE（合并，然后压缩 SMoE）**，这是一种创建更紧凑和高效的 SMoE 模型的新方法。MC-SMoE 包括两个阶段：**专家合并**和**压缩**。合并阶段使用路由统计信息来指导专家的整合。它首先通过置换来对齐专家之间的神经元，然后根据其路由策略对专家进行分组，最后将每个组合并成一个由激活频率加权的单个专家。此过程减少了不重要专家的影响。有趣的是，这种合并导致合并专家权重空间的维数降低，从而实现进一步的压缩。压缩阶段使用低秩和结构化稀疏技术分解合并的专家。在 8 个基准测试中的实验表明，MC-SMoE 在性能损失最小的前提下，实现了高达**80% 的内存减少**和**20% 的 FLOPs 减少**。本文强调，由于冗余信息掩盖了关键专家以及缺乏适当的神经元置换对齐，因此传统的模型合并技术对于 SMoE 是无效的。作者通过将 MC-SMoE 与标准 SMoE 和其他基线进行比较，展示了其方法的有效性，在内存效率方面取得了显著改进，而不会牺牲准确性。核心创新在于利用路由统计信息智能地合并专家，然后进行压缩步骤，利用合并过程产生的较低维数。
 
 ### System Optimization
 
@@ -280,10 +340,17 @@ This collection focuses particularly on methods to make MoE models more efficien
 
 ## MoE Survey
 
+- [A Survey on Mixture of Experts](https://arxiv.org/pdf/2407.06204)
+
 ## MoE Resources
 
 - [Mixture of Experts (MoE) Explained](https://huggingface.co/blog/moe): A blog post from Hugging Face explaining MoE.
-- [Survey on MoE](https://github.com/withinmiaov/A-Survey-on-Mixture-of-Experts): A survey on Mixture of Experts.
+- [Awesome list of MoE](https://github.com/withinmiaov/A-Survey-on-Mixture-of-Experts): A survey on Mixture of Experts.
+- [ICML 2024 Tutorial on MoE](https://icml.cc/media/icml-2024/Slides/35222_1r94S59.pdf): A tutorial on Mixture of Experts from ICML 2024.
+
+<div align="center">
+  <img src="./assets/image_20.png" width="80%">
+</div>
 
 ## FAQ
 
