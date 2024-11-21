@@ -29,6 +29,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - [MoE Acceleration](#moe-acceleration)
 - [MoE Survey](#moe-survey)
 - [MoE Resources](#moe-resources)
+- [MoE FAQ](#moe-faq)
 - [Contributing](#contributing)
 
 ### Sparse Mixture-of-Experts
@@ -65,6 +66,40 @@ This collection focuses particularly on methods to make MoE models more efficien
 ### MoE Resources
 
 - [Mixture of Experts (MoE) Explained](https://huggingface.co/blog/moe)
+
+### MoE FAQ
+
+1. Q: What is a Mixture of Experts (MoE) model?
+   A: A MoE model is a machine learning architecture that combines multiple "expert" neural networks, each specializing in different aspects of a task, with a gating network that routes inputs to the most appropriate experts.
+
+2. Q: What are the main advantages of MoE models?
+   A: Key advantages include:
+
+- **Pretrained faster than dense model**
+- Have **faster inference** compared to a model with the same number of parameters
+- Increased model **capacity** without proportional compute costs
+- Better task **specialization** through expert specialization
+- **Faster training** and **better inference** under high-load scenarios
+
+3. Q: What are the challenges in implementing MoE models?
+   A: Common challenges include:
+
+   - Require high VRAM as all experts are loaded in memory
+   - Complex routing mechanisms and load balancing
+   - Training instability
+   - Communication overhead in distributed settings
+
+4. Q: How do MoE models compare to dense transformers?
+   A: MoE models can achieve better performance with similar or lower computational costs, but require more memory and have more complex training dynamics.
+
+5. Q: Why MoE can be pretrained faster than dense model?
+   A: From my experience in NAS, MoE can be treated as a way to decouple the weights. The more weights shared, the faster the model can be pretrained. Additionally, decoupling the weights can increase the model capacity.
+
+6. Q: How to choose the number of experts?
+   A: TBD
+
+7. Q: Why MoE is suitable for high-load scenarios? How does it work when inference?
+   A: TBD
 
 ### Contributing
 
