@@ -22,7 +22,6 @@ This collection focuses particularly on methods to make MoE models more efficien
 ## Table of Contents
 
 - [Sparse Mixture-of-Experts](#sparse-moe)
-- []
 - [MoE Compression](#moe-compression)
   - [MoE Pruning](#moe-pruning)
   - [MoE Quantization](#moe-quantization)
@@ -34,8 +33,6 @@ This collection focuses particularly on methods to make MoE models more efficien
 - [Contributing](#contributing)
 
 ### Sparse Mixture-of-Experts
-
-![alt text](image.png)
 
 - Adaptive Mixtures of Local Experts
 
@@ -107,10 +104,12 @@ This collection focuses particularly on methods to make MoE models more efficien
 #### System Optimization
 
 - Fast Inference of Mixture-of-Experts Language Models with Offloading
+  ![alt text](./assets/image_6.png)
   - Authors: Artyom Eliseev, Denis Mazur
   - Link: https://arxiv.org/pdf/2312.17238
-  - Summary: This paper addresses the challenge of running large Mixture-of-Experts (MoE) language models on consumer hardware with limited GPU memory. The authors propose a novel offloading strategy that leverages the inherent properties of MoE LLMs, specifically the reuse of experts between tokens and the predictability of expert usage based on early layer hidden states. This strategy employs an LRU cache to minimize GPU-RAM communication and proactively guesses needed experts, overlapping loading with computation. The method is demonstrated by running Mixtral-8x7B with mixed quantization on various hardware, achieving interactive inference speeds (2-3 tokens per second) on desktop-grade hardware and free-tier Google Colab.
-  - 摘要：本文解决了在具有有限 GPU 内存的消费级硬件上运行大型混合专家（MoE）语言模型的挑战。作者提出了一种新颖的卸载策略，该策略利用了 MoE LLM 的固有特性，特别是令牌之间专家的重用以及基于早期层隐藏状态的专家使用预测性。该策略采用 LRU 缓存来最大限度地减少 GPU-RAM 通信，并主动猜测所需的专家，将加载与计算重叠。通过在各种硬件上运行具有混合量化的 Mixtral-8x7B，证明了该方法，在桌面级硬件和免费的 Google Colab 上实现了交互式推理速度（每秒 2-3 个令牌）。
+  - Code: Not available in the provided text.
+  - Summary: This paper addresses the challenge of running large Mixture-of-Experts (MoE) language models on consumer hardware with limited GPU memory. MoE models, while offering faster token generation than dense models, are significantly larger due to their multiple "expert" layers. The authors focus on improving inference speed (token generation) for Mixtral-8x7B-Instruct, a MoE-based chat assistant, on desktop-grade hardware. Their approach leverages two key observations about MoE LLM behavior: 1) expert reuse between adjacent tokens, and 2) early layers' hidden states predicting subsequent layer expert usage. Based on these observations, they propose a novel offloading strategy that incorporates an LRU cache to minimize GPU-RAM communication and a predictive mechanism to overlap expert loading with computation. This strategy, combined with mixed quantization, enables interactive inference (2-3 tokens per second) of Mixtral-8x7B-Instruct on hardware like a T4, RTX 3060, and RTX 3080 Mobile. The paper details the implementation and its performance on various hardware configurations.
+  - 摘要：本文解决了在具有有限 GPU 内存的消费级硬件上运行大型混合专家（MoE）语言模型的挑战。MoE 模型虽然比密集模型具有更快的令牌生成速度，但由于其多个“专家”层而规模显著更大。作者专注于提高 Mixtral-8x7B-Instruct（一个基于 MoE 的聊天助手）在桌面级硬件上的推理速度（令牌生成）。他们的方法利用了对 MoE LLM 行为的两个关键观察结果：1）相邻令牌之间专家重用，以及 2）早期层的隐藏状态预测后续层的专家使用情况。基于这些观察结果，他们提出了一种新颖的卸载策略，该策略结合了 LRU 缓存以最大限度地减少 GPU-RAM 通信，以及一种预测机制以将专家加载与计算重叠。这种策略与混合量化相结合，使得能够在 T4、RTX 3060 和 RTX 3080 Mobile 等硬件上进行交互式推理（每秒 2-3 个令牌）。本文详细介绍了该实现及其在各种硬件配置上的性能。
 
 ### MoE Survey
 
