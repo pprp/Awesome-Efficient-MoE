@@ -129,6 +129,17 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Summary: This paper introduces CuMo, a novel approach to scaling **multimodal Large Language Models (LLMs)** by incorporating **co-upcycled Top-K sparsely-gated Mixture-of-Experts (MoE)** blocks into both the **vision encoder** and the **MLP connector**. Unlike previous scaling methods that focus on increasing data or using larger models, CuMo efficiently improves model capabilities from the vision side with negligible additional activated parameters during inference. The method involves pre-training the MLP blocks and then initializing each expert in the MoE block from these pre-trained blocks during **visual instruction tuning**. Auxiliary losses are used to ensure balanced expert loading. CuMo achieves state-of-the-art performance on various **VQA** and **visual-instruction-following benchmarks** across different model size groups, using only open-sourced datasets. Experiments show CuMo outperforms models like Mini-Gemini, LLaVA-NeXT, and even a private MM1 model (Figure 1). The architecture (Figure 2) integrates the MoE blocks into the CLIP vision encoder and the MLP connector, utilizing a Top-K router for expert selection. The key innovation is the "co-upcycling" process, leveraging pre-trained MLP weights to initialize the MoE experts, enhancing efficiency and stability during training.
   - 摘要：本文介绍了 CuMo，一种通过在**视觉编码器**和**MLP 连接器**中结合**共循环 Top-K 稀疏门控专家混合(MoE)**块来扩展**多模态大型语言模型(LLM)**的新方法。与之前专注于增加数据或使用更大模型的扩展方法不同，CuMo 有效地提高了视觉方面的模型能力，在推理过程中几乎没有增加额外的激活参数。该方法包括预训练 MLP 块，然后在**视觉指令微调**期间利用这些预训练块初始化 MoE 块中的每个专家。辅助损失用于确保专家负载平衡。CuMo 在不同模型规模组的各种**VQA**和**视觉指令遵循基准测试**中实现了最先进的性能，仅使用开源数据集。实验表明，CuMo 优于 Mini-Gemini、LLaVA-NeXT，甚至私有的 MM1 模型（图 1）。该架构（图 2）将 MoE 块集成到 CLIP 视觉编码器和 MLP 连接器中，利用 Top-K 路由器进行专家选择。“共循环”过程是关键创新，它利用预训练的 MLP 权重来初始化 MoE 专家，从而提高训练效率和稳定性。
 
+- Mixture-of-Experts with Expert Choice Routing
+  <div align="center">
+    <img src="./assets/image_33.png" width="90%">
+  </div>
+
+  - Authors: Yanqi Zhou, Tao Lei, Hanxiao Liu, Nan Du, Yanping Huang, Vincent Zhao, Andrew Dai, Zhifeng Chen, Quoc Le, and James Laudon (Google, Mountain View, CA, USA)
+  - Link: https://arxiv.org/pdf/2202.09368
+  - Code: Not available
+  - Summary: This paper introduces a novel **expert choice** routing method for **Mixture-of-Experts (MoE)** models to improve training efficiency and downstream performance. Unlike traditional MoE where each **token** selects its top-k **experts**, this method allows each expert to select its top-k tokens. This approach addresses the problem of **load imbalance** in conventional MoE, where some experts are under-trained while others are over-trained, leading to suboptimal performance. The proposed method inherently guarantees **load balancing** without requiring auxiliary loss functions. Experiments show that the expert choice method achieves more than 2x faster training convergence compared to Switch Transformer's top-1 and GShard's top-2 gating strategies in an 8B/64E (8 billion parameters, 64 experts) model. Furthermore, it demonstrates strong scaling with increasing numbers of experts (16 to 128) and superior performance on 11 downstream tasks from GLUE and SuperGLUE benchmarks, outperforming a T5 11B dense model in 7 out of these 11 tasks, even with lower activation costs. The paper highlights the **pitfalls of conventional MoE routing strategies**, focusing on the issue of **imbalanced expert utilization**, and proposes a solution that leads to significant improvements in both training speed and final model accuracy. The key contribution is the **heterogeneous expert choice routing**, which dynamically allocates **model parameters** based on learned token-to-expert importance.
+  - 摘要：本文介绍了一种用于**混合专家（MoE）**模型的新型**专家选择**路由方法，以提高训练效率和下游性能。与传统的 MoE 模型中每个**token**选择其前 k 个**专家**不同，该方法允许每个专家选择其前 k 个 token。这种方法解决了传统 MoE 模型中**负载不平衡**的问题，在传统 MoE 模型中，一些专家训练不足，而另一些专家训练过度，导致次优性能。所提出的方法固有地保证了**负载平衡**，无需使用辅助损失函数。实验表明，与 Switch Transformer 的 top-1 和 GShard 的 top-2 门控策略相比，专家选择方法在 8B/64E（80 亿参数，64 个专家）模型中实现了超过 2 倍的训练收敛速度。此外，它还展示了随着专家数量（16 到 128）的增加而具有强大的扩展性，并在 GLUE 和 SuperGLUE 基准测试的 11 个下游任务中表现出优异的性能，即使在较低的激活成本下，也优于 T5 11B 密集模型中的 7 个任务。本文重点介绍了**传统 MoE 路由策略的缺陷**，重点关注**专家利用不平衡**的问题，并提出了一种解决方案，该解决方案可以显著提高训练速度和最终模型精度。其主要贡献是**异构专家选择路由**，它基于学习到的 token 到专家的重要性动态分配**模型参数**。
+
 ## MoE Compression
 
 ### MoE Pruning
@@ -502,6 +513,10 @@ A: From my experience in NAS, MoE can be treated as a way to decouple the weight
 A: TBD
 
 > Q: Why MoE is suitable for high-load scenarios? How does it work when inference?
+
+A: TBD
+
+> Q: How to prove MoE is better than Dense Models?
 
 A: TBD
 
