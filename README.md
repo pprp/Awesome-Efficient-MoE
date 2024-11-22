@@ -450,13 +450,19 @@ This collection focuses particularly on methods to make MoE models more efficien
 
 ## MoE Resources
 
-- [Mixture of Experts (MoE) Explained](https://huggingface.co/blog/moe): A blog post from Hugging Face explaining MoE.
-- [Awesome list of MoE](https://github.com/withinmiaov/A-Survey-on-Mixture-of-Experts): A survey on Mixture of Experts.
-- [ICML 2024 Tutorial on MoE](https://icml.cc/media/icml-2024/Slides/35222_1r94S59.pdf): A tutorial on Mixture of Experts from ICML 2024.
+- [Mixture of Experts (MoE) Explained(Blog)](https://huggingface.co/blog/moe): A blog post from Hugging Face explaining MoE.
+- [Awesome list of MoE(Repo)](https://github.com/withinmiaov/A-Survey-on-Mixture-of-Experts): A survey on Mixture of Experts.
+- [ICML 2024 Tutorial on MoE(PPT)](https://icml.cc/media/icml-2024/Slides/35222_1r94S59.pdf): A tutorial on Mixture of Experts from ICML 2024.
 
 <div align="center">
   <img src="./assets/image_20.png" width="80%">
 </div>
+
+- [What is Mixture of Experts (MoE)? (Video)](https://www.youtube.com/watch?v=sYDlVVyJYn4): Video by IBM.
+- [Introduction to Mixture-of-Experts (MoE)](https://www.youtube.com/watch?v=kb6eH0zCnl8): Video by AI Papers Academy.
+- [Mixtral of Experts (Paper Explained)](https://www.youtube.com/watch?v=mwO6v4BlgZQ): Video by Yannic Kilcher.
+- [Stanford CS25: V1 I Mixture of Experts (MoE) paradigm and the Switch Transformer](https://www.youtube.com/watch?v=U8J32Z3qV8s): Video by Stanford CS25.
+- [A Visual Guide to Mixture of Experts (MoE) in LLMs(Video)](https://www.youtube.com/watch?v=sOPDGQjFcuM): Video by Maarten Grootendorst.
 
 ## FAQ
 
