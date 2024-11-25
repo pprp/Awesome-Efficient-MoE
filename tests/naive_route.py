@@ -14,6 +14,29 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
+class MLP(nn.Module):
+    def __init__(self, config):
+        super().__init__()
+        self.dim_exp_factor = int(config.mlp_dim_exp_factor * 4)
+
+        self.c_fc = nn.Linear(
+            config.hidden_dim, self.dim_exp_factor * config.hidden_dim, bias=config.bias
+        )
+        self.c_proj = nn.Linear(
+            self.dim_exp_factor * config.hidden_dim, config.hidden_dim, bias=config.bias
+        )
+        self.dropout = nn.Dropout(config.dropout)
+        self.activation = nn.GELU()
+
+    def forward(self, x):
+        x = self.c_fc(x)
+        x = self.activation(x)
+        x = self.c_proj(x)
+        x = self.dropout(x)
+        # need to return same type as the MoE block, but in this case it's empty
+        return x, {}
+
+
 class MoE(nn.Module):
     """
     Simplest MoE implementation with a linear router and softmax over experts.
@@ -26,16 +49,16 @@ class MoE(nn.Module):
 
     def __init__(self, config, mlp):
         super().__init__()
-        assert config.moe_num_experts > 0
+        assert config.num_experts > 0
         self.experts = nn.ModuleList(
-            [mlp(config=config) for _ in range(config.moe_num_experts)]
+            [mlp(config=config) for _ in range(config.num_experts)]
         )
-        self.router = nn.Linear(config.n_embd, config.moe_num_experts, bias=False)
-        self.top_k = config.moe_num_experts_per_tok
-        self.softmax_order = config.moe_softmax_order
+        self.router = nn.Linear(config.hidden_dim, config.num_experts, bias=False)
+        self.top_k = config.num_selected_experts
+        self.softmax_order = config.softmax_order
 
     def forward(self, inputs: torch.Tensor):
-        # [batch_size * sequence_length, n_embd]
+        # [batch_size * sequence_length, hidden_dim]
         inputs_squashed = inputs.view(-1, inputs.shape[-1])
         # [batch_size * sequence_length, num_experts]
         router_logits = self.router(inputs_squashed)
@@ -78,23 +101,23 @@ class ExpertChoiceMoE(nn.Module):
 
     def __init__(self, config, mlp):
         super().__init__()
-        assert config.moe_num_experts > 0
-        self.n_experts = config.moe_num_experts
+        assert config.num_experts > 0
+        self.n_experts = config.num_experts
         self.experts = nn.ModuleList(
-            [mlp(config=config) for _ in range(config.moe_num_experts)]
+            [mlp(config=config) for _ in range(config.num_experts)]
         )
-        self.router = nn.Linear(config.n_embd, config.moe_num_experts, bias=False)
+        self.router = nn.Linear(config.hidden_dim, config.num_experts, bias=False)
         self.capacity_factor = config.capacity_factor
-        self.softmax_order = config.moe_softmax_order
+        self.softmax_order = config.softmax_order
         self.top_k = int(
             self.capacity_factor
-            * config.batch_size
-            * config.sequence_length
-            / config.moe_num_experts
+            * config.num_groups
+            * config.tokens_per_group
+            / config.num_experts
         )
 
     def forward(self, inputs: torch.Tensor):
-        # [batch_size * sequence_length, n_embd]
+        # [batch_size * sequence_length, hidden_dim]
         inputs_squashed = inputs.view(-1, inputs.shape[-1])
         num_tokens = inputs_squashed.shape[0]
         top_k = min(self.top_k, int(self.capacity_factor * num_tokens / self.n_experts))
@@ -118,9 +141,9 @@ class ExpertChoiceMoE(nn.Module):
         """ this is the full parallel version with einsum -- this can OOM quickly """
         # [num_experts, top_k, num_tokens]
         # P = F.one_hot(selected_tokens, num_tokens).type_as(inputs_squashed)
-        # # [num_experts, top_k, n_embd]
+        # # [num_experts, top_k, hidden_dim]
         # x_in = torch.matmul(P, inputs_squashed)
-        # # [num_experts, num_tokens, n_embd]
+        # # [num_experts, num_tokens, hidden_dim]
         # experts_out = torch.stack(
         #     [expert(x)[0] for expert, x in zip(self.experts, x_in)], dim=0
         # )
@@ -134,7 +157,7 @@ class ExpertChoiceMoE(nn.Module):
         for i, expert in enumerate(self.experts):
             # [top_k]
             batch_idx = selected_tokens[i]
-            # [top_k, n_embd]
+            # [top_k, hidden_dim]
             output, _ = expert(inputs_squashed[batch_idx])
             results[batch_idx] += weights[i, :, None] * output
 
@@ -149,35 +172,29 @@ if __name__ == "__main__":
     # Simple test configuration
     class Config:
         def __init__(self):
-            self.moe_num_experts = 4
-            self.moe_num_experts_per_tok = 2
-            self.n_embd = 64
-            self.moe_softmax_order = "softmax_topk"
-            self.batch_size = 2
-            self.sequence_length = 8
+            self.num_experts = 4
+            self.num_selected_experts = 2
+            self.hidden_dim = 64
+            self.softmax_order = "softmax_topk"
+            self.num_groups = 2
+            self.tokens_per_group = 8
             self.capacity_factor = 1.25
-
-    # Simple MLP for testing
-    class TestMLP(nn.Module):
-        def __init__(self, config):
-            super().__init__()
-            self.fc = nn.Linear(config.n_embd, config.n_embd)
-
-        def forward(self, x):
-            return self.fc(x), None
+            self.mlp_dim_exp_factor = 1
+            self.bias = True
+            self.dropout = 0.1
 
     # Test both MoE implementations
     config = Config()
 
     # Test standard MoE
-    moe = MoE(config, TestMLP)
-    inputs = torch.randn(config.batch_size, config.sequence_length, config.n_embd)
+    moe = MoE(config, MLP)
+    inputs = torch.randn(config.num_groups, config.tokens_per_group, config.hidden_dim)
     outputs, aux = moe(inputs)
     print("Standard MoE output shape:", outputs.shape)
     print("Number of experts selected per token:", aux["selected_experts"].shape[1])
 
     # Test Expert Choice MoE
-    ec_moe = ExpertChoiceMoE(config, TestMLP)
+    ec_moe = ExpertChoiceMoE(config, MLP)
     outputs, aux = ec_moe(inputs)
     print("\nExpert Choice MoE output shape:", outputs.shape)
     print("Number of tokens selected per expert:", aux["selected_experts"].shape[1])
