@@ -47,7 +47,7 @@ This collection focuses particularly on methods to make MoE models more efficien
     <img src="./assets/image_1.png" width="80%">
   </div>
 
-  - URL: https://watermark.silverchair.com/neco.1991.3.1.79.pdf
+  - Link: https://watermark.silverchair.com/neco.1991.3.1.79.pdf
   - Author: Robert A. Jacobs, Michael I. Jordan, Stevven J. Nowlan, Geoffrey E. Hinton
   - Pub: Neural Computation 1991
   - Summary: This paper introduces a supervised learning method for modular networks composed of multiple expert networks. Each network specializes in a subset of the task, controlled by a gating network. It bridges modular multilayer networks and competitive learning models. The methodology ensures task-specific specialization, reducing interference and improving generalization. A vowel recognition task demonstrates the system's efficacy, showing faster learning and robust performance compared to traditional backpropagation networks.
@@ -133,13 +133,13 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文介绍了 CuMo，一种通过在**视觉编码器**和**MLP 连接器**中结合**共循环 Top-K 稀疏门控专家混合(MoE)**块来扩展**多模态大型语言模型(LLM)**的新方法。与之前专注于增加数据或使用更大模型的扩展方法不同，CuMo 有效地提高了视觉方面的模型能力，在推理过程中几乎没有增加额外的激活参数。该方法包括预训练 MLP 块，然后在**视觉指令微调**期间利用这些预训练块初始化 MoE 块中的每个专家。辅助损失用于确保专家负载平衡。CuMo 在不同模型规模组的各种**VQA**和**视觉指令遵循基准测试**中实现了最先进的性能，仅使用开源数据集。实验表明，CuMo 优于 Mini-Gemini、LLaVA-NeXT，甚至私有的 MM1 模型（图 1）。该架构（图 2）将 MoE 块集成到 CLIP 视觉编码器和 MLP 连接器中，利用 Top-K 路由器进行专家选择。“共循环”过程是关键创新，它利用预训练的 MLP 权重来初始化 MoE 专家，从而提高训练效率和稳定性。
 
 - Mixture-of-Experts with Expert Choice Routing
+
   <div align="center">
     <img src="./assets/image_33.png" width="90%">
   </div>
 
   - Authors: Yanqi Zhou, Tao Lei, Hanxiao Liu, Nan Du, Yanping Huang, Vincent Zhao, Andrew Dai, Zhifeng Chen, Quoc Le, and James Laudon (Google, Mountain View, CA, USA)
   - Link: https://arxiv.org/pdf/2202.09368
-  - ⭐⭐⭐⭐⭐
   - Summary: This paper introduces a novel **expert choice** routing method for **Mixture-of-Experts (MoE)** models to improve training efficiency and downstream performance. Unlike traditional MoE where each **token** selects its top-k **experts**, this method allows each expert to select its top-k tokens. This approach addresses the problem of **load imbalance** in conventional MoE, where some experts are under-trained while others are over-trained, leading to suboptimal performance. The proposed method inherently guarantees **load balancing** without requiring auxiliary loss functions. Experiments show that the expert choice method achieves more than 2x faster training convergence compared to Switch Transformer's top-1 and GShard's top-2 gating strategies in an 8B/64E (8 billion parameters, 64 experts) model. Furthermore, it demonstrates strong scaling with increasing numbers of experts (16 to 128) and superior performance on 11 downstream tasks from GLUE and SuperGLUE benchmarks, outperforming a T5 11B dense model in 7 out of these 11 tasks, even with lower activation costs. The paper highlights the **pitfalls of conventional MoE routing strategies**, focusing on the issue of **imbalanced expert utilization**, and proposes a solution that leads to significant improvements in both training speed and final model accuracy. The key contribution is the **heterogeneous expert choice routing**, which dynamically allocates **model parameters** based on learned token-to-expert importance.
   - 摘要：本文介绍了一种用于**混合专家（MoE）**模型的新型**专家选择**路由方法，以提高训练效率和下游性能。与传统的 MoE 模型中每个**token**选择其前 k 个**专家**不同，该方法允许每个专家选择其前 k 个 token。这种方法解决了传统 MoE 模型中**负载不平衡**的问题，在传统 MoE 模型中，一些专家训练不足，而另一些专家训练过度，导致次优性能。所提出的方法固有地保证了**负载平衡**，无需使用辅助损失函数。实验表明，与 Switch Transformer 的 top-1 和 GShard 的 top-2 门控策略相比，专家选择方法在 8B/64E（80 亿参数，64 个专家）模型中实现了超过 2 倍的训练收敛速度。此外，它还展示了随着专家数量（16 到 128）的增加而具有强大的扩展性，并在 GLUE 和 SuperGLUE 基准测试的 11 个下游任务中表现出优异的性能，即使在较低的激活成本下，也优于 T5 11B 密集模型中的 7 个任务。本文重点介绍了**传统 MoE 路由策略的缺陷**，重点关注**专家利用不平衡**的问题，并提出了一种解决方案，该解决方案可以显著提高训练速度和最终模型精度。其主要贡献是**异构专家选择路由**，它基于学习到的 token 到专家的重要性动态分配**模型参数**。
   - Note: EC Routing 可以不引入额外辅助 loss。
@@ -158,9 +158,11 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文解决了阻碍**混合专家模型 (MoE)** 和**开关 Transformer** 在自然语言处理中发展的训练不稳定性和微调质量不确定性问题。作者提出了创建**稳定且可迁移的稀疏模型**的设计指南，重点是提高训练稳定性和微调性能。他们研究了各种增强稳定性的技术，包括管理乘法交互、添加噪声、激活和梯度约束以及精度格式选择。这项研究还探索了特定于稀疏模型的微调策略，例如微调一部分参数和处理丢弃的标记。最终，他们将稀疏模型扩展到 2690 亿个参数（**ST-MoE-32B**），实现了与 320 亿个参数的密集编码器-解码器 Transformer 相当的计算成本。这个 2690 亿参数的模型在各种迁移学习任务中取得了**最先进的**性能，包括**推理**、**摘要**、**问答**和**对抗性任务**，证明了他们提出的用于构建强大且高性能稀疏模型的设计原则的有效性。本文进一步分析了模型中的专家专业化，观察到编码器专家中的专业化，但解码器专家中缺乏专业化。大量的附录详细介绍了额外的实验和架构修改。
 
 - MoCLE:Mixture of Cluster-Conditional LoRA Experts for Vision-Language Instruction Tuning
+
   <div align="center">
     <img src="./assets/image_35.png" width="80%">
   </div>
+
   - Authors: Yunhao Gou, Zhili Liu, Kai Chen, Lanqing Hong, Hang Xu, Aoxue Li, Xin Jiang, Zhenguo Li, Dit-Yan Yeung, James T. Kwok, Yu Zhang
   - Link: https://arxiv.org/pdf/2312.12379
   - Code: Not available
@@ -176,6 +178,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   <div align="center">
     <img src="./assets/image_7.png" width="80%">
   </div>
+
   - Authors: Xudong Lu, Qi Liu, Yuhui Xu, Aojun Zhou, Siyuan Huang, Bo Zhang, Junchi Yan, Hongsheng Li
   - Link: https://arxiv.org/pdf/2402.14800
   - Code: https://github.com/Lucky-Lance/Expert_Sparsity
@@ -194,6 +197,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：SEER-MoE 是一个两阶段框架，旨在提高预训练混合专家（MoE）模型的内存和计算效率。第一阶段采用专家剪枝，其指导策略为“高频计数”，识别并去除不太重要的专家以减小模型规模。第二阶段采用基于正则化的微调方法来减轻剪枝造成的精度损失，同时减少推理过程中激活的专家数量（减少 Top-K）。这种微调会调整 Top-K 路由机制。该方法在 Mixtral 8x7b MoE 模型上使用 SST-5 和 MMLU 基准进行了评估，证明了在内存占用和计算需求方面显著减少，同时精度下降最小。本文包括一个消融研究，分析了每个阶段的设计选择。核心创新在于将高频计数用于剪枝和基于正则化的微调用于 Top-K 自适应相结合的方法，从而产生一个更高效且更节省内存的 MoE 推理模型。
 
 - MC-MoE: Mixture Compressor for Mixture-of-Experts LLMs Gains More
+
   <div align="center">
     <img src="./assets/image_4.png" width="80%">
   </div>
@@ -205,9 +209,11 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文介绍了 MC-MoE，这是一种针对混合专家（MoE）大型语言模型（LLM）的免训练压缩方法，它解决了与 MoE 架构相关的内存消耗大和计算开销大的问题。MC-MoE 通过利用专家和标记的不同重要性来实现极端压缩。它采用两阶段方法：1) **预加载混合精度量化 (PMQ)：**此阶段使用线性规划 (LP) 问题来确定每个专家的最佳位宽分配，其依据是反映其重要性的因素（激活重建误差、路由分数和激活频率）。这允许高效地存储和加载专家参数。2) **在线动态剪枝 (ODP)：**在推理过程中，ODP 识别并仅保留最重要的标记，动态地为其余标记选择激活的专家。这进一步减少了活动参数的数量。实验表明，MC-MoE 在精度损失最小的前提下实现了显著的压缩。例如，在每个参数 2.54 位时，它压缩了 76.6% 的模型，平均精度仅下降了 3.8%。动态推理进一步将激活参数减少了 15%，性能下降不到 0.6%。值得注意的是，MC-MoE 甚至优于一些 130 亿参数的密集 LLM，这证明了混合压缩在超越同等规模和更大规模的密集模型方面的潜力。
 
 - Mixture-of-Experts Meets Instruction Tuning for LLMs
+
   <div align="center">
     <img src="./assets/image_32.png" width="80%">
   </div>
+
   - Authors: Sheng Shen, Le Hou, Yanqi Zhou, Nan Du, Shayne Longpre, Jason Wei, Hyung Won Chung, Barret Zoph, William Fedus, Xinyun Chen, Tu Vu, Yuexin Wu, Wuyang Chen, Albert Webson, Yunxuan Li, Vincent Zhao, Hongkun Yu, Kurt Keutzer, Trevor Darrell, Denny Zhou
   - Link: https://arxiv.org/pdf/2305.14705
   - Code: Not available
@@ -215,6 +221,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文研究了**混合专家模型 (MoE)** 和**指令微调**结合用于**大型语言模型 (LLM)** 的方法。作者发现，通过使用稀疏激活的专家来降低计算成本的 MoE 模型比密集模型从指令微调中受益更多。他们进行了三种设置的实验：(i) 在没有指令微调的情况下直接对下游任务进行**微调**；(ii) 指令微调之后进行上下文少量样本或零样本泛化；以及 (iii) 指令微调之后进行特定任务的微调。结果表明，虽然在第一种设置下 MoE 模型的性能不如密集模型，但在后两种设置下，尤其是在结合指令微调的情况下，它们的性能超过了相同计算能力的密集模型。他们最好的模型 **FLAN-MoE32B** 在四个基准测试任务上优于 **FLAN-PALM 62B**，同时仅使用了三分之一的 FLOPs。这证明了指令微调在实现基于 MoE 的 LLM 的高效扩展中的关键作用，并建议重新评估使用任务无关学习框架的高性能语言模型的设计原则。
 
 - MoE-I2: Compressing Mixture of Experts Models through Inter-Expert Pruning and Intra-Expert Low-Rank Decomposition
+
   <div align="center">
     <img src="./assets/image_19.png" width="80%">
   </div>
@@ -226,6 +233,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：混合专家（MoE）大语言模型的出现显著推进了语言模型的发展。与传统的大语言模型相比，MoE 大语言模型通过较少的激活参数实现了更高的性能。尽管具有这种效率，但其庞大的参数规模仍然导致部署成本高昂。在本文中，我们引入了一种专门针对 MoE 的两阶段压缩方法，以减少模型大小并降低计算成本。首先，在专家间剪枝阶段，我们分析每一层的重要性，并提出了具有非均匀剪枝比率的层级遗传搜索和块级 KT 感受野，用于剪枝单个专家。其次，在专家内分解阶段，我们应用低秩分解进一步压缩剩余专家中的参数。在 Qwen1.5-MoE-A2.7B、DeepSeek-V2-Lite 和 Mixtral-8×7B 上的大量实验表明，我们提出的方法既可以减少模型大小，又可以提高推理效率，同时在各种零样本任务中保持性能。
 
 - Demystifying the Compression of Mixture-of-Experts Through a Unified Framework
+
   <div align="center">
     <img src="./assets/image_10.png" width="80%">
   </div>
@@ -247,12 +255,12 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Link: https://arxiv.org/pdf/2310.01334
   - Code: https://github.com/UNITES-Lab/MC-SMoE
   - Summary: This paper addresses the limitations of **Sparse Mixture-of-Experts (SMoE)** models, namely high memory usage due to expert duplication and redundancy due to representational collapse in learning-based routing policies. The authors propose **MC-SMoE (Merge, then Compress SMoE)**, a novel method to create more compact and efficient SMoE models. MC-SMoE consists of two stages: **expert merging** and **compression**. The merging stage uses routing statistics to guide the consolidation of experts. It begins by aligning neurons across experts through permutation, then groups experts based on their routing policies, finally merging each group into a single expert weighted by activation frequency. This process reduces the impact of insignificant experts. Interestingly, this merging leads to a lower dimensionality in the merged expert's weight space, enabling further compression. The compression stage decomposes the merged experts using low-rank and structural sparse techniques. Experiments across 8 benchmarks show that MC-SMoE achieves up to **80% memory reduction** and **20% FLOPs reduction** with minimal performance loss. The paper highlights that conventional model merging techniques are ineffective for SMoE due to redundant information overshadowing critical experts and the lack of appropriate neuron permutation alignment. The authors demonstrate the effectiveness of their approach by comparing MC-SMoE to standard SMoE and other baselines, showcasing significant improvements in memory efficiency without sacrificing accuracy. The core innovation lies in leveraging routing statistics to intelligently merge experts, followed by a compression step that capitalizes on the lower dimensionality resulting from the merging process.
-
   - 摘要：本文解决了**稀疏专家混合模型 (SMoE)** 的局限性，即由于专家复制导致的高内存使用率以及基于学习的路由策略中由于表示崩溃导致的冗余。作者提出了**MC-SMoE（合并，然后压缩 SMoE）**，这是一种创建更紧凑和高效的 SMoE 模型的新方法。MC-SMoE 包括两个阶段：**专家合并**和**压缩**。合并阶段使用路由统计信息来指导专家的整合。它首先通过置换来对齐专家之间的神经元，然后根据其路由策略对专家进行分组，最后将每个组合并成一个由激活频率加权的单个专家。此过程减少了不重要专家的影响。有趣的是，这种合并导致合并专家权重空间的维数降低，从而实现进一步的压缩。压缩阶段使用低秩和结构化稀疏技术分解合并的专家。在 8 个基准测试中的实验表明，MC-SMoE 在性能损失最小的前提下，实现了高达**80% 的内存减少**和**20% 的 FLOPs 减少**。本文强调，由于冗余信息掩盖了关键专家以及缺乏适当的神经元置换对齐，因此传统的模型合并技术对于 SMoE 是无效的。作者通过将 MC-SMoE 与标准 SMoE 和其他基线进行比较，展示了其方法的有效性，在内存效率方面取得了显著改进，而不会牺牲准确性。核心创新在于利用路由统计信息智能地合并专家，然后进行压缩步骤，利用合并过程产生的较低维数。
 
 ### Quantization
 
 - QMoE: Practical Sub-1-Bit Compression of Trillion-Parameter Models
+
   <div align="center">
     <img src="./assets/image_2.png" width="80%">
   </div>
@@ -264,6 +272,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文介绍了 QMoE，这是一个用于压缩和高效推理大型混合专家（MoE）模型的框架，其压缩率低于每参数 1 比特。QMoE 解决了像 SwitchTransformer-c2048 这样万亿参数模型的内存挑战，实现了 10-20 倍的压缩（例如，将 1.6 万亿参数模型压缩到 160GB 以下），同时精度损失和运行时间开销最小（低于 5%）。这是通过可扩展的压缩算法、自定义压缩格式和用于快速推理的定制 GPU 解码内核来实现的。该框架能够在价格合理的消费级硬件上运行万亿参数模型。QMoE 还提出了一个用于快速解码的 CUDA Kernel。它还允许执行的卸载，可以动态加载和卸载专家到 GPU 内存中。
 
 - Examining Post-Training Quantization for Mixture-of-Experts: A Benchmark
+
   <div align="center">
     <img src="./assets/image_3.png" width="80%">
   </div>
@@ -275,6 +284,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文对混合专家（MoE）模型的训练后量化技术进行了基准测试，解决了尽管计算效率高但内存消耗大的挑战。由于 MoE 架构固有的稀疏性，直接将现有的量化方法应用于 MoE 模型会产生次优结果。作者探索了几种具有不同粒度的 MoE 结构感知量化启发式方法（从 MoE 块到单个线性权重），发现不同的 MoE 结构需要不同的位精度才能获得最佳性能。关键发现强调，有效的量化需要考虑 MoE 的稀疏性。该研究引入了新的增强功能，即线性权重异常值评分器和 MoE 块评分器，以更好地识别需要更高位分配的关键权重。在两个 MoE 模型和六个任务上的大量基准测试验证了这些发现对于权重量化和激活量化。专家使用情况是分析 MoE 模型性能的良好启发式方法。作者还提出了一种称为 `outlier-score` 的指标，通过估计专家的相对重要性并为其分配不同的位精度，从而更好地识别需要更高位分配的关键权重。
 
 - MC-MoE: Mixture Compressor for Mixture-of-Experts LLMs Gains More
+
   <div align="center">
     <img src="./assets/image_4.png" width="80%">
   </div>
@@ -288,6 +298,7 @@ This collection focuses particularly on methods to make MoE models more efficien
 ### Decomposition
 
 - MoE-I2: Compressing Mixture of Experts Models through Inter-Expert Pruning and Intra-Expert Low-Rank Decomposition
+
   <div align="center">
     <img src="./assets/image_19.png" width="80%">
   </div>
@@ -314,6 +325,7 @@ This collection focuses particularly on methods to make MoE models more efficien
 ## Distillation
 
 - One Student Knows All Experts Know: From Sparse to Dense
+
   <div align="center">
     <img src="./assets/image_27.png" width="80%">
   </div>
@@ -325,6 +337,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文提出了一种新颖的方法，用于训练一个能够匹敌**稀疏专家混合模型 (MoE)** 性能的**稠密**学生模型。受人类教育体系（学生向多个专家学习）的启发，作者提出了一个**知识整合**框架。该框架包含两个阶段：**知识收集**和**知识蒸馏**。在知识收集阶段，探索了四种从预训练的 MoE 专家中提取知识的方法：求和、平均、**Top-K 知识收集 (Top-KG)** 和**奇异值分解知识收集 (SVD-KG)**。Top-KG 和 SVD-KG 旨在从每个专家中选择最关键的知识。然后，收集到的知识用于初始化稠密学生模型的前馈网络 (FFN) 层。随后，使用整个 MoE 作为教师进行**知识蒸馏**，以改进学生模型，减轻知识收集阶段引入的噪声。在 ImageNet 和四个自然语言处理数据集上的实验表明，生成的 OneS（一位学生）模型与稠密基线相比取得了显著的性能提升，保留了 MoE 很大一部分性能（ImageNet 上为 61.7%，NLP 数据集上为 88.2%），同时由于其**硬件友好型**稠密架构，推理速度提高了 3.7 倍。OneS 模型在 NLP 任务上使用相同的架构和训练数据，比最佳基线高出 51.7%。
 
 - LLaVA-MoD: Making LLaVA Tiny via MoE-Knowledge Distillation
+
   <div align="center">
     <img src="./assets/image_25.png" width="80%">
   </div>
@@ -339,6 +352,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文介绍了 LLaVA-MoD，这是一个新颖的框架，通过从大型多模态语言模型（**l-MLLM**）中蒸馏知识来高效训练**小型多模态语言模型（s-MLLMs）**。LLaVA-MoD 解决了 MLLM 蒸馏中的两个关键挑战：架构设计和有效的知识转移。为了解决架构挑战，它将**稀疏专家混合（MoE）**架构集成到 s-MLLM 中，平衡了计算效率和模型表达能力。多个前馈网络（FFNs）充当专家，线性门动态选择前 k 个专家以实现最佳的知识转移。为了有效地转移知识，LLaVA-MoD 采用**渐进式知识转移策略**。这从**模仿蒸馏**开始，最小化 s-MLLM 和 l-MLLM 输出分布之间的 Kullback-Leibler (KL) 散度。然后，它继续使用**偏好优化（PO）**进行**偏好蒸馏**，将 l-MLLM 作为参考模型。这增强了 s-MLLM 区分好坏示例的能力，通常超过 l-MLLM 的性能，尤其是在幻觉基准测试中。实验表明，LLaVA-MoD 在各种基准测试中都优于现有方法，同时具有最少的激活参数和较低的计算成本。具体而言，LLaVA-MoD-2B 使用仅 0.3%的训练数据和 23%的可训练参数，其性能优于 Qwen-VL-Chat-7B，平均提高了 8.8%。结果突出了 LLaVA-MoD 在从教师模型中蒸馏知识方面的有效性，从而能够开发高效的 MLLMs。
 
 - Dense Training, Sparse Inference: Rethinking Training of Mixture-of-Experts Language Models
+
   <div align="center">
     <img src="./assets/image_28.png" width="80%">
   </div>
@@ -353,6 +367,7 @@ This collection focuses particularly on methods to make MoE models more efficien
 ### System Optimization
 
 - Fast Inference of Mixture-of-Experts Language Models with Offloading
+
   <div align="center">
     <img src="./assets/image_6.png" width="80%">
   </div>
@@ -364,6 +379,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文解决了在具有有限 GPU 内存的消费级硬件上运行大型混合专家（MoE）语言模型的挑战。MoE 模型虽然比密集模型具有更快的令牌生成速度，但由于其多个“专家”层而规模显著更大。作者专注于提高 Mixtral-8x7B-Instruct（一个基于 MoE 的聊天助手）在桌面级硬件上的推理速度（令牌生成）。他们的方法利用了对 MoE LLM 行为的两个关键观察结果：1）相邻令牌之间专家重用，以及 2）早期层的隐藏状态预测后续层的专家使用情况。基于这些观察结果，他们提出了一种新颖的卸载策略，该策略结合了 LRU 缓存以最大限度地减少 GPU-RAM 通信，以及一种预测机制以将专家加载与计算重叠。这种策略与混合量化相结合，使得能够在 T4、RTX 3060 和 RTX 3080 Mobile 等硬件上进行交互式推理（每秒 2-3 个令牌）。本文详细介绍了该实现及其在各种硬件配置上的性能。
 
 - MoNDE: Mixture of Near-Data Experts for Large-Scale Sparse Models
+
   <div align="center">
     <img src="./assets/image_9.png" width="80%">
   </div>
@@ -378,6 +394,7 @@ This collection focuses particularly on methods to make MoE models more efficien
 ### Sparse Upcycling
 
 - Branch-Train-MiX: Mixing Expert LLMs into a Mixture-of-Experts LLM
+
   <div align="center">
     <img src="./assets/image_11.png" width="80%">
   </div>
@@ -389,6 +406,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文介绍了一种新颖的训练大型语言模型（LLM）的方法，名为**Branch-Train-MiX (BTX)**，该方法旨在使 LLM 具备多个专业领域的专业知识（例如，编码、数学推理、世界知识）。BTX 结合了**Branch-Train-Merge (BTM)**和**Mixture-of-Experts (MoE)**方法的优点，同时减轻了它们的缺点。该方法首先从一个**种子 LLM**开始分支，创建多个副本，这些副本在不同的数据集上异步并行训练，从而产生专门的**专家 LLM**。与简单地合并这些专家的 BTM 不同，BTX 将专家 LLM 的**前馈(FF)**参数集成到单个 MoE 层中，对其余参数（例如，自注意力层）进行平均。随后的 MoE 微调阶段优化了 MoE 层中的**令牌级路由**。这种方法由于专家训练的并行性而实现了高效的训练，降低了通信成本并提高了吞吐量。此外，生成的统一模型允许进行进一步的**监督微调(SFT)**或**来自人类反馈的强化学习(RLHF)**，而这在 BTM 方法中通常是不可能的。作者声称，BTX 实现了最佳的**精度-效率权衡**，与其他方法相比。
 
 - Branch-Train-Merge (BTM): Embarrassingly Parallel Training of Expert Language Models
+
   <div align="center">
     <img src="./assets/image_12.png" width="80%">
   </div>
@@ -404,6 +422,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文介绍了**Branch-Train-Merge (BTM)**，一种用于以**高度并行**方式训练大型语言模型 (LLM) 的通信效率高的算法。BTM 不训练单个整体模型，而是训练一系列独立的**专家语言模型 (ELM)**，每个模型专门处理不同的文本领域（例如，科学或法律文本）。这些 ELM 在数据的不同子集上独立训练，消除了传统 LLM 训练中通常需要的海量多节点同步。BTM 过程包括三个步骤：**分支 (Branching)**，其中使用现有相关 ELM 的参数加权平均值来初始化新的 ELM；**训练 (Training)**，其中使用标准交叉熵损失在新 ELM 的专业领域数据上训练新 ELM；以及**合并 (Merging)**，其中将新训练的 ELM 添加到现有的 ELM 集中。这允许对模型进行增量扩展并适应新的领域。生成的模型，称为**ELM FOREST**，可以用作集成模型，平均所有 ELM 的预测，或者通过参数平均来创建单个高效的推理模型。实验表明，使用 BTM 训练的 ELM FOREST 在域内和域外困惑度方面都优于 GPT 风格的 Transformer LLM，同时控制了训练成本。改进在 ELM FOREST 集成模型中更为明显，但在使用参数平均时也存在。该研究还强调了领域专业化的重要性；随机数据分割不会产生良好的结果。将 BTM 扩展到 64 个领域（192B 个标记）产生了 22.4B 参数的模型，其性能与使用 2.5 倍计算量训练的 Transformer LLM 相当，这表明了通过增加并行性扩展到更大模型的巨大潜力。本文还包括详细的消融研究，分析了 BTM 和 ELM 初始化的不同方面。
 
 - Skywork-MoE: A Deep Dive into Training Techniques for Mixture-of-Experts Language Models
+
   <div align="center">
     <img src="./assets/image_14.png" width="80%">
   </div>
@@ -414,6 +433,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：这份技术报告详细介绍了 Skywork-MoE 的训练方法，Skywork-MoE 是一个具有 1460 亿参数和 16 个专家的高性能**混合专家（MoE）**大型语言模型（LLM）。该模型是从作者先前开发的 Skywork-13B 模型**升级**而来的，本文探讨了升级与从头开始训练的比较优势。作者发现，最佳方法取决于现有密集检查点的性能和可用的训练预算。报告介绍了两种关键的新型训练技术：**门控 logit 归一化**，它提高了专家的多样性，以及**自适应辅助损失系数**，它能够对不同层的辅助损失进行特定层的调整。Skywork-MoE 在 SkyPile 语料库的精简子集上进行了训练，并在各种基准测试中表现出强大的性能，这展示了所提出技术的有效性。该架构建立在**Switch Transformer**设计的基礎上，利用 MoE 替换 Transformer 架构中部分或全部的前馈神经网络（FFNs）。**门控机制**采用 softmax 函数，根据词嵌入动态地将词元路由到最相关的专家。
 
 - Sparse Upcycling: Training Mixture-of-Experts from Dense Checkpoints
+
   <div align="center">
     <img src="./assets/image_15.png" width="80%">
   </div>
@@ -426,6 +446,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文介绍了一种高效训练**混合专家（MoE）**模型的方法——**稀疏升级**，该方法通过从预训练的**密集**检查点初始化 MoE 模型来实现。与从头开始训练大型模型（计算成本很高）相比，这种技术利用现有密集模型中嵌入的知识来显著降低训练成本。作者证明，通过升级预训练的 T5（**语言**）和 Vision Transformer（**视觉**）模型，他们实现了优于其密集对应模型和从头开始训练的稀疏模型的性能，而仅使用了大约 50% 的原始训练成本。该方法涉及一个“模型手术”过程，以有效地将知识从密集模型转移到稀疏 MoE 架构，从而减轻通常与架构更改相关的性能下降。在 SuperGLUE（语言）和 ImageNet（视觉）基准测试上的实验表明，在训练预算增加适度的情况下（原始训练成本的 10% 到 60% 之间），性能有了显著提高。当资源有限或探索密集模型和 MoE 模型之间的权衡时，这种技术特别有用，允许高效地探索大型模型架构。
 
 - MoE-LLaVA: Mixture of Experts for Large Vision-Language Models
+
   <div align="center">
     <img src="./assets/image_36.png" width="80%">
   </div>
@@ -440,6 +461,7 @@ This collection focuses particularly on methods to make MoE models more efficien
 ### Sparse Splitting
 
 - LLaMA-MoE: Building Mixture-of-Experts from LLaMA with Continual Pre-training
+
   <div align="center">
     <img src="./assets/image_16.png" width="80%">
   </div>
@@ -453,9 +475,11 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文提出了 LLaMA-MoE，一种从现有的稠密大型语言模型（LLM）构建**混合专家（MoE）**模型的新方法，特别地，使用 LLaMA-2 7B 模型作为基础。该方法并非从头开始训练 MoE 模型（这在计算上代价高昂且不稳定），而是提出了一个两阶段的过程：（1）**专家构建**，其中 LLaMA 模型的**前馈网络（FFN）**被划分为多个**专家**；（2）**持续预训练**，其中生成的 MoE 模型和额外的**门网络**（将输入 token 路由到合适的专家）在大型数据集（2000 亿个 token）上进行进一步训练。本文探讨了各种专家构建方法，重点关注 FFN 的不同**分割方法**（包括非重叠随机分割，证明最有效），以及持续预训练的不同**数据采样策略**（比较**动态**和**静态**方法，静态域权重比例证明更优）。生成的 LLaMA-MoE 模型，例如 LLaMA-MoE-3.5B，其性能优于具有相似激活参数数量的稠密模型，证明了这种构建高效强大 MoE LLM 的方法的有效性。关键创新在于将 MoE 应用于解码器专用架构（如 LLaMA）并采用持续预训练来克服将稠密模型转换为稀疏 MoE 模型时经常出现的性能下降。
 
 - MoEfication: Transformer Feed-forward Layers are Mixtures of Experts
+
   <div align="center">
     <img src="./assets/image_31.png" width="95%">
   </div>
+
   - Authors: Zhengyan Zhang, Yankai Lin, Zhiyuan Liu, Peng Li, Maosong Sun, Jie Zhou
   - Link: https://arxiv.org/pdf/2110.01786
   - Code: https://github.com/thunlp/MoEfication
@@ -464,6 +488,7 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文研究了预训练**Transformer**中**前馈网络(FFNs)**的计算模式。作者观察到，对于大多数输入，FFNs 中只有一小部分神经元被激活，这种现象类似于人脑的稀疏性。受此启发，他们提出了**MoEfication**，这是一种将 FFNs 转换为**混合专家(MoE)**模型的方法。MoEfication 包括两个阶段：(1)**专家构建**：将 FFN 参数分成多个“专家”，将经常一起激活的神经元分组；(2)**专家选择**：一种路由机制，为每个输入选择最相关的专家。使用 T5 和 BERT 模型在 GLUE 和 QA 基准测试上的实验表明，MoEfication 可以使用仅 10%到 30%的 FFN 参数就能达到超过 95%的原始性能。这导致了显著的推理加速(使用 25%的 FFN 参数，CPU 上速度提高 2 倍，GPU 上速度提高 1.2 倍)，并通过分析路由模式，为理解 FFN 的内部工作机制提供了细粒度的视角。核心发现是，预训练的 Transformer 在其 FFNs 中表现出**功能分区**，这反映了人脑的结构。
 
 - Upcycling Large Language Models into Mixture of Experts
+
   <div align="center">
     <img src="./assets/image_17.png" width="80%">
   </div>
@@ -475,9 +500,11 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文探讨了将预训练的密集型大型语言模型（LLM）高效地升级到稀疏**混合专家（MoE）**模型的方法。作者对数十亿参数的 LLM 进行了大规模研究，重点是优化升级技术和超参数。主要贡献包括：一种新颖的“**虚拟组**”初始化方案和权重缩放方法，将损失提高了 1.5%；比较了**softmax-then-topK**和**topK-then-softmax**专家路由方法，前者更胜一筹；分析了更高粒度 MoE 和更高 topK 值的优势；以及证明了升级优于持续密集模型训练。具体来说，在 1 万亿个 token 上对 Nemotron-4 15B 模型进行升级，获得了 67.6%的 MMLU 分数，超过了在相同数据上持续训练该模型所获得的 65.3%。这项工作利用 Megatron-LM4 进行升级和训练，重点是应用于 Transformer 的 MLP 层的 MoE，以最大限度地提高效率。本文为升级数十亿参数的 LLM 提供了实用建议和最佳实践，推动了大规模 MoE 模型发展。
 
 - LLaVA-MoD: Making LLaVA Tiny via MoE-Knowledge Distillation
+
   <div align="center">
     <img src="./assets/image_25.png" width="80%">
   </div>
+
   - Authors: Fangxun Shu, Yue Liao, Le Zhuo, Chenning Xu, Lei Zhang, Guanghao Zhang, Haonan Shi, Long Chen, Tao Zhong, Wanggui He, Siming Fu, Haoyuan Li, Bolin Li, Zhelun Yu, Si Liu, Hongsheng Li, Hao Jiang
   - Link: https://arxiv.org/pdf/2408.15881
   - Code: https://github.com/shufangxun/LLaVA-MoD
@@ -487,9 +514,11 @@ This collection focuses particularly on methods to make MoE models more efficien
 ### Merging
 
 - Model-GLUE: Democratized LLM Scaling for A Large Model Zoo in the Wild
+
   <div align="center">
     <img src="./assets/image_30.png" width="80%">
   </div>
+
   - Authors: Xinyu Zhao, Guoheng Sun, Ruisi Cai, Yukun Zhou, Pingzhi Li, Peihao Wang, Bowen Tan, Yexiao He, Li Chen, Yi Liang, Beidi Chen, Binhang Yuan, Hongyi Wang, Ang Li, Zhangyang Wang, Tianlong Chen
   - Link: https://arxiv.org/pdf/2410.05357
   - Code: https://github.com/Model-GLUE/Model-GLUE
