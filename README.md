@@ -562,6 +562,19 @@ This collection focuses particularly on methods to make MoE models more efficien
 
   - 摘要：本文提出了一种名为**D2DMoE（Dense to Dynamic-k Mixture-of-Experts）**的新方法，通过利用 Transformer 模型固有的**激活稀疏性**来提高其效率。其核心思想是将密集的 Transformer 层（特别是前馈网络（FFNs）和多头注意力（MHA）投影）转换为**混合专家（MoE）**层。作者做出了几个关键贡献：1）他们证明了在转换之前**正则化基本模型的激活稀疏性**会显著提高生成的 MoE 模型的效率。2）他们引入了一种**动态 k 专家选择规则**，该规则自适应地调整每个标记的激活专家数量，解决了不同输入中激活神经元数量的高方差。这通过更有效地分配计算资源来提高效率。3）他们使用两层 MLP 近似法将转换方法扩展到**MHA 投影**（Transformer 中重要的计算来源）。4）他们提供了一个高效的 GPU 实现。在 NLP 和视觉任务上的实验表明，D2DMoE 在不显著影响性能的情况下，实现了高达 60%的推理成本降低，优于现有的 MoE 化技术。该方法包括对基本模型进行微调以提高稀疏性，将路由器训练重新表述为回归问题以预测专家输出范数，以及利用动态 k 选择策略进行优化的资源分配。
 
+- MoE Jetpack: From Dense Checkpoints to Adaptive Mixture of Experts for Vision Tasks
+
+  <div align="center">
+    <img src="./assets/image_41.png" width="90%">
+  </div>
+
+  - Authors: Xingkui Zhu, Yiran Guan, Dingkang Liang, Yuchao Chen, Yuliang Liu, Xiang Bai
+  - Link: https://arxiv.org/pdf/2406.04801
+  - Code: https://github.com/Adlith/MoE-Jetpack
+  - Summary: This paper introduces **MoE Jetpack**, a novel method for efficiently fine-tuning pre-trained **dense** checkpoints into **Mixture of Experts (MoE)** models for vision tasks. Training MoE models from scratch is computationally expensive and data-intensive, while readily available pre-trained models are predominantly dense models. MoE Jetpack addresses this by employing two key techniques: (1) **Checkpoint Recycling**: This technique repurposes weights from pre-trained dense models to initialize the MoE model, significantly accelerating convergence and improving accuracy compared to training from random initialization. It goes beyond simply copying weights, offering flexibility in weight selection from multiple dense checkpoints. (2) **Hyperspherical Adaptive MoE (SpheroMoE) Layer**: This novel layer optimizes the MoE architecture for better integration with the recycled dense checkpoints, further enhancing fine-tuning performance. It addresses challenges encountered when directly adapting existing MoE architectures (like Switch Transformers and Soft MoE) to pre-trained weights. The SpheroMoE layer incorporates normalized token mixing and expert regularization for improved stability and performance. Experiments demonstrate that MoE Jetpack achieves superior convergence speed and accuracy compared to training MoE models from scratch or using other methods, showcasing the effectiveness of leveraging pre-trained dense models for efficient MoE training. The method maintains comparable **FLOPs** (floating point operations per second) to dense models while achieving improved performance.
+
+  - 摘要：本文介绍了一种新颖的方法**MoE Jetpack**，用于高效地将预训练的**密集型**检查点微调到用于视觉任务的**混合专家 (MoE)** 模型中。从头开始训练 MoE 模型在计算上代价高昂且需要大量数据，而现成的预训练模型主要是密集型模型。MoE Jetpack 通过采用两种关键技术来解决这个问题：(1) **检查点循环利用**: 此技术将预训练的密集型模型的权重用于初始化 MoE 模型，与从随机初始化训练相比，它大大加快了收敛速度并提高了准确性。它不仅仅是简单地复制权重，还在多个密集型检查点中提供了权重选择的灵活性。(2) **超球面自适应 MoE (SpheroMoE) 层**: 这个新颖的层优化了 MoE 架构，以便更好地与循环利用的密集型检查点集成，进一步增强了微调性能。在将现有的 MoE 架构（如 Switch Transformers 和 Soft MoE）直接应用于预训练权重时，它解决了遇到的挑战。SpheroMoE 层结合了归一化的标记混合和专家正则化，以提高稳定性和性能。实验表明，与从头开始训练 MoE 模型或使用其他方法相比，MoE Jetpack 实现了优越的收敛速度和准确性，展示了利用预训练密集型模型进行高效 MoE 训练的有效性。该方法保持了与密集型模型相当的**FLOPs**（每秒浮点运算次数），同时实现了改进的性能。
+
 ### Merging
 
 - Model-GLUE: Democratized LLM Scaling for A Large Model Zoo in the Wild
