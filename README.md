@@ -175,7 +175,6 @@ This collection focuses particularly on methods to make MoE models more efficien
     <img src="./assets/image_38.png" width="80%">
   </div
 
-  - Label: <img src=https://img.shields.io/badge/semi_structured-brightgreen.svg >
   - Authors: Anonymous authors
   - Link: https://openreview.net/pdf?id=4D0f16Vwc3
   - Code: Not available
@@ -277,7 +276,6 @@ This collection focuses particularly on methods to make MoE models more efficien
     <img src="./assets/image_37.png" width="80%">
   </div>
 
-  - Label: <img src=https://img.shields.io/badge/structured-blue.svg >
   - Authors: Anonymous authors
   - Link: https://openreview.net/pdf?id=TTUtPIpaol
   - Code: Not available in the provided text.
