@@ -350,6 +350,18 @@ This collection focuses particularly on methods to make MoE models more efficien
 
   - 摘要：本文解决了**稀疏专家混合模型 (SMoE)** 的局限性，即由于专家复制导致的高内存使用率以及基于学习的路由策略中由于表示崩溃导致的冗余。作者提出了**MC-SMoE（合并，然后压缩 SMoE）**，这是一种创建更紧凑和高效的 SMoE 模型的新方法。MC-SMoE 包括两个阶段：**专家合并**和**压缩**。合并阶段使用路由统计信息来指导专家的整合。它首先通过置换来对齐专家之间的神经元，然后根据其路由策略对专家进行分组，最后将每个组合并成一个由激活频率加权的单个专家。此过程减少了不重要专家的影响。有趣的是，这种合并导致合并专家权重空间的维数降低，从而实现进一步的压缩。压缩阶段使用低秩和结构化稀疏技术分解合并的专家。在 8 个基准测试中的实验表明，MC-SMoE 在性能损失最小的前提下，实现了高达**80% 的内存减少**和**20% 的 FLOPs 减少**。本文强调，由于冗余信息掩盖了关键专家以及缺乏适当的神经元置换对齐，因此传统的模型合并技术对于 SMoE 是无效的。作者通过将 MC-SMoE 与标准 SMoE 和其他基线进行比较，展示了其方法的有效性，在内存效率方面取得了显著改进，而不会牺牲准确性。核心创新在于利用路由统计信息智能地合并专家，然后进行压缩步骤，利用合并过程产生的较低维数。
 
+- MODEGPT: Modular Decomposition for Large Language Model Compression
+
+  <div align="center">
+    <img src="./assets/image_40.png" width="60%">
+  </div>
+
+  - Link: https://openreview.net/pdf?id=8EfxjTCg2k
+  - Code: Not available
+  - Summary: This paper introduces **MoDeGPT**, a novel and efficient **structured compression framework** for **Large Language Models (LLMs)**. Unlike existing methods like SVD which suffer from accuracy loss due to stringent rank requirements or methods like SliceGPT which introduce significant parameter overhead, MoDeGPT employs a **modular decomposition** approach. It jointly decomposes consecutive subcomponents within Transformer blocks, achieving **dimensionality reduction** on a larger structural scale. The method leverages three classical matrix decomposition algorithms—**Nyström approximation**, **CR decomposition**, and **Singular Value Decomposition (SVD)**—to ensure bounded errors within its novel decomposition scheme. Crucially, MoDeGPT doesn't require **backward propagation**, unlike many competing techniques relying on gradient information. Experimental results demonstrate MoDeGPT's ability to match or exceed the performance of gradient-based methods, achieving a **98% reduction in compute costs** when compressing a 13B-parameter model. On LLaMA-2/3 and OPT models, it maintains 90-95% of zero-shot performance with compression rates of 25-30%, and the compression process is achievable on a single GPU within a few hours, leading to up to a 46% boost in inference throughput. The key innovation lies in its joint decomposition of multiple matrices within modules, eliminating the need for additional adapters that inflate parameter counts in alternative methods.
+
+  - 摘要：本文介绍了**MoDeGPT**，这是一种用于**大型语言模型（LLMs）**的新型高效**结构化压缩框架**。与现有的方法（如由于严格的秩要求而导致精度损失的 SVD，或引入大量参数开销的 SliceGPT）不同，MoDeGPT 采用**模块化分解**方法。它联合分解 Transformer 块中连续的子组件，在更大的结构尺度上实现**降维**。该方法利用三种经典的矩阵分解算法——**Nyström 近似**、**CR 分解**和**奇异值分解（SVD）**——来确保其新颖的分解方法中的误差是有界的。至关重要的是，MoDeGPT 不需要**反向传播**，这与许多依赖于梯度信息的竞争技术不同。实验结果表明，MoDeGPT 能够匹配或超过基于梯度的方法的性能，在压缩 130 亿参数的模型时，计算成本降低了**98%**。在 LLaMA-2/3 和 OPT 模型上，它在压缩率为 25-30%的情况下保持了 90-95%的零样本性能，并且压缩过程可以在几小时内在一台 GPU 上完成，从而将推理吞吐量提高了多达 46%。其关键创新在于其对模块内多个矩阵的联合分解，消除了替代方法中导致参数计数膨胀的附加适配器的需求。
+
 ## Distillation
 
 - One Student Knows All Experts Know: From Sparse to Dense
