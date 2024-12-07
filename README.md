@@ -575,6 +575,18 @@ This collection focuses particularly on methods to make MoE models more efficien
 
   - 摘要：本文介绍了一种新颖的方法**MoE Jetpack**，用于高效地将预训练的**密集型**检查点微调到用于视觉任务的**混合专家 (MoE)** 模型中。从头开始训练 MoE 模型在计算上代价高昂且需要大量数据，而现成的预训练模型主要是密集型模型。MoE Jetpack 通过采用两种关键技术来解决这个问题：(1) **检查点循环利用**: 此技术将预训练的密集型模型的权重用于初始化 MoE 模型，与从随机初始化训练相比，它大大加快了收敛速度并提高了准确性。它不仅仅是简单地复制权重，还在多个密集型检查点中提供了权重选择的灵活性。(2) **超球面自适应 MoE (SpheroMoE) 层**: 这个新颖的层优化了 MoE 架构，以便更好地与循环利用的密集型检查点集成，进一步增强了微调性能。在将现有的 MoE 架构（如 Switch Transformers 和 Soft MoE）直接应用于预训练权重时，它解决了遇到的挑战。SpheroMoE 层结合了归一化的标记混合和专家正则化，以提高稳定性和性能。实验表明，与从头开始训练 MoE 模型或使用其他方法相比，MoE Jetpack 实现了优越的收敛速度和准确性，展示了利用预训练密集型模型进行高效 MoE 训练的有效性。该方法保持了与密集型模型相当的**FLOPs**（每秒浮点运算次数），同时实现了改进的性能。
 
+- FactorLLM: Factorizing Knowledge via Mixture of Experts for Large Language Models
+
+  <div align="center">
+    <img src="./assets/image_42.png" width="80%">
+  </div>
+
+- Authors: Zhongyu Zhao, Menghang Dong, Rongyu Zhang, Wenzhao Zheng, Yunpeng Zhang, Huanrui Yang, Dalong Du, Kurt Keutzer, Shanghang Zhang
+- Link: https://arxiv.org/pdf/2408.11855
+- Code: https://github.com/zhenwuweihe/FactorLLM
+- Summary: This paper introduces **FactorLLM**, a novel method for improving the efficiency and performance of **Large Language Models (LLMs)**. It addresses the issue of **knowledge confusion** and redundancy in the **Feed-Forward Networks (FFNs)** within LLMs, which are responsible for storing and processing vast amounts of information. FactorLLM decomposes the dense FFNs into sparse sub-networks (**experts**) without retraining the entire model. This factorization is achieved by leveraging a **Mixture-of-Experts (MoE)** architecture, incorporating a **router** to dynamically select which experts to activate for a given task. A novel **Prior-Approximate (PA)** loss function is introduced to guide the training process and facilitate efficient knowledge adaptation with minimal training data and fine-tuning. The approach is inspired by the human brain's ability to segment tasks functionally. Experimental results show that FactorLLM achieves comparable performance to the original model (up to 85% performance retention) while significantly increasing inference speed (over 30%). The method offers a balance between efficiency, training costs, and model performance, making it suitable for resource-constrained settings. The core innovation lies in the factorization of FFNs and the use of the router and PA loss to enable efficient knowledge utilization and dynamic expert activation.
+- 摘要：本文介绍了一种名为**FactorLLM**的新方法，用于提高**大型语言模型（LLMs）**的效率和性能。它解决了 LLMs 中**前馈网络（FFNs）**存在的**知识混淆**和冗余问题，而 FFNs 负责存储和处理大量信息。FactorLLM 将密集的 FFNs 分解成稀疏的子网络（**专家**），无需重新训练整个模型。这是通过利用**混合专家（MoE）**架构实现的，该架构包含一个**路由器**，用于动态选择为给定任务激活哪些专家。引入了一种新颖的**先验近似（PA）**损失函数来指导训练过程，并利用最少的训练数据和微调步骤来促进有效的知识适应。该方法的灵感来自于人脑将任务功能性分割的能力。实验结果表明，FactorLLM 达到了与原始模型相当的性能（高达 85%的性能保持率），同时显著提高了推理速度（超过 30%）。该方法在效率、训练成本和模型性能之间取得了平衡，使其适用于资源受限的环境。核心创新在于 FFNs 的分解以及路由器和 PA 损失的使用，从而实现了高效的知识利用和动态专家激活。
+
 ### Merging
 
 - Model-GLUE: Democratized LLM Scaling for A Large Model Zoo in the Wild
