@@ -509,12 +509,12 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要：本文专注于通过**模型增长**技术提高大型语言模型 (LLM) 的预训练效率。它指出了阻碍在 LLM 预训练中采用模型增长的三个主要障碍：**(O1) 缺乏全面的评估**，**(O2) 未经测试的可扩展性**，以及 **(O3) 缺乏经验指导**。为了解决这些问题，作者将现有的模型增长方法总结为四个原子增长算子，并在标准化的 LLM 预训练环境中对它们进行了评估。他们发现，一种名为 **Gstack** 的深度堆叠算子可以显著加速训练，与强基线相比，在八个标准 NLP 基准测试中实现了更低的损失和更好的性能。进一步的实验表明，**Gstack** 具有可扩展性，在高达 7B LLM 的实验和高达 750B 令牌的预训练数据中都保持了其有效性。例如，一个使用 **Gstack** 的模型仅使用 194B 令牌就达到了与使用 300B 令牌的传统训练的 7B 模型相同的损失，从而实现了 54.6% 的加速。本文还提供了确定 **Gstack** 增长时机和增长因子的经验指导，使其在一般的 LLM 预训练中具有实用性。
 
 - MASKED STRUCTURAL GROWTH FOR 2X FASTER LANGUAGE MODEL PRE-TRAINING
-    - Label: <img src=https://img.shields.io/badge/structured-blue.svg >
-    - Authors: Yiqun Yao, Zheng Zhang, Jing Li, Yequan Wang
-    - Link: https://openreview.net/pdf?id=rL7xsg1aRn
-    - Code: https://github.com/cofe-ai/MSG
-    - Summary: This paper introduces **Masked Structural Growth (MSG)**, a novel method to accelerate language model pre-training by progressively growing the Transformer model's structure. MSG addresses two key challenges in progressive growth: **growth schedule** optimization and efficient **growth operator** design. It proposes growth schedules involving all possible dimensions (**layer number**, **hidden dimension**, **FFN dimension**, **head number**) and strictly **function-preserving growth operators**. These operators use a masking mechanism that is independent of new weight initialization, ensuring the enlarged model initially behaves identically to the smaller model, and then gradually integrates the new neurons. MSG achieves up to a **2.2x speedup** in pre-training **Bert** and **1.4x** for **GPT-2**, while maintaining comparable or better downstream performance. The method solves a dilemma caused by **Layer Normalization**, achieving strict function preservation in arbitrary cases. It outperforms existing methods like **Stacking**, **CompoundGrow**, **Staged**, **Bert2BERT**, and **LiGO** in terms of speedup ratio and performance.
-    - 摘要：本文提出了一种名为**掩码结构增长（Masked Structural Growth, MSG）**的新方法，通过逐步增长 Transformer 模型的结构来加速语言模型的预训练。MSG 解决了渐进式增长中的两个关键挑战：**增长计划**优化和高效的**增长算子**设计。它提出了涉及所有可能维度（**层数**、**隐藏维度**、**FFN 维度**、**头数**）的增长计划，以及严格的**函数保持增长算子**。这些算子使用独立于新权重初始化的掩码机制，确保扩大的模型最初与较小的模型行为相同，然后逐渐整合新的神经元。MSG 在预训练 **Bert** 时实现了高达 **2.2 倍的加速**，在预训练 **GPT-2** 时实现了 **1.4 倍的加速**，同时保持相当或更好的下游性能。该方法解决了由**层归一化**引起的困境，在任意情况下实现了严格的函数保持。在加速比和性能方面，MSG 优于现有的方法，如 **Stacking**、**CompoundGrow**、**Staged**、**Bert2BERT** 和 **LiGO**。
+  - Label: <img src=https://img.shields.io/badge/structured-blue.svg >
+  - Authors: Yiqun Yao, Zheng Zhang, Jing Li, Yequan Wang
+  - Link: https://openreview.net/pdf?id=rL7xsg1aRn
+  - Code: https://github.com/cofe-ai/MSG
+  - Summary: This paper introduces **Masked Structural Growth (MSG)**, a novel method to accelerate language model pre-training by progressively growing the Transformer model's structure. MSG addresses two key challenges in progressive growth: **growth schedule** optimization and efficient **growth operator** design. It proposes growth schedules involving all possible dimensions (**layer number**, **hidden dimension**, **FFN dimension**, **head number**) and strictly **function-preserving growth operators**. These operators use a masking mechanism that is independent of new weight initialization, ensuring the enlarged model initially behaves identically to the smaller model, and then gradually integrates the new neurons. MSG achieves up to a **2.2x speedup** in pre-training **Bert** and **1.4x** for **GPT-2**, while maintaining comparable or better downstream performance. The method solves a dilemma caused by **Layer Normalization**, achieving strict function preservation in arbitrary cases. It outperforms existing methods like **Stacking**, **CompoundGrow**, **Staged**, **Bert2BERT**, and **LiGO** in terms of speedup ratio and performance.
+  - 摘要：本文提出了一种名为**掩码结构增长（Masked Structural Growth, MSG）**的新方法，通过逐步增长 Transformer 模型的结构来加速语言模型的预训练。MSG 解决了渐进式增长中的两个关键挑战：**增长计划**优化和高效的**增长算子**设计。它提出了涉及所有可能维度（**层数**、**隐藏维度**、**FFN 维度**、**头数**）的增长计划，以及严格的**函数保持增长算子**。这些算子使用独立于新权重初始化的掩码机制，确保扩大的模型最初与较小的模型行为相同，然后逐渐整合新的神经元。MSG 在预训练 **Bert** 时实现了高达 **2.2 倍的加速**，在预训练 **GPT-2** 时实现了 **1.4 倍的加速**，同时保持相当或更好的下游性能。该方法解决了由**层归一化**引起的困境，在任意情况下实现了严格的函数保持。在加速比和性能方面，MSG 优于现有的方法，如 **Stacking**、**CompoundGrow**、**Staged**、**Bert2BERT** 和 **LiGO**。
 
 ### Sparse Splitting
 
@@ -675,17 +675,15 @@ A: MoE models can achieve better performance with similar or lower computational
 
 A: From my experience in NAS, MoE can be treated as a way to decouple the weights. The more weights shared, the faster the model can be pretrained. Additionally, decoupling the weights can increase the model capacity.
 
-> Q: How to choose the number of experts?
+Okay, here are the one-paragraph answers:
 
-A: TBD
+> **Q: How to choose the number of experts?**
 
-> Q: Why MoE is suitable for high-load scenarios? How does it work when inference?
+A: The number of experts in a Mixture of Experts (MoE) model should be chosen by balancing several factors. Consider the complexity of the task, with more complex tasks potentially benefiting from a larger number of experts, but also the amount and diversity of the training data, where limited data might lead to overfitting with too many experts. Furthermore, consider the available computational resources, as a larger number of experts leads to higher training costs. Finally, empirical evaluation, through techniques like grid search, is crucial to determine the optimal number of experts for a given scenario.
 
-A: TBD
+> **Q: Why MoE is suitable for high-load scenarios? How does it work when inference?**
 
-> Q: How to prove MoE is better than Dense Models?
-
-A: TBD
+A: MoE models are well-suited for high-load scenarios due to their conditional computation and parallelizability. During inference, a router network determines which experts are most relevant to an input, activating only a subset of them. This sparse activation reduces the computational cost compared to dense models, and the activated experts can process their inputs in parallel, leading to faster inference times and increased throughput, making MoE models effective under heavy loads.
 
 ## Contributing
 
