@@ -496,6 +496,18 @@ This collection focuses particularly on methods to make MoE models more efficien
 
   - 摘要：本文介绍了 MoE-LLaVA，一个基于**混合专家（MoE）**的稀疏大型视觉语言模型（LVLM）。为了解决大型 LVLM 中所有参数对每个 token 都处于活动状态的高计算成本问题，MoE-LLaVA 采用了一种名为**MoE-Tuning**的新型训练策略。MoE-Tuning 包括三个阶段：（1）仅训练多层感知器（MLP）；（2）训练除视觉编码器（VE）之外的所有参数；以及（3）仅训练 MoE 层，在推理过程中通过路由器仅激活 top-k 专家。这导致了一个具有非常多参数的稀疏模型，但保持了恒定的计算成本。实验表明，MoE-LLaVA 在各种视觉理解和物体幻觉基准测试中表现出强大的性能。具体来说，MoE-LLaVA 大约有 30 亿个稀疏激活参数，在视觉理解数据集上的性能与 LLaVA-1.5-7B 相当，在物体幻觉方面（使用 POPE 基准测试）甚至超过了 LLaVA-1.5-13B。作者认为 MoE-LLaVA 是稀疏 LVLM 的一个强大基线，为更有效的多模态学习系统铺平了道路。该架构利用现有的大型语言模型，并结合视觉编码器和投影层来提高视觉感知能力。本文将 MoE-LLaVA 与其他几种最先进的 LVLM 进行了比较，突出了其效率和有效性。
 
+- Stacking Your Transformers: A Closer Look at Model Growth for Efficient LLM Pre-Training
+
+  <div align="center">
+    <img src="./assets/image_43.png" width="50%">
+  </div>
+
+  - Authors: Wenyu Du, Tongxu Luo, Zihan Qiu, Zeyu Huang, Yikang Shen, Reynold Cheng, Yike Guo, Jie Fu
+  - Link: https://arxiv.org/pdf/2405.15319
+  - Code: https://llm-stacking.github.io/
+  - Summary: This paper focuses on improving the efficiency of pre-training Large Language Models (LLMs) through **model growth** techniques. It identifies three main obstacles hindering the adoption of model growth in LLM pre-training: **(O1) lack of comprehensive evaluation**, **(O2) untested scalability**, and **(O3) lack of empirical guidelines**. To address these, the authors summarize existing model growth methods into four atomic growth operators and evaluate them in a standardized LLM pre-training setting. They find that a depth-wise stacking operator, named **Gstack**, significantly accelerates training, leading to lower loss and improved performance on eight standard NLP benchmarks compared to strong baselines. Further experiments demonstrate that **Gstack** is scalable, maintaining its effectiveness in experiments up to 7B LLMs and with pre-training data up to 750B tokens. For instance, a **Gstack** model achieved the same loss as a conventionally trained 7B model with 300B tokens using only 194B tokens, resulting in a 54.6% speedup. The paper also provides empirical guidelines for determining the growth timing and growth factor for **Gstack**, making it practical for general LLM pre-training.
+  - 摘要：本文专注于通过**模型增长**技术提高大型语言模型 (LLM) 的预训练效率。它指出了阻碍在 LLM 预训练中采用模型增长的三个主要障碍：**(O1) 缺乏全面的评估**，**(O2) 未经测试的可扩展性**，以及 **(O3) 缺乏经验指导**。为了解决这些问题，作者将现有的模型增长方法总结为四个原子增长算子，并在标准化的 LLM 预训练环境中对它们进行了评估。他们发现，一种名为 **Gstack** 的深度堆叠算子可以显著加速训练，与强基线相比，在八个标准 NLP 基准测试中实现了更低的损失和更好的性能。进一步的实验表明，**Gstack** 具有可扩展性，在高达 7B LLM 的实验和高达 750B 令牌的预训练数据中都保持了其有效性。例如，一个使用 **Gstack** 的模型仅使用 194B 令牌就达到了与使用 300B 令牌的传统训练的 7B 模型相同的损失，从而实现了 54.6% 的加速。本文还提供了确定 **Gstack** 增长时机和增长因子的经验指导，使其在一般的 LLM 预训练中具有实用性。
+
 ### Sparse Splitting
 
 - LLaMA-MoE: Building Mixture-of-Experts from LLaMA with Continual Pre-training
