@@ -53,6 +53,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Summary: This paper introduces a supervised learning method for modular networks composed of multiple expert networks. Each network specializes in a subset of the task, controlled by a gating network. It bridges modular multilayer networks and competitive learning models. The methodology ensures task-specific specialization, reducing interference and improving generalization. A vowel recognition task demonstrates the system's efficacy, showing faster learning and robust performance compared to traditional backpropagation networks.
   - 摘要: 本文提出了一种用于模块化网络的新型监督学习方法，该网络由多个专家网络组成，每个网络专注于任务的一部分，由一个门控网络进行控制。这种方法将模块化多层网络与竞争学习模型相结合，通过减少干扰和提高泛化能力实现任务特定的专业化，与传统的反向传播网络相比，该系统学习更快，性能更加稳健。
 
+
+- Speed Always Wins: A Survey on Efficient Architectures for Large   Language Models
+  - Authors: Weigao Sun, Jiaxi Hu, Yucheng Zhou, et al.
+  - Link: http://arxiv.org/pdf/2508.09834v1
+  - Code: Not available
+  - Summary: This survey paper by Sun et al. systematically reviews advancements in efficient architectures for Large Language Models (LLMs), particularly focusing on overcoming the computational challenges posed by traditional transformer models. The authors explore various innovative methods, including linear and sparse sequence modeling, efficient attention variants, and sparse mixture-of-experts (MoE) architectures, while also discussing their applications in multimodal contexts. By categorizing recent research and highlighting the implications for scalable AI systems, the paper provides a comprehensive blueprint aimed at guiding future developments in resource-efficient LLMs. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文对大型语言模型（LLMs）高效架构进行了系统性调查，重点分析了传统Transformer架构的局限性及其在大规模训练和实际部署中的挑战。研究涵盖了线性和稀疏序列建模方法、有效的全注意力变体、稀疏混合专家模型以及结合这些技术的混合模型架构，探讨了这些技术在其他模态中的应用及其对可扩展、资源敏感基础模型开发的影响。通过对近期研究的分类，本调查为现代高效LLM架构提供了蓝图，旨在激励未来朝着更高效、多功能的人工智能系统的研究。  
+#混合专家 #MoE #效率
 - MoEC: Mixture of Expert Clusters
 
   <div align="center">
