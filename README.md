@@ -60,7 +60,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: This survey paper by Sun et al. systematically reviews advancements in efficient architectures for Large Language Models (LLMs), particularly focusing on overcoming the computational challenges posed by traditional transformer models. The authors explore various innovative methods, including linear and sparse sequence modeling, efficient attention variants, and sparse mixture-of-experts (MoE) architectures, while also discussing their applications in multimodal contexts. By categorizing recent research and highlighting the implications for scalable AI systems, the paper provides a comprehensive blueprint aimed at guiding future developments in resource-efficient LLMs. #MixtureOfExperts #MoE #Efficiency
   - 摘要: 本文对大型语言模型（LLMs）高效架构进行了系统性调查，重点分析了传统Transformer架构的局限性及其在大规模训练和实际部署中的挑战。研究涵盖了线性和稀疏序列建模方法、有效的全注意力变体、稀疏混合专家模型以及结合这些技术的混合模型架构，探讨了这些技术在其他模态中的应用及其对可扩展、资源敏感基础模型开发的影响。通过对近期研究的分类，本调查为现代高效LLM架构提供了蓝图，旨在激励未来朝着更高效、多功能的人工智能系统的研究。  
-#混合专家 #MoE #效率
+
+
+- MoIIE: Mixture of Intra- and Inter-Modality Experts for Large Vision   Language Models
+  - Authors: Dianyi Wang, Siyuan Wang, Zejun Li, et al.
+  - Link: http://arxiv.org/pdf/2508.09779v1
+  - Code: Not available
+  - Summary: The research paper presents MoIIE, a novel Mixture of Intra- and Inter-Modality Experts architecture designed for Large Vision-Language Models (LVLMs) to enhance computational efficiency while maintaining performance. By employing a two-stage training strategy, MoIIE effectively routes tokens to both modality-specific and shared inter-modality experts, enabling the model to learn rich intra-modal features alongside cross-modal interactions. Extensive experiments demonstrate that MoIIE models with fewer activated parameters outperform existing state-of-the-art MoE-LLMs, showcasing significant advancements in both efficiency and effectiveness. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文提出了一种新的混合专家模型MoIIE，旨在提高大规模视觉语言模型（LVLMs）在多模态任务中的性能和计算效率。通过为每个token引入基于模态的专家路由，MoIIE能够同时建模模态特定特征和跨模态关联。此外，研究还提出了一种简洁有效的两阶段训练策略，显著提升了模型的多模态能力。实验结果表明，MoIIE在参数激活数量较少的情况下，能够与现有的先进开源多模态模型相媲美或超越其性能。#混合专家 #MoE #效率#混合专家 #MoE #效率
 - MoEC: Mixture of Expert Clusters
 
   <div align="center">
