@@ -68,7 +68,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents MoIIE, a novel Mixture of Intra- and Inter-Modality Experts architecture designed for Large Vision-Language Models (LVLMs) to enhance computational efficiency while maintaining performance. By employing a two-stage training strategy, MoIIE effectively routes tokens to both modality-specific and shared inter-modality experts, enabling the model to learn rich intra-modal features alongside cross-modal interactions. Extensive experiments demonstrate that MoIIE models with fewer activated parameters outperform existing state-of-the-art MoE-LLMs, showcasing significant advancements in both efficiency and effectiveness. #MixtureOfExperts #MoE #Efficiency
   - 摘要: 本文提出了一种新的混合专家模型MoIIE，旨在提高大规模视觉语言模型（LVLMs）在多模态任务中的性能和计算效率。通过为每个token引入基于模态的专家路由，MoIIE能够同时建模模态特定特征和跨模态关联。此外，研究还提出了一种简洁有效的两阶段训练策略，显著提升了模型的多模态能力。实验结果表明，MoIIE在参数激活数量较少的情况下，能够与现有的先进开源多模态模型相媲美或超越其性能。#混合专家 #MoE #效率#混合专家 #MoE #效率
-- MoEC: Mixture of Expert Clusters
+
+
+- HierMoE: Accelerating MoE Training with Hierarchical Token Deduplication   and Expert Swap
+  - Authors: Wenxiang Lin, Xinglin Pan, Lin Zhang, et al.
+  - Link: http://arxiv.org/pdf/2508.09591v1
+  - Code: Not available
+  - Summary: The research paper presents HierMoE, a novel approach to accelerate the training of Mixture of Experts (MoE) models by addressing communication and load imbalance issues in distributed GPU systems. HierMoE employs two key techniques: hierarchical token deduplication to minimize communication traffic and expert swapping to evenly distribute workloads across GPUs. Experimental results demonstrate that HierMoE significantly enhances training efficiency, achieving up to 3.32 times faster communication and 1.27 times faster end-to-end training compared to existing MoE training systems. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文提出了一种名为HierMoE的混合专家模型训练加速方法，通过两种拓扑感知技术——令牌去重和专家交换，来减少通信流量并平衡GPU之间的负载，从而提高训练效率。我们在Megatron-LM上实现了HierMoE原型，并在32-GPU集群上进行实验，结果表明，HierMoE在通信速度上提高了1.55到3.32倍，端到端训练速度提高了1.18到1.27倍，相较于现有的最先进MoE训练系统表现优异。 #混合专家 #MoE #效率- MoEC: Mixture of Expert Clusters
 
   <div align="center">
     <img src="./assets/image_29.png" width="80%">
