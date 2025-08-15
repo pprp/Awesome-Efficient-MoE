@@ -77,6 +77,13 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Summary: The research paper presents HierMoE, a novel approach to accelerate the training of Mixture of Experts (MoE) models by addressing communication and load imbalance issues in distributed GPU systems. HierMoE employs two key techniques: hierarchical token deduplication to minimize communication traffic and expert swapping to evenly distribute workloads across GPUs. Experimental results demonstrate that HierMoE significantly enhances training efficiency, achieving up to 3.32 times faster communication and 1.27 times faster end-to-end training compared to existing MoE training systems. #MixtureOfExperts #MoE #Efficiency
   - 摘要: 本文提出了一种名为HierMoE的混合专家模型训练加速方法，通过两种拓扑感知技术——令牌去重和专家交换，来减少通信流量并平衡GPU之间的负载，从而提高训练效率。我们在Megatron-LM上实现了HierMoE原型，并在32-GPU集群上进行实验，结果表明，HierMoE在通信速度上提高了1.55到3.32倍，端到端训练速度提高了1.18到1.27倍，相较于现有的最先进MoE训练系统表现优异。 #混合专家 #MoE #效率- MoEC: Mixture of Expert Clusters
 
+
+- Hybrid Generative Fusion for Efficient and Privacy-Preserving Face   Recognition Dataset Generation
+  - Authors: Feiran Li, Qianqian Xu, Shilong Bao, et al.
+  - Link: http://arxiv.org/pdf/2508.10672v1
+  - Code: Not available
+  - Summary: This research paper presents a novel approach to generating a high-quality face recognition dataset for the DataCV ICCV Challenge, utilizing a Mixture-of-Experts (MoE) strategy to clean the HSFace dataset by removing mislabeled identities. The authors enhance dataset diversity through synthetic identity generation using Stable Diffusion and Vec2Face, while implementing a curriculum learning strategy to manage visual similarity among synthetic identities. The final dataset comprises 50 images per identity, ensuring no overlap with existing datasets, thus achieving efficient and privacy-preserving dataset generation. #MixtureOfExperts #MoE #Efficiency #FaceRecognition #DataPrivacy
+  - 摘要: 本研究提出了一种混合生成融合方法，用于高效且保护隐私的人脸识别数据集生成。我们通过混合专家模型（MoE）清理基准数据集HSFace，去除错误标记的身份，并利用稳定扩散生成合成身份，结合GAN样本，构建了一个多样化且高质量的人脸数据集。最终生成的数据集确保每个身份包含50张图像，并通过主流人脸数据集验证身份无泄露，展示了我们方法在数据集构建中的有效性和创新性。#混合专家 #MoE #效率
   <div align="center">
     <img src="./assets/image_29.png" width="80%">
   </div>
