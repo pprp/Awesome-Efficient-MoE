@@ -77,6 +77,13 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Summary: The research paper presents HierMoE, a novel approach to accelerate the training of Mixture of Experts (MoE) models by addressing communication and load imbalance issues in distributed GPU systems. HierMoE employs two key techniques: hierarchical token deduplication to minimize communication traffic and expert swapping to evenly distribute workloads across GPUs. Experimental results demonstrate that HierMoE significantly enhances training efficiency, achieving up to 3.32 times faster communication and 1.27 times faster end-to-end training compared to existing MoE training systems. #MixtureOfExperts #MoE #Efficiency
   - 摘要: 本文提出了一种名为HierMoE的混合专家模型训练加速方法，通过两种拓扑感知技术——令牌去重和专家交换，来减少通信流量并平衡GPU之间的负载，从而提高训练效率。我们在Megatron-LM上实现了HierMoE原型，并在32-GPU集群上进行实验，结果表明，HierMoE在通信速度上提高了1.55到3.32倍，端到端训练速度提高了1.18到1.27倍，相较于现有的最先进MoE训练系统表现优异。 #混合专家 #MoE #效率- MoEC: Mixture of Expert Clusters
 
+
+- Hybrid Generative Fusion for Efficient and Privacy-Preserving Face   Recognition Dataset Generation
+  - Authors: Feiran Li, Qianqian Xu, Shilong Bao, et al.
+  - Link: http://arxiv.org/pdf/2508.10672v1
+  - Code: Not available
+  - Summary: This research paper presents a novel approach for generating a high-quality face recognition dataset while ensuring privacy and avoiding identity overlap with existing datasets. The authors utilize a Mixture-of-Experts (MoE) strategy to clean the HSFace dataset by removing mislabeled identities, followed by data augmentation and the generation of synthetic identities through a combination of Stable Diffusion and Vec2Face techniques. Their hybrid method results in a diverse dataset of 50 images per identity, effectively balancing efficiency and quality while implementing a curriculum learning strategy to enhance model training. #MixtureOfExperts #MoE #Efficiency #FaceRecognition #DataPrivacy
+  - 摘要: 本文提出了一种混合生成融合方法，用于高效且保护隐私的面部识别数据集生成。通过结合混合专家模型（MoE）进行面部嵌入聚类和GPT-4o辅助验证，我们清理了基线HSFace数据集，并生成了无重叠身份的新数据集。采用稳定扩散模型和Vec2Face技术，我们高效地生成了多样化且高质量的合成身份，最终构建了每个身份包含50张图像的数据集，并确保没有身份泄露。 #混合专家 #MoE #效率
   <div align="center">
     <img src="./assets/image_29.png" width="80%">
   </div>
