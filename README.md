@@ -75,19 +75,11 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Link: http://arxiv.org/pdf/2508.09591v1
   - Code: Not available
   - Summary: The research paper presents HierMoE, a novel approach to accelerate the training of Mixture of Experts (MoE) models by addressing communication and load imbalance issues in distributed GPU systems. HierMoE employs two key techniques: hierarchical token deduplication to minimize communication traffic and expert swapping to evenly distribute workloads across GPUs. Experimental results demonstrate that HierMoE significantly enhances training efficiency, achieving up to 3.32 times faster communication and 1.27 times faster end-to-end training compared to existing MoE training systems. #MixtureOfExperts #MoE #Efficiency
-  - 摘要: 本文提出了一种名为HierMoE的混合专家模型训练加速方法，通过两种拓扑感知技术——令牌去重和专家交换，来减少通信流量并平衡GPU之间的负载，从而提高训练效率。我们在Megatron-LM上实现了HierMoE原型，并在32-GPU集群上进行实验，结果表明，HierMoE在通信速度上提高了1.55到3.32倍，端到端训练速度提高了1.18到1.27倍，相较于现有的最先进MoE训练系统表现优异。 #混合专家 #MoE #效率- MoEC: Mixture of Expert Clusters
+  - 摘要: 本文提出了一种名为HierMoE的混合专家模型训练加速方法，通过两种拓扑感知技术——令牌去重和专家交换，来减少通信流量并平衡GPU之间的负载，从而提高训练效率。我们在Megatron-LM上实现了HierMoE原型，并在32-GPU集群上进行实验，结果表明，HierMoE在通信速度上提高了1.55到3.32倍，端到端训练速度提高了1.18到1.27倍，相较于现有的最先进MoE训练系统表现优异。 #混合专家 #MoE #效率
 
 
-- Hybrid Generative Fusion for Efficient and Privacy-Preserving Face   Recognition Dataset Generation
-  - Authors: Feiran Li, Qianqian Xu, Shilong Bao, et al.
-  - Link: http://arxiv.org/pdf/2508.10672v1
-  - Code: Not available
-  - Summary: In this research, the authors propose a novel hybrid generative fusion approach for creating a high-quality, privacy-preserving face recognition dataset, addressing the challenge of avoiding identity overlap with existing public datasets. Utilizing a Mixture-of-Experts (MoE) strategy, they clean the HSFace dataset by removing mislabeled identities and augment it with synthetic identities generated through Stable Diffusion and Vec2Face, ensuring diversity while maintaining identity consistency. Their method results in a dataset of 50 images per identity, effectively balancing quality and efficiency while preventing identity leakage, and employs a curriculum learning strategy to enhance model training. #MixtureOfExperts #MoE #Efficiency #FaceRecognition #DataPrivacy
-  - 摘要: 本文提出了一种混合生成融合的方法，用于高效且保护隐私的人脸识别数据集生成。我们通过混合专家模型（MoE）策略清理基线HSFace数据集，去除错误标记的身份，并结合数据增强和稳定扩散生成合成身份，以构建一个多样化且高质量的人脸数据集。最终生成的数据集每个身份包含50张图像，且所有新生成的身份均经过主流人脸数据集的检查，以确保没有身份泄漏。 #混合专家 #MoE #效率
-  <div align="center">
-    <img src="./assets/image_29.png" width="80%">
-  </div>
 
+- MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
   - Link: https://arxiv.org/pdf/2207.09094
   - Code: Not available
