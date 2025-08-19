@@ -78,6 +78,13 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要: 本文提出了一种名为HierMoE的混合专家模型训练加速方法，通过两种拓扑感知技术——令牌去重和专家交换，来减少通信流量并平衡GPU之间的负载，从而提高训练效率。我们在Megatron-LM上实现了HierMoE原型，并在32-GPU集群上进行实验，结果表明，HierMoE在通信速度上提高了1.55到3.32倍，端到端训练速度提高了1.18到1.27倍，相较于现有的最先进MoE训练系统表现优异。 #混合专家 #MoE #效率
 
 
+- MoE-TTS: Enhancing Out-of-Domain Text Understanding for   Description-based TTS via Mixture-of-Experts
+  - Authors: Heyang Xue, Xuchen Song, Yu Tang, et al.
+  - Link: http://arxiv.org/pdf/2508.11326v1
+  - Code: Not available
+  - Summary: The research paper presents MoE-TTS, a novel description-based text-to-speech (TTS) model aimed at improving the understanding of out-of-domain text descriptions, which often pose challenges for existing systems. By utilizing a modality-based mixture-of-experts (MoE) framework, MoE-TTS enhances a pre-trained large language model (LLM) with specialized weights for speech while keeping the LLM frozen during training, thereby effectively leveraging its pre-existing knowledge. Experimental results demonstrate that MoE-TTS outperforms even advanced commercial TTS products in generating more accurate speech outputs for diverse user-generated descriptions. #MixtureOfExperts #MoE #TTS #TextToSpeech #AI
+  - 摘要: 本文提出了一种名为MoE-TTS的描述基础文本到语音（TTS）模型，旨在提升对域外文本描述的理解能力。通过采用基于模态的混合专家（MoE）方法，MoE-TTS在训练过程中保持原有的大型语言模型（LLM）不变，同时引入一组适应语音模态的专门权重，从而有效利用预训练的知识和文本理解能力。实验结果表明，MoE-TTS在生成更准确反映描述的语音方面表现优于现有的闭源商业产品。#混合专家 #MoE #效率
+
 
 - MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
