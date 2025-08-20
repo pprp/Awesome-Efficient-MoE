@@ -86,6 +86,13 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要: 本文提出了一种名为MoE-TTS的描述基础文本到语音（TTS）模型，旨在提升对域外文本描述的理解能力。通过采用基于模态的混合专家（MoE）方法，MoE-TTS在训练过程中保持原有的大型语言模型（LLM）不变，同时引入一组适应语音模态的专门权重，从而有效利用预训练的知识和文本理解能力。实验结果表明，MoE-TTS在生成更准确反映描述的语音方面表现优于现有的闭源商业产品。#混合专家 #MoE #效率
 
 
+- Accelerating Edge Inference for Distributed MoE Models with   Latency-Optimized Expert Placement
+  - Authors: Tian Wu, Liming Wang, Zijian Wen, et al.
+  - Link: http://arxiv.org/pdf/2508.12851v1
+  - Code: Not available
+  - Summary: The research paper introduces DanceMoE, an innovative framework designed to optimize inference for Mixture-of-Experts (MoE) models in distributed, heterogeneous edge environments. By implementing an activation-aware expert placement algorithm, DanceMoE effectively minimizes cross-server communication and balances memory usage, significantly reducing inference latency by up to 30.6% compared to existing methods. The framework's lightweight migration mechanism further enhances its adaptability to varying workloads, demonstrating its potential to improve the efficiency of large language models in resource-constrained settings. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文提出了一种名为DanceMoE的高效混合专家推理框架，旨在优化分布式环境中专家的放置，以应对资源受限的边缘计算挑战。该框架利用混合专家模型的稀疏性和工作负载局部性，设计了一种数据驱动的、关注激活的专家放置算法，从而在异构资源约束下实现高效的专家分配和低延迟推理。实验结果表明，DanceMoE在现代混合专家模型和广泛使用的数据集上，推理延迟降低了最高30.6%，并显著减少了通信开销，验证了其在协作边缘环境中的有效性。#混合专家 #MoE #效率
+
 - MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
   - Link: https://arxiv.org/pdf/2207.09094
