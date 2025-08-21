@@ -93,6 +93,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Summary: The research paper introduces DanceMoE, an innovative framework designed to optimize inference for Mixture-of-Experts (MoE) models in distributed, heterogeneous edge environments. By implementing an activation-aware expert placement algorithm, DanceMoE effectively minimizes cross-server communication and balances memory usage, significantly reducing inference latency by up to 30.6% compared to existing methods. The framework's lightweight migration mechanism further enhances its adaptability to varying workloads, demonstrating its potential to improve the efficiency of large language models in resource-constrained settings. #MixtureOfExperts #MoE #Efficiency
   - 摘要: 本文提出了一种名为DanceMoE的高效混合专家推理框架，旨在优化分布式环境中专家的放置，以应对资源受限的边缘计算挑战。该框架利用混合专家模型的稀疏性和工作负载局部性，设计了一种数据驱动的、关注激活的专家放置算法，从而在异构资源约束下实现高效的专家分配和低延迟推理。实验结果表明，DanceMoE在现代混合专家模型和广泛使用的数据集上，推理延迟降低了最高30.6%，并显著减少了通信开销，验证了其在协作边缘环境中的有效性。#混合专家 #MoE #效率
 
+
+- ASDFormer: A Transformer with Mixtures of Pooling-Classifier Experts for   Robust Autism Diagnosis and Biomarker Discovery
+  - Authors: Mohammad Izadi, Mehran Safayani
+  - Link: http://arxiv.org/pdf/2508.14005v1
+  - Code: Not available
+  - Summary: The research paper introduces ASDFormer, a novel Transformer architecture that utilizes a Mixture of Pooling-Classifier Experts (MoE) to enhance the diagnosis and biomarker discovery for Autism Spectrum Disorder (ASD) by analyzing functional MRI data. ASDFormer leverages multiple specialized expert branches equipped with attention mechanisms to effectively capture and emphasize critical neural connectivity patterns associated with ASD, resulting in improved classification accuracy and providing interpretable insights into disorder-related biomarkers. Evaluated on the ABIDE dataset, ASDFormer demonstrates state-of-the-art performance, showcasing its potential as a valuable tool in ASD research. #MixtureOfExperts #MoE #AutismDiagnosis #Neuroimaging #MachineLearning
+  - 摘要: 本研究提出了ASDFormer，一种基于Transformer的架构，结合了混合池化分类专家（MoE）方法，以捕捉与自闭症谱系障碍（ASD）相关的神经特征。通过整合多个专门的专家分支和注意力机制，ASDFormer能够自适应地突出与自闭症相关的不同脑区和连接模式，从而提高分类性能并更好地识别与障碍相关的生物标志物。在应用于ABIDE数据集时，ASDFormer实现了最先进的诊断准确率，并揭示了与ASD相关的功能连接中断的深刻见解，显示了其作为生物标志物发现工具的潜力。  
+#混合专家 #MoE #效率
 - MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
   - Link: https://arxiv.org/pdf/2207.09094
