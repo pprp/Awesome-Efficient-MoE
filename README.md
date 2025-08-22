@@ -93,6 +93,13 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Summary: The research paper introduces DanceMoE, an innovative framework designed to optimize inference for Mixture-of-Experts (MoE) models in distributed, heterogeneous edge environments. By implementing an activation-aware expert placement algorithm, DanceMoE effectively minimizes cross-server communication and balances memory usage, significantly reducing inference latency by up to 30.6% compared to existing methods. The framework's lightweight migration mechanism further enhances its adaptability to varying workloads, demonstrating its potential to improve the efficiency of large language models in resource-constrained settings. #MixtureOfExperts #MoE #Efficiency
   - 摘要: 本文提出了一种名为DanceMoE的高效混合专家推理框架，旨在优化分布式环境中专家的放置，以应对资源受限的边缘计算挑战。该框架利用混合专家模型的稀疏性和工作负载局部性，设计了一种数据驱动的、关注激活的专家放置算法，从而在异构资源约束下实现高效的专家分配和低延迟推理。实验结果表明，DanceMoE在现代混合专家模型和广泛使用的数据集上，推理延迟降低了最高30.6%，并显著减少了通信开销，验证了其在协作边缘环境中的有效性。#混合专家 #MoE #效率
 
+
+- Intern-S1: A Scientific Multimodal Foundation Model
+  - Authors: Lei Bai, Zhongrui Cai, Maosong Cao, et al.
+  - Link: http://arxiv.org/pdf/2508.15763v1
+  - Code: Not available
+  - Summary: The paper introduces Intern-S1, a multimodal Mixture-of-Experts (MoE) model designed to bridge the performance gap between open-source and closed-source models in scientific research. With 28 billion activated parameters and a total of 241 billion parameters, Intern-S1 is pre-trained on 5 trillion tokens, including a significant portion from scientific domains, and employs a novel Mixture-of-Rewards (MoR) approach during its reinforcement learning phase to enhance training efficiency across over 1000 tasks. The model demonstrates superior performance on comprehensive evaluation benchmarks, marking a significant advancement toward Artificial General Intelligence (AGI) in scientific applications. #MixtureOfExperts #MoE #AI #AGI #ReinforcementLearning
+  - 摘要: 本文介绍了Intern-S1，一种专注于科学领域的多模态混合专家模型，旨在缩小开源模型与闭源模型在科学研究中的性能差距。该模型具有280亿个激活参数和2410亿个总参数，通过在5万亿个标记上进行持续预训练，特别是从科学领域获取的超过25亿个标记。Intern-S1在后续的训练阶段采用了离线和在线强化学习，并提出了混合奖励机制，以同时在1000多个任务上进行训练，最终在综合评估基准上展现出卓越的性能。#混合专家 #MoE #效率
 - MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
   - Link: https://arxiv.org/pdf/2207.09094
