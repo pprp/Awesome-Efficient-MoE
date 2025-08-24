@@ -100,7 +100,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The paper introduces Intern-S1, a multimodal Mixture-of-Experts (MoE) model designed to bridge the performance gap between open-source and closed-source models in scientific research. With 28 billion activated parameters and a total of 241 billion parameters, Intern-S1 is pre-trained on 5 trillion tokens, including a significant portion from scientific domains, and employs a novel Mixture-of-Rewards (MoR) approach during its reinforcement learning phase to enhance training efficiency across over 1000 tasks. The model demonstrates superior performance on comprehensive evaluation benchmarks, marking a significant advancement toward Artificial General Intelligence (AGI) in scientific applications. #MixtureOfExperts #MoE #AI #AGI #ReinforcementLearning
   - 摘要: 本文介绍了Intern-S1，一种专注于科学领域的多模态混合专家模型，旨在缩小开源模型与闭源模型在科学研究中的性能差距。该模型具有280亿个激活参数和2410亿个总参数，通过在5万亿个标记上进行持续预训练，特别是从科学领域获取的超过25亿个标记。Intern-S1在后续的训练阶段采用了离线和在线强化学习，并提出了混合奖励机制，以同时在1000多个任务上进行训练，最终在综合评估基准上展现出卓越的性能。#混合专家 #MoE #效率
-- MoEC: Mixture of Expert Clusters
+
+
+- REG4Rec: Reasoning-Enhanced Generative Model for Large-Scale   Recommendation Systems
+  - Authors: Haibo Xing, Hao Deng, Yucheng Mao, et al.
+  - Link: http://arxiv.org/pdf/2508.15308v1
+  - Code: Not available
+  - Summary: The research paper introduces REG4Rec, a reasoning-enhanced generative model designed to improve sequential recommendation systems by addressing limitations in traditional methods regarding information interaction and diversity in reasoning pathways. REG4Rec employs a Mixture of Experts-based parallel quantization codebook to generate multiple unordered semantic tokens for items, thereby expanding the reasoning space and enhancing recommendation reliability through a training stage that incorporates Preference Alignment for Reasoning (PARS) and Multi-Step Reward Augmentation (MSRA). The proposed model demonstrates significant improvements in recommendation performance, showcasing its effectiveness in capturing user intents and generating high-confidence predictions. #MixtureOfExperts #MoE #RecommendationSystems
+  - 摘要: 本文提出了一种名为REG4Rec的增强推理生成模型，旨在解决传统推荐系统中信息交互不足的问题。REG4Rec通过构建多个动态语义推理路径和自我反思过程，利用基于混合专家的并行量化代码本（MPQ）生成多样化的语义标记，从而扩展推理空间并提高推荐的可靠性。此外，模型引入了推荐偏好对齐（PARS）和多步奖励增强（MSRA）策略，以提升推理的准确性和整体泛化能力。 #混合专家 #MoE #推荐系统- MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
   - Link: https://arxiv.org/pdf/2207.09094
   - Code: Not available
