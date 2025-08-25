@@ -100,7 +100,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The paper introduces Intern-S1, a multimodal Mixture-of-Experts (MoE) model designed to bridge the performance gap between open-source and closed-source models in scientific research. With 28 billion activated parameters and a total of 241 billion parameters, Intern-S1 is pre-trained on 5 trillion tokens, including a significant portion from scientific domains, and employs a novel Mixture-of-Rewards (MoR) approach during its reinforcement learning phase to enhance training efficiency across over 1000 tasks. The model demonstrates superior performance on comprehensive evaluation benchmarks, marking a significant advancement toward Artificial General Intelligence (AGI) in scientific applications. #MixtureOfExperts #MoE #AI #AGI #ReinforcementLearning
   - 摘要: 本文介绍了Intern-S1，一种专注于科学领域的多模态混合专家模型，旨在缩小开源模型与闭源模型在科学研究中的性能差距。该模型具有280亿个激活参数和2410亿个总参数，通过在5万亿个标记上进行持续预训练，特别是从科学领域获取的超过25亿个标记。Intern-S1在后续的训练阶段采用了离线和在线强化学习，并提出了混合奖励机制，以同时在1000多个任务上进行训练，最终在综合评估基准上展现出卓越的性能。#混合专家 #MoE #效率
-- MoEC: Mixture of Expert Clusters
+
+
+- Jet-Nemotron: Efficient Language Model with Post Neural Architecture   Search
+  - Authors: Yuxian Gu, Qinghao Hu, Shang Yang, et al.
+  - Link: http://arxiv.org/pdf/2508.15884v1
+  - Code: Not available
+  - Summary: The research paper introduces Jet-Nemotron, a hybrid-architecture language model that leverages Post Neural Architecture Search (PostNAS) to enhance generation throughput while maintaining or exceeding the accuracy of leading full-attention models. By starting with a pre-trained full-attention model and freezing its MLP weights, the authors efficiently explore attention block designs through a four-component pipeline that optimizes layer placement, selects linear attention blocks, designs new attention mechanisms, and conducts hardware-aware hyperparameter searches. The Jet-Nemotron-2B model demonstrates significant performance improvements, achieving up to 53.6x generation throughput speedup and outperforming advanced MoE models on accuracy benchmarks like MMLU and MMLU-Pro, despite having a smaller scale. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文介绍了一种新型混合架构语言模型Jet-Nemotron，该模型在生成速度上显著提升，同时在准确性上与领先的全注意力模型相当或更优。Jet-Nemotron采用了一种名为Post Neural Architecture Search（PostNAS）的新颖神经架构探索流程，通过冻结预训练全注意力模型的MLP权重，能够高效地探索注意力块设计。该模型在多个基准测试中表现出色，生成速度提升高达53.6倍，并在MMLU和MMLU-Pro上超越了许多先进的混合专家全注意力模型。 #混合专家 #MoE #效率- MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
   - Link: https://arxiv.org/pdf/2207.09094
   - Code: Not available
