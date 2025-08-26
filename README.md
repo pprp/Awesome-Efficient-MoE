@@ -100,7 +100,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The paper introduces Intern-S1, a multimodal Mixture-of-Experts (MoE) model designed to bridge the performance gap between open-source and closed-source models in scientific research. With 28 billion activated parameters and a total of 241 billion parameters, Intern-S1 is pre-trained on 5 trillion tokens, including a significant portion from scientific domains, and employs a novel Mixture-of-Rewards (MoR) approach during its reinforcement learning phase to enhance training efficiency across over 1000 tasks. The model demonstrates superior performance on comprehensive evaluation benchmarks, marking a significant advancement toward Artificial General Intelligence (AGI) in scientific applications. #MixtureOfExperts #MoE #AI #AGI #ReinforcementLearning
   - 摘要: 本文介绍了Intern-S1，一种专注于科学领域的多模态混合专家模型，旨在缩小开源模型与闭源模型在科学研究中的性能差距。该模型具有280亿个激活参数和2410亿个总参数，通过在5万亿个标记上进行持续预训练，特别是从科学领域获取的超过25亿个标记。Intern-S1在后续的训练阶段采用了离线和在线强化学习，并提出了混合奖励机制，以同时在1000多个任务上进行训练，最终在综合评估基准上展现出卓越的性能。#混合专家 #MoE #效率
-- MoEC: Mixture of Expert Clusters
+
+
+- ISALux: Illumination and Segmentation Aware Transformer Employing   Mixture of Experts for Low Light Image Enhancement
+  - Authors: Raul Balmez, Alexandru Brateanu, Ciprian Orhei, et al.
+  - Link: http://arxiv.org/pdf/2508.17885v1
+  - Code: Not available
+  - Summary: The research paper presents ISALux, a transformer-based framework designed for Low-Light Image Enhancement (LLIE) that incorporates illumination and semantic information through an innovative self-attention mechanism called Hybrid Illumination and Semantics-Aware Multi-Headed Self-Attention (HISA-MSA). By utilizing a Mixture of Experts (MoE)-based Feed-Forward Network (FFN) with a gating mechanism, ISALux selectively activates top K experts for tailored processing, thereby improving contextual learning and addressing overfitting issues in LLIE. Comprehensive evaluations reveal that ISALux performs competitively against state-of-the-art methods, with an ablation study underscoring the significance of its various components. #MixtureOfExperts #MoE #LowLightEnhancement #ImageProcessing #DeepLearning
+  - 摘要: 本文提出了一种新颖的基于变换器的低光图像增强方法ISALux，该方法无缝整合了光照和语义先验。ISALux采用了创新的自注意力模块HISA-MSA，能够独立处理光照和语义特征，并通过混合专家（MoE）机制增强上下文学习，从而有效调节亮度和高光结构变化。通过在多个专业数据集上的广泛评估，ISALux在性能上与最先进的方法相竞争，同时通过消融研究展示了各个组件的贡献。#混合专家 #MoE #效率- MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
   - Link: https://arxiv.org/pdf/2207.09094
   - Code: Not available
