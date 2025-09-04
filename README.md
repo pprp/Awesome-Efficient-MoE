@@ -107,13 +107,25 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Link: http://arxiv.org/pdf/2508.15884v1
   - Code: Not available
   - Summary: The research paper introduces Jet-Nemotron, a hybrid-architecture language model that leverages Post Neural Architecture Search (PostNAS) to enhance generation throughput while maintaining or exceeding the accuracy of leading full-attention models. By starting with a pre-trained full-attention model and freezing its MLP weights, the authors efficiently explore attention block designs through a four-component pipeline that optimizes layer placement, selects linear attention blocks, designs new attention mechanisms, and conducts hardware-aware hyperparameter searches. The Jet-Nemotron-2B model demonstrates significant performance improvements, achieving up to 53.6x generation throughput speedup and outperforming advanced MoE models on accuracy benchmarks like MMLU and MMLU-Pro, despite having a smaller scale. #MixtureOfExperts #MoE #Efficiency
-  - 摘要: 本文介绍了一种新型混合架构语言模型Jet-Nemotron，该模型在生成速度上显著提升，同时在准确性上与领先的全注意力模型相当或更优。Jet-Nemotron采用了一种名为Post Neural Architecture Search（PostNAS）的新颖神经架构探索流程，通过冻结预训练全注意力模型的MLP权重，能够高效地探索注意力块设计。该模型在多个基准测试中表现出色，生成速度提升高达53.6倍，并在MMLU和MMLU-Pro上超越了许多先进的混合专家全注意力模型。 #混合专家 #MoE #效率- MoEC: Mixture of Expert Clusters
+  - 摘要: 本文介绍了一种新型混合架构语言模型Jet-Nemotron，该模型在生成速度上显著提升，同时在准确性上与领先的全注意力模型相当或更优。Jet-Nemotron采用了一种名为Post Neural Architecture Search（PostNAS）的新颖神经架构探索流程，通过冻结预训练全注意力模型的MLP权重，能够高效地探索注意力块设计。该模型在多个基准测试中表现出色，生成速度提升高达53.6倍，并在MMLU和MMLU-Pro上超越了许多先进的混合专家全注意力模型。 #混合专家 #MoE #效率
+
+
+- OneCAT: Decoder-Only Auto-Regressive Model for Unified Understanding and   Generation
+  - Authors: Han Li, Xinyu Peng, Yaoming Wang, et al.
+  - Link: http://arxiv.org/pdf/2509.03498v1
+  - Code: Not available
+  - Summary: The research paper presents OneCAT, a novel decoder-only transformer model that integrates understanding, generation, and editing in a unified multimodal framework without relying on external components like Vision Transformers. Utilizing a modality-specific Mixture-of-Experts (MoE) structure and a multi-scale visual autoregressive mechanism, OneCAT achieves significant efficiency improvements and reduced decoding steps while maintaining state-of-the-art performance across various benchmarks. This work highlights the effectiveness of pure autoregressive modeling in advancing multimodal intelligence, setting new performance standards in the field. #MixtureOfExperts #MoE #Efficiency #MultimodalAI
+  - 摘要: 本文介绍了OneCAT，一个统一的多模态模型，采用全新的纯解码器Transformer架构，能够无缝整合理解、生成和编辑功能。该框架通过独特的模态特定混合专家（MoE）结构，实现了在推理过程中无需外部组件（如视觉Transformer或视觉标记器），显著提高了处理高分辨率输入的效率。此外，OneCAT在大型语言模型（LLM）中开创了多尺度视觉自回归机制，显著减少了解码步骤，同时保持了最先进的性能。研究结果显示，纯自回归建模为统一多模态智能提供了强大的基础，OneCAT在多模态生成、编辑和理解的基准测试中超越了现有的开源模型，树立了新的性能标准。  
+#混合专家 #MoE #效率
+
+
+- MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
   - Link: https://arxiv.org/pdf/2207.09094
   - Code: Not available
   - Summary: This paper introduces Mixture of Expert Clusters (MoEC), a novel approach to improve the performance and scalability of **Mixture of Experts (MoE)** models. MoE models, while efficient in scaling model capacity, suffer from **overfitting** and **sparse data allocation** as the number of experts increases, especially with limited data. MoEC addresses these issues by introducing **variance-based constraints** on the routing stage to encourage the formation of **expert clusters**. Experts within a cluster are designed to be similar, sharing similar input tokens, while experts across clusters are more diverse. Furthermore, MoEC incorporates a **cluster-level expert dropout** strategy. This strategy randomly drops entire clusters of experts during training, ensuring that tokens are consistently routed to suitable experts even with the dropout. Experiments on **machine translation** and **natural language understanding** tasks demonstrate that MoEC improves performance and raises the performance upper bound for scaling up experts, mitigating overfitting and sparse data allocation problems observed in standard MoE models. The results show that MoEC successfully addresses the limitations of scaling up MoE models by improving the diversity of data allocation among experts and preventing overfitting.
-
   - 摘要：本文介绍了一种名为混合专家集群 (MoEC) 的新方法，用于改进混合专家 (MoE) 模型的性能和可扩展性。尽管 MoE 模型在扩展模型容量方面效率很高，但随着专家数量的增加，尤其是在数据有限的情况下，它们会遭受过拟合和数据分配稀疏的问题。MoEC 通过在路由阶段引入基于方差的约束来解决这些问题，从而鼓励形成专家集群。集群内的专家设计为相似，共享相似的输入标记，而跨集群的专家则更加多样化。此外，MoEC 还包含了一个集群级专家 dropout 策略。该策略在训练期间随机丢弃整个专家集群，确保即使在 dropout 情况下，标记也始终被路由到合适的专家。在机器翻译和自然语言理解任务上的实验表明，MoEC 提高了性能，并提高了扩展专家数量的性能上限，从而减轻了在标准 MoE 模型中观察到的过拟合和数据分配稀疏问题。结果表明，MoEC 通过改善专家之间的数据分配多样性和防止过拟合，成功地解决了扩展 MoE 模型的局限性。
+
 
 - OpenMoE: An Early Effort on Open Mixture-of-Experts Language Models
 
