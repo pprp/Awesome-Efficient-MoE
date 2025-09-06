@@ -116,7 +116,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents OneCAT, a novel decoder-only transformer model that integrates understanding, generation, and editing in a unified multimodal framework without relying on external components like Vision Transformers. Utilizing a modality-specific Mixture-of-Experts (MoE) structure and a multi-scale visual autoregressive mechanism, OneCAT achieves significant efficiency improvements and reduced decoding steps while maintaining state-of-the-art performance across various benchmarks. This work highlights the effectiveness of pure autoregressive modeling in advancing multimodal intelligence, setting new performance standards in the field. #MixtureOfExperts #MoE #Efficiency #MultimodalAI
   - 摘要: 本文介绍了OneCAT，一个统一的多模态模型，采用全新的纯解码器Transformer架构，能够无缝整合理解、生成和编辑功能。该框架通过独特的模态特定混合专家（MoE）结构，实现了在推理过程中无需外部组件（如视觉Transformer或视觉标记器），显著提高了处理高分辨率输入的效率。此外，OneCAT在大型语言模型（LLM）中开创了多尺度视觉自回归机制，显著减少了解码步骤，同时保持了最先进的性能。研究结果显示，纯自回归建模为统一多模态智能提供了强大的基础，OneCAT在多模态生成、编辑和理解的基准测试中超越了现有的开源模型，树立了新的性能标准。  
-#混合专家 #MoE #效率
+
+
+- Wav2DF-TSL: Two-stage Learning with Efficient Pre-training and   Hierarchical Experts Fusion for Robust Audio Deepfake Detection
+  - Authors: Yunqi Hao, Yihao Chen, Minqiang Xu, et al.
+  - Link: http://arxiv.org/pdf/2509.04161v1
+  - Code: Not available
+  - Summary: The research paper presents Wav2DF-TSL, a two-stage learning framework designed for robust audio deepfake detection (ADD) that addresses the limitations of existing self-supervised learning models. It employs an efficient pre-training phase utilizing adapters to learn from 3000 hours of unlabelled spoofed audio, enhancing feature adaptability and reducing catastrophic forgetting. The fine-tuning phase introduces a hierarchical adaptive mixture of experts (HA-MoE) to dynamically integrate multi-level spoofing cues, leading to a significant 27.5% relative improvement in equal error rate (EER) on benchmark datasets, particularly excelling in cross-domain scenarios. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文提出了一种基于预训练和分层专家融合的两阶段学习策略Wav2DF-TSL，用于提高音频深伪检测的鲁棒性。通过在预训练阶段利用适配器有效学习3000小时未标记的伪造语音，增强了前端特征的适应性并减轻了灾难性遗忘；在微调阶段，采用分层自适应混合专家（HA-MoE）方法，通过多专家协作动态融合多层伪造线索。实验结果表明，该方法在所有四个基准数据集上显著优于基线系统，尤其在跨域的In-the-wild数据集上实现了27.5%的相对改进，超越了现有的最先进系统。#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
