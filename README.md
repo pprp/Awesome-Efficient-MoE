@@ -116,7 +116,15 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents OneCAT, a novel decoder-only transformer model that integrates understanding, generation, and editing in a unified multimodal framework without relying on external components like Vision Transformers. Utilizing a modality-specific Mixture-of-Experts (MoE) structure and a multi-scale visual autoregressive mechanism, OneCAT achieves significant efficiency improvements and reduced decoding steps while maintaining state-of-the-art performance across various benchmarks. This work highlights the effectiveness of pure autoregressive modeling in advancing multimodal intelligence, setting new performance standards in the field. #MixtureOfExperts #MoE #Efficiency #MultimodalAI
   - 摘要: 本文介绍了OneCAT，一个统一的多模态模型，采用全新的纯解码器Transformer架构，能够无缝整合理解、生成和编辑功能。该框架通过独特的模态特定混合专家（MoE）结构，实现了在推理过程中无需外部组件（如视觉Transformer或视觉标记器），显著提高了处理高分辨率输入的效率。此外，OneCAT在大型语言模型（LLM）中开创了多尺度视觉自回归机制，显著减少了解码步骤，同时保持了最先进的性能。研究结果显示，纯自回归建模为统一多模态智能提供了强大的基础，OneCAT在多模态生成、编辑和理解的基准测试中超越了现有的开源模型，树立了新的性能标准。  
-#混合专家 #MoE #效率
+
+
+- CAME-AB: Cross-Modality Attention with Mixture-of-Experts for Antibody   Binding Site Prediction
+  - Authors: Hongzong Li, Jiahao Ma, Zhanpeng Shi, et al.
+  - Link: http://arxiv.org/pdf/2509.06465v1
+  - Code: Not available
+  - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
+  - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
+#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
