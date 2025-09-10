@@ -118,12 +118,22 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要: 本文介绍了OneCAT，一个统一的多模态模型，采用全新的纯解码器Transformer架构，能够无缝整合理解、生成和编辑功能。该框架通过独特的模态特定混合专家（MoE）结构，实现了在推理过程中无需外部组件（如视觉Transformer或视觉标记器），显著提高了处理高分辨率输入的效率。此外，OneCAT在大型语言模型（LLM）中开创了多尺度视觉自回归机制，显著减少了解码步骤，同时保持了最先进的性能。研究结果显示，纯自回归建模为统一多模态智能提供了强大的基础，OneCAT在多模态生成、编辑和理解的基准测试中超越了现有的开源模型，树立了新的性能标准。  
 
 
+
 - SpikingBrain Technical Report: Spiking Brain-inspired Large Models
   - Authors: Yuqi Pan, Yupeng Feng, Jinghao Zhuang, et al.
   - Link: http://arxiv.org/pdf/2509.05276v1
   - Code: Not available
   - Summary: The research paper presents SpikingBrain, a family of brain-inspired large models aimed at addressing efficiency bottlenecks in mainstream Transformer-based language models, particularly for long-context processing. Key contributions include a novel model architecture featuring linear and hybrid-linear attention with adaptive spiking neurons, an efficient training pipeline, and system optimizations tailored for non-NVIDIA platforms. The resulting models, SpikingBrain-7B and SpikingBrain-76B, showcase significant improvements in training efficiency and inference performance, achieving results comparable to traditional Transformer models while utilizing only 150B tokens for continual pre-training. #MixtureOfExperts #MoE #Efficiency
   - 摘要: 本研究提出了SpikingBrain，一个基于脑启发的大型模型系列，旨在解决主流Transformer模型在长序列处理中的效率瓶颈。通过采用线性和混合线性注意力架构、优化的训练算法以及针对MetaX硬件的系统工程，SpikingBrain展示了在非NVIDIA平台上进行大规模语言模型开发的可行性。实验结果表明，SpikingBrain模型在长序列训练效率上显著提升，并在推理过程中实现了部分常量内存和事件驱动的脉冲行为，表现出与开源Transformer基线相当的性能。#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- CAME-AB: Cross-Modality Attention with Mixture-of-Experts for Antibody   Binding Site Prediction
+  - Authors: Hongzong Li, Jiahao Ma, Zhanpeng Shi, et al.
+  - Link: http://arxiv.org/pdf/2509.06465v1
+  - Code: Not available
+  - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
+  - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
+#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
