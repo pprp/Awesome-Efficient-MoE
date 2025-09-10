@@ -133,7 +133,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- One Model for All Tasks: Leveraging Efficient World Models in Multi-Task   Planning
+  - Authors: Yuan Pu, Yazhe Niu, Jia Tang, et al.
+  - Link: http://arxiv.org/pdf/2509.07945v1
+  - Code: Not available
+  - Summary: The research paper introduces ScaleZero, a Mixture-of-Experts (MoE) architecture designed to enhance multi-task planning in heterogeneous environments by mitigating gradient conflicts and improving sample efficiency. The authors propose a novel dynamic parameter scaling (DPS) strategy that utilizes LoRA adapters to adaptively manage computational resources based on task-specific progress, thereby optimizing the learning process. Empirical results on benchmarks like Atari and DMControl show that ScaleZero performs comparably to specialized single-task models while benefiting from the efficiency of a single, unified model. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文提出了一种名为ScaleZero的混合专家模型（MoE），旨在解决异构多任务学习中的梯度冲突和模型灵活性下降的问题。通过扩展UniZero模型并引入动态参数缩放（DPS）策略，ScaleZero在多任务规划中显著提升了样本和计算效率。实验证明，该模型在Atari、DMControl和Jericho等标准基准上表现优异，达到了与专门单任务基线相当的性能。#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
