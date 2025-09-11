@@ -133,7 +133,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- Too Helpful, Too Harmless, Too Honest or Just Right?
+  - Authors: Gautam Siddharth Kashyap, Mark Dras, Usman Naseem
+  - Link: http://arxiv.org/pdf/2509.08486v1
+  - Code: Not available
+  - Summary: The research paper presents TrinityX, a novel modular alignment framework that integrates a Mixture of Calibrated Experts (MoCaE) within the Transformer architecture to enhance the alignment of Large Language Models (LLMs) with the principles of Helpfulness, Harmlessness, and Honesty (HHH). By employing separately trained experts for each alignment dimension and utilizing a calibrated, task-adaptive routing mechanism, TrinityX achieves significant improvements over existing methods, with relative gains of 32.5% in win rate, 33.9% in safety score, and 28.4% in truthfulness across three benchmarks, while also reducing memory usage and inference latency by over 40%. The findings underscore the effectiveness of calibrated routing and demonstrate TrinityX's ability to generalize across various LLM architectures. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文提出了一种名为TrinityX的模块化对齐框架，旨在解决大型语言模型（LLMs）在帮助性、无害性和诚实性（HHH）方面的对齐挑战。通过在Transformer架构中引入混合校准专家（MoCaE），TrinityX利用针对每个HHH维度单独训练的专家，并通过校准的任务自适应路由机制整合输出，从而生成统一的对齐表示。实验结果表明，TrinityX在三个标准对齐基准上均优于强基线，显著提高了胜率、安全评分和真实性，同时减少了内存使用和推理延迟超过40%。#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
