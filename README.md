@@ -133,7 +133,15 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- Steering MoE LLMs via Expert (De)Activation
+  - Authors: Mohsen Fayyaz, Ali Modarressi, Hanieh Deilamsalehy, et al.
+  - Link: http://arxiv.org/pdf/2509.09660v1
+  - Code: Not available
+  - Summary: The paper introduces SteerMoE, a novel framework for controlling the behavior of Mixture-of-Experts (MoE) models in Large Language Models (LLMs) by detecting and selectively (de)activating experts based on their activation patterns linked to specific behaviors. This method allows for improved safety and faithfulness in model outputs, achieving increases of up to 20% and 27% respectively across 11 benchmarks and 6 LLMs, without the need for retraining. However, the study also highlights vulnerabilities, revealing that in adversarial settings, the steering can significantly reduce safety, indicating potential risks in alignment strategies. #MixtureOfExperts #MoE #Safety #LLMs #MachineLearning
+  - 摘要: 本研究提出了一种名为SteerMoE的框架，用于通过检测和控制与行为相关的专家来引导混合专家模型（MoE）。该方法能够识别在表现出对比行为的输入对中具有不同激活模式的专家，并通过在推理过程中选择性地（去）激活这些专家，从而在不重新训练或修改权重的情况下控制模型的行为，如忠实性和安全性。在11个基准测试和6个大型语言模型的实验中，SteerMoE显著提高了安全性（最高提升20%）和忠实性（最高提升27%），同时在对抗攻击模式下，安全性下降幅度也显著，揭示了专家内部隐藏的对齐伪装的新维度。  
+#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
