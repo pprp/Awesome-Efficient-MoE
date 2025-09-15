@@ -133,7 +133,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- RefactorCoderQA: Benchmarking LLMs for Multi-Domain Coding Question   Solutions in Cloud and Edge Deployment
+  - Authors: Shadikur Rahman, Aroosa Hameed, Gautam Srivastava, et al.
+  - Link: http://arxiv.org/pdf/2509.10436v1
+  - Code: Not available
+  - Summary: The research paper presents RefactorCoderQA, a novel cloud-edge collaborative architecture designed to enhance the reasoning and problem-solving capabilities of Large Language Models (LLMs) through a structured multi-agent prompting framework. This framework consists of three components: GuideLLM for methodological guidance at the edge, SolverLLM for code generation in the cloud, and JudgeLLM for solution evaluation. The authors introduce a comprehensive benchmark that covers various technical domains, demonstrating that their fine-tuned model, RefactorCoder-MoE, achieves state-of-the-art performance with 76.84% accuracy, surpassing existing benchmarks and validating the practical relevance of its solutions through human evaluations. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文提出了一种新颖的云边协同架构，旨在优化大型语言模型（LLMs）的推理和问题解决能力。该架构包含三个专门组件：在边缘部署的轻量级模型GuideLLM提供方法指导，云端强大模型SolverLLM负责生成代码解决方案，以及自动评估器JudgeLLM用于评估解决方案的正确性和质量。通过引入全面的基准测试RefactorCoderQA，系统性地覆盖软件工程、数据科学、机器学习和自然语言处理等多个技术领域，实验结果表明，经过微调的RefactorCoder-MoE模型在多领域编码任务中实现了76.84%的高准确率，显著超越了现有的开源和商业基线，进一步的人类评估验证了生成解决方案的可解释性和实际相关性。#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
