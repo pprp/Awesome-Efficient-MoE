@@ -133,7 +133,15 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- When MoE Meets Blockchain: A Trustworthy Distributed Framework of Large   Models
+  - Authors: Weihao Zhu, Long Shi, Kang Wei, et al.
+  - Link: http://arxiv.org/pdf/2509.12141v1
+  - Code: Not available
+  - Summary: This research paper introduces a blockchain-aided trustworthy Mixture of Experts (B-MoE) framework to enhance the security and efficiency of distributed large models. The proposed three-layer architecture integrates edge, blockchain, and storage layers, enabling experts to process tasks while ensuring data integrity and trust through decentralized verification. Experimental results demonstrate that B-MoE effectively mitigates issues of latency, bandwidth consumption, and data privacy, making it a promising solution for deploying MoE in distributed environments. #MixtureOfExperts #MoE #Blockchain #DistributedLearning #DataPrivacy
+  - 摘要: 本文提出了一种基于区块链的可信混合专家模型（B-MoE）框架，以解决传统分布式混合专家模型在数据交互中缺乏信任的问题。该框架由边缘层、区块链层和存储层三部分组成，通过在边缘层利用存储层下载的激活专家处理学习任务，同时区块链层作为去中心化的可信网络，追踪、验证并记录专家的计算结果。实验结果表明，B-MoE在保证学习性能的同时，显著提高了数据交互的安全性和效率。  
+#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
