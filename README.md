@@ -133,7 +133,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- MEGAN: Mixture of Experts for Robust Uncertainty Estimation in Endoscopy   Videos
+  - Authors: Damola Agbelese, Krishna Chaitanya, Pushpak Pati, et al.
+  - Link: http://arxiv.org/pdf/2509.12772v1
+  - Code: Not available
+  - Summary: The research paper presents MEGAN, a Multi-Expert Gating Network designed to enhance uncertainty estimation in medical AI, particularly for analyzing endoscopy videos related to Ulcerative Colitis (UC). By leveraging Evidential Deep Learning (EDL) and integrating predictions from multiple AI experts trained on diverse ground truths, MEGAN improves prediction confidence and calibration, achieving a 3.5% increase in F1-score and a 30.5% reduction in Expected Calibration Error (ECE) in a large-scale UC clinical trial. This approach not only addresses inter-rater variability but also aids in uncertainty-guided sample stratification, thereby improving efficiency and consistency in clinical settings. #MixtureOfExperts #MoE #Efficiency #UncertaintyEstimation #MedicalAI
+  - 摘要: 本文提出了MEGAN，一种混合专家网络，用于在内窥镜视频中进行鲁棒的不确定性估计。MEGAN通过整合多个AI专家的预测和不确定性，利用多样化的真实标签和建模策略，显著提高了模型的预测信心和校准度。在针对溃疡性结肠炎（UC）疾病严重程度评估的大规模临床试验中，MEGAN相较于现有方法实现了3.5%的F1-score提升和30.5%的预期校准误差（ECE）降低，同时减轻了注释负担，提升了效率和一致性。#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
