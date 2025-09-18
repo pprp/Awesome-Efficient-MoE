@@ -133,7 +133,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- CSMoE: An Efficient Remote Sensing Foundation Model with Soft   Mixture-of-Experts
+  - Authors: Leonard Hackel, Tom Burgert, Begüm Demir
+  - Link: http://arxiv.org/pdf/2509.14104v1
+  - Code: Not available
+  - Summary: The research paper introduces CSMoE, an efficient remote sensing foundation model that integrates Soft Mixture-of-Experts (MoE) to enhance representation learning while reducing computational complexity. By employing a thematic-climatic descriptor-driven sampling strategy for training data, the model achieves modality-specific expert specialization and improved performance on tasks such as scene classification, semantic segmentation, and content-based image retrieval. Experimental results demonstrate that CSMoE outperforms state-of-the-art remote sensing models, achieving a superior balance between representational capacity, accuracy, and computational efficiency. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本研究提出了一种名为CSMoE的高效遥感基础模型，通过将软混合专家（Soft MoE）机制整合到模型中，解决了现有遥感基础模型在训练和推理中的计算复杂性及表示能力有限的问题。该模型实现了特定模态的专家专业化，同时支持跨传感器的共享表示学习。通过在场景分类、语义分割和基于内容的图像检索等任务上的广泛实验，结果表明CSMoE在保持或提升表示性能的同时显著降低了计算需求，展现了优越的表现。#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
