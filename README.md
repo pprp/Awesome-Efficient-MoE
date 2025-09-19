@@ -133,7 +133,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- Super-Linear: A Lightweight Pretrained Mixture of Linear Experts for   Time Series Forecasting
+  - Authors: Liran Nochumsohn, Raz Marshanski, Hedi Zisling, et al.
+  - Link: http://arxiv.org/pdf/2509.15105v1
+  - Code: Not available
+  - Summary: The research paper presents Super-Linear, a lightweight and scalable mixture-of-experts (MoE) model designed for time series forecasting (TSF), which addresses the high computational costs associated with large pre-trained models like Chronos and Time-MoE. By utilizing frequency-specialized linear experts and a dynamic spectral gating mechanism, Super-Linear efficiently selects relevant experts based on resampled data across various frequency regimes, achieving state-of-the-art performance with improved efficiency, robustness to different sampling rates, and enhanced interpretability. The implementation of Super-Linear is publicly available, promoting accessibility in TSF applications. #MixtureOfExperts #MoE #Efficiency #TimeSeriesForecasting
+  - 摘要: 本文提出了一种轻量级的混合专家模型Super-Linear，旨在提高时间序列预测的效率和准确性。该模型通过用简单的频率专用线性专家替代深度架构，并在多个频率范围内对重采样数据进行训练，结合轻量级的谱门控机制动态选择相关专家，从而实现高效且准确的预测。尽管结构简单，Super-Linear在性能上与最先进的模型相当，同时在各种采样率下表现出更强的鲁棒性和可解释性。#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
