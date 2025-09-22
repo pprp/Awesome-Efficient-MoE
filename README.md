@@ -133,7 +133,15 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- DiEP: Adaptive Mixture-of-Experts Compression through Differentiable   Expert Pruning
+  - Authors: Sikai Bai, Haoxi Li, Jie Zhang, et al.
+  - Link: http://arxiv.org/pdf/2509.16105v1
+  - Code: Not available
+  - Summary: The research paper introduces Differentiable Expert Pruning (DiEP), a novel non-uniform pruning strategy for Mixture-of-Experts (MoE) models that addresses the challenges of memory and storage by adaptively adjusting pruning rates at the layer level. By transforming the global discrete search space into a continuous one, DiEP effectively captures varying expert redundancy across different layers, leading to improved performance retention—maintaining approximately 92% of the original performance on the Mixtral 8×7B model with only half the experts, and outperforming existing pruning methods by up to 7.1% on the MMLU dataset. This work demonstrates significant advancements in the efficiency of MoE models for various NLP tasks. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文提出了一种名为可微专家剪枝（DiEP）的新方法，以解决混合专家模型（MoE）在规模扩大时面临的内存和存储挑战。与传统的均匀剪枝方法不同，DiEP采用非均匀剪枝策略，能够在层级上自适应调整剪枝率，并有效捕捉不同MoE层之间的冗余性差异。实验结果表明，DiEP在多个自然语言处理任务中表现优异，能够在保留约92%原始性能的同时，将Mixtral 8×7B模型的专家数量减少一半，并在挑战性的MMLU数据集上超越其他剪枝方法达7.1%。  
+#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
