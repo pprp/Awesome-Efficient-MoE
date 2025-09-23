@@ -133,7 +133,15 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- Optimizing Inference in Transformer-Based Models: A Multi-Method   Benchmark
+  - Authors: Siu Hang Ho, Prasad Ganesan, Nguyen Duong, et al.
+  - Link: http://arxiv.org/pdf/2509.17894v1
+  - Code: Not available
+  - Summary: This research paper investigates various techniques to optimize inference in deep generative models, particularly focusing on the Fast Diffusion Transformer (fast-DiT). The authors evaluate methods such as pruning, quantization, knowledge distillation, and simplified attention, alongside the Mixture of Experts (MoE) approach, to reduce computational overhead while maintaining performance. The findings offer valuable insights into balancing model complexity with efficiency, addressing the critical challenges of compute costs, latency, and memory requirements in advanced generative modeling. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本研究论文探讨了在基于Transformer的模型中优化推理的多种方法，特别关注于如何在不影响性能的情况下降低计算成本、延迟和内存需求。通过采用剪枝、量化、知识蒸馏和简化注意力等技术，结合混合专家（MoE）方法，研究展示了在提升效率的同时保持模型准确性的可能性。这些实验为优化最先进的快速扩散Transformer（fast-DiT）模型的推理提供了深刻的见解。  
+#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
