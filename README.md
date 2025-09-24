@@ -133,7 +133,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- LongCat-Flash-Thinking Technical Report
+  - Authors: Meituan LongCat Team, Anchun Gui, Bei Li, et al.
+  - Link: http://arxiv.org/pdf/2509.18883v1
+  - Code: Not available
+  - Summary: The LongCat-Flash-Thinking report introduces a 560-billion-parameter open-source Mixture-of-Experts (MoE) model designed for advanced reasoning capabilities, achieved through a novel cold-start training strategy and a domain-parallel training scheme that optimizes performance across various domains. The model leverages the Dynamic ORchestration for Asynchronous rollout (DORA) system, resulting in over threefold training speed improvements and exceptional efficiency in agentic reasoning, reducing token consumption by 64.5% while maintaining accuracy. This work aims to advance the field of reasoning systems and agentic AI research by providing a state-of-the-art model for complex tasks. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文介绍了LongCat-Flash-Thinking，一个高效的5600亿参数开源混合专家模型（MoE），其先进能力通过精心设计的训练过程得以实现。模型采用了冷启动训练策略，显著提升了推理潜力，并在多个领域（如STEM、代码、代理推理）中实现了优化解耦，最终通过动态异步回滚系统（DORA）加速训练速度超过三倍。LongCat-Flash-Thinking在复杂推理任务中表现出色，特别是在代理推理方面，平均令牌消耗减少了64.5%，同时保持了任务准确性。 #混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
