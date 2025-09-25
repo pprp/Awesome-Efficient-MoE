@@ -133,7 +133,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- SHMoAReg: Spark Deformable Image Registration via Spatial Heterogeneous   Mixture of Experts and Attention Heads
+  - Authors: Yuxi Zheng, Jianhui Feng, Tianran Li, et al.
+  - Link: http://arxiv.org/pdf/2509.20073v1
+  - Code: Not available
+  - Summary: The research paper presents SHMoAReg, a novel deformable image registration (DIR) network that integrates a Mixture of Experts (MoE) mechanism in both the encoder and decoder to enhance feature extraction and deformation prediction. By employing Mixture of Attention heads (MoA) in the encoder for optimal feature selection and Spatial Heterogeneous Mixture of Experts (SHMoE) in the decoder for direction-specific deformation prediction, the method achieves significant performance improvements, evidenced by a Dice score increase from 60.58% to 65.58% on abdominal CT datasets. This work not only introduces MoE to DIR tasks but also enhances model interpretability by clarifying the roles of different experts across resolution layers. #MixtureOfExperts #MoE #DeformableImageRegistration #DeepLearning #MedicalImaging
+  - 摘要: 本文提出了一种新颖的专家引导的可变形图像配准网络SHMoAReg，结合了混合专家（MoE）机制与注意力头（MoA），以提高图像特征提取和变形场预测的效果。通过在编码器中引入MoA以动态选择最佳注意力头组合，以及在解码器中采用空间异质混合专家（SHMoE）以针对每个体素在三个方向上进行异质预测，SHMoAReg在两个公开数据集上的实验结果显示出显著的性能提升，特别是在腹部CT数据集上Dice分数从60.58%提高至65.58%。该方法不仅提升了模型的性能，还增强了对专家效用的可解释性，标志着MoE机制在可变形图像配准任务中的首次应用。#混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
