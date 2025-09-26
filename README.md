@@ -133,7 +133,14 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Code: Not available
   - Summary: The research paper presents CAME-AB, a novel framework for antibody binding site prediction that leverages a Mixture-of-Experts (MoE) architecture combined with Cross-modality Attention. By integrating five biologically relevant modalities into a unified multimodal representation and employing an adaptive modality fusion module, CAME-AB enhances cross-modal reasoning and feature specialization. The framework demonstrates superior performance over existing methods on benchmark datasets, achieving improved prediction accuracy through techniques like supervised contrastive learning and stochastic weight averaging. #MixtureOfExperts #MoE #AntibodyBinding #ComputationalImmunology #DeepLearning
   - 摘要: 本文提出了一种新颖的跨模态注意力框架CAME-AB，结合混合专家模型（MoE）用于抗体结合位点预测，解决了现有方法在特征表示和预测上的双重限制。CAME-AB整合了五种生物学基础的模态，采用自适应模态融合模块动态加权每种模态，并结合Transformer编码器与MoE模块以增强特征专业化和能力扩展。此外，通过监督对比学习目标优化潜在空间几何形状，提高了模型的优化稳定性和泛化能力。实验结果显示，CAME-AB在多项基准抗体-抗原数据集上显著优于强基线。  
-#混合专家 #MoE #效率#混合专家 #MoE #效率
+
+
+- Distributed Specialization: Rare-Token Neurons in Large Language Models
+  - Authors: Jing Liu, Haozheng Wang, Yueheng Li
+  - Link: http://arxiv.org/pdf/2509.21163v1
+  - Code: Not available
+  - Summary: This research paper explores how large language models (LLMs) manage rare tokens, revealing a phenomenon termed "distributed specialization," where subnetworks of neurons coordinate to process these tokens without forming distinct clusters. The authors identify a three-regime hierarchy of neuron influence, highlighting the role of plateau neurons that exhibit coordinated activation patterns and are accessible via standard attention pathways. Their findings suggest that functional specialization in LLMs develops gradually through parameter differentiation, contributing to a deeper understanding of how these models can effectively handle specialized language tasks. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 这篇研究论文探讨了大型语言模型（LLMs）在处理稀有词汇时的内部专业化机制，提出了“分布式专业化”的概念。通过对多种模型家族的最终层多层感知器（MLP）神经元的系统分析，研究发现稀有词汇的处理依赖于功能协调但空间分布的子网络，并识别出三种不同的组织原则。研究结果表明，稀有词汇神经元在激活模式上表现出协调性，同时通过标准注意力路径可普遍访问，而不需要专门的路由电路。 #混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
 - MoEC: Mixture of Expert Clusters
