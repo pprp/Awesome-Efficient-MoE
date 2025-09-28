@@ -50,8 +50,14 @@ class ArXivTracker:
                     logger.info(f"Loaded {len(self.processed_ids)} previously processed arXiv IDs")
             else:
                 logger.info("No tracking file found, starting fresh")
+        except json.JSONDecodeError as e:
+            logger.error(f"FATAL: Could not decode JSON from {self.tracking_file}: {e}")
+            logger.error("The file is likely corrupted. Please fix it manually.")
+            sys.exit(1)
         except Exception as e:
             logger.error(f"Error loading tracking file: {e}")
+            # Exit if we can't load the file, to prevent overwriting
+            sys.exit(1)
             
     def save_processed_ids(self):
         """Save processed arXiv IDs to JSON file"""
@@ -911,42 +917,25 @@ def main():
     # Update with the single paper
     updated_content = updater.update_papers_list(readme_content, papers_to_process, summaries, image_filenames)
     
-    # Check if content actually changed
-    if len(updated_content) != len(readme_content):
-        # Save the updated README
-        if updater.save_readme(updated_content):
-            logger.info(f"Successfully added paper: {paper['title']}")
-            total_added = 1
-            
-            # Mark paper as processed
-            tracker.add_processed(paper['id'])
-            
-            # Create descriptive commit message for single paper
-            paper_title_short = paper['title'][:50] + "..." if len(paper['title']) > 50 else paper['title']
-            commit_message = f'Add MoE paper: {paper_title_short}'
-            
-            # Create commit with both README and any new images
-            os.system(f'git add README.md assets/')
-            os.system(f'git commit -m "{commit_message}"')
-            
-        else:
-            logger.error("Failed to save README.md")
-    else:
-        logger.info("No changes to README, no papers added")
-    
-    # Save the updated tracking file
+    # Save the updated tracking file before committing
     if total_added > 0:
         tracker.save_processed_ids()
         logger.info(f"Successfully processed 1 paper: {paper['title']}")
+
+        # Create descriptive commit message for single paper
+        paper_title_short = paper['title'][:50] + "..." if len(paper['title']) > 50 else paper['title']
+        commit_message = f'Add MoE paper: {paper_title_short}'
+
+        # Create commit with all changed files
+        os.system('git add README.md scripts/processed_papers.json assets/')
+        os.system(f'git commit -m "{commit_message}"')
         
         if len(new_papers) > 1:
             logger.info(f"Note: {len(new_papers) - 1} papers remain for next runs")
-            logger.info("These will be automatically processed when the script runs again")
         
         logger.info("Git commit created - ready for PR")
     else:
         logger.info("No new papers were added")
-        
         # Even if no papers were added, update the tracking file to mark attempted papers as processed
         # This prevents infinite retry of papers that fail to be added
         tracker.save_processed_ids()
