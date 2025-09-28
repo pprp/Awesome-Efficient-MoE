@@ -143,6 +143,13 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要: 本文介绍了LongCat-Flash-Thinking，一个高效的5600亿参数开源混合专家模型（MoE），其先进能力通过精心设计的训练过程得以实现。模型采用了冷启动训练策略，显著提升了推理潜力，并在多个领域（如STEM、代码、代理推理）中实现了优化解耦，最终通过动态异步回滚系统（DORA）加速训练速度超过三倍。LongCat-Flash-Thinking在复杂推理任务中表现出色，特别是在代理推理方面，平均令牌消耗减少了64.5%，同时保持了任务准确性。 #混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
+- Distributed Specialization: Rare-Token Neurons in Large Language Models
+  - Authors: Jing Liu, Haozheng Wang, Yueheng Li
+  - Link: http://arxiv.org/pdf/2509.21163v1
+  - Code: Not available
+  - Summary: The research paper "Distributed Specialization: Rare-Token Neurons in Large Language Models" by Jing Liu, Haozheng Wang, and Yueheng Li explores how large language models (LLMs) handle rare tokens, revealing that they utilize a mechanism termed "distributed specialization." This involves functionally coordinated subnetworks characterized by a three-regime influence hierarchy of neurons, where rare-token neurons (plateau neurons) show distinct activation patterns without forming discrete clusters. The study demonstrates that this specialization emerges gradually through parameter differentiation and is accessible via standard attention pathways, highlighting a novel approach for improving rare-token processing in LLMs. #MixtureOfExperts #MoE #Efficiency
+  - 摘要: 本文研究了大型语言模型（LLMs）在处理稀有词汇时的内部专业化机制，提出了“分布式专业化”理论。通过对多个模型家族的最终层多层感知机（MLP）神经元的系统分析，发现稀有词处理通过功能协调但空间分布的子网络实现，并识别出三种不同的组织原则。此外，研究表明，这些专业化机制可以通过标准注意力路径普遍访问，无需专用路由电路。训练动态显示，功能专业化是通过参数差异逐渐形成的，具有重尾权重相关谱的特征。#混合专家 #MoE #效率
+
 - MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
   - Link: https://arxiv.org/pdf/2207.09094
