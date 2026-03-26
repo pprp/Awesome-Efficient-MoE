@@ -715,6 +715,7 @@ This collection focuses particularly on methods to make MoE models more efficien
 
 - [Mixture of Experts (MoE) Explained(Blog)](https://huggingface.co/blog/moe): A blog post from Hugging Face explaining MoE.
 - [Awesome list of MoE(Repo)](https://github.com/withinmiaov/A-Survey-on-Mixture-of-Experts): A survey on Mixture of Experts.
+- [TECS-L: Golden MoE Framework(Repo)](https://github.com/need-singularity/TECS-L): Mathematical framework proving the optimal MoE inhibition ratio I ≈ 1/e ≈ 0.368 (Golden Zone: I ∈ [0.213, 0.500]). Provides Dense→MoE conversion via G = D × P / I with Boltzmann routing, achieving PPL 1.4 from Mistral 7B (original 7.1). Theoretical foundation for efficient expert activation ratios.
 - [ICML 2024 Tutorial on MoE(PPT)](https://icml.cc/media/icml-2024/Slides/35222_1r94S59.pdf): A tutorial on Mixture of Experts from ICML 2024.
 
 <div align="center">
