@@ -707,6 +707,11 @@ This collection focuses particularly on methods to make MoE models more efficien
   - Summary: This paper introduces **Model-GLUE**, a holistic guideline for scaling **Large Language Models (LLMs)** by efficiently aggregating existing models. Addressing the challenge of decreased performance when combining disparate models, Model-GLUE benchmarks existing LLM scaling techniques, focusing on **model merging** and **Mixture-of-Experts (MoE)**. The authors find that simply averaging weights (a common merging technique) isn't optimal for diverse model zoos. Their proposed method involves: 1) **Clustering** similar models based on architecture and weight similarity; 2) **Filtering** and selecting models for merging within each cluster, using a strategic approach to avoid including "harmful" models; 3) Employing **optimal merging strategies** within each cluster; and 4) Integrating the merged clusters via a **model mixture** (akin to MoE). Experiments on a diverse Llama-2-based model zoo demonstrate an average performance improvement of 5.61% without additional training, showcasing the effectiveness of Model-GLUE's approach to democratize LLM scaling. The paper also discusses the limitations of existing merging techniques and the potential synergies between merging and mixing methods.
   - 摘要：本文介绍了**Model-GLUE**，这是一种通过有效聚合现有模型来扩展**大型语言模型 (LLM)** 的整体指南。为了解决组合不同模型时性能下降的挑战，Model-GLUE 对现有的 LLM 扩展技术进行了基准测试，重点是**模型合并**和**混合专家 (MoE)**。作者发现，简单地平均权重（一种常见的合并技术）对于不同的模型库来说并非最佳选择。他们提出的方法包括：1）根据架构和权重相似性对类似模型进行**聚类**；2）在每个集群内对模型进行**过滤**和选择以进行合并，使用一种策略性方法来避免包含“有害”模型；3）在每个集群内采用**最佳合并策略**；以及 4）通过**模型混合**（类似于 MoE）来集成合并的集群。在基于 Llama-2 的多样化模型库上的实验表明，在没有额外训练的情况下，平均性能提高了 5.61%，这展示了 Model-GLUE 方法在使 LLM 扩展民主化方面的有效性。本文还讨论了现有合并技术的局限性以及合并和混合方法之间可能的协同作用。
 
+## Open Source Projects
+
+- [Genesis 2](https://github.com/larionovavi-stack/genesis2-cascade-moe) - Cascade MoE with shared neuron pool — experts are routes through shared neurons (bytes, not megabytes). No router network needed. CPU-only, 18ms inference, 10,800 experts in 3.5GB. Patent pending.
+
+
 ## MoE Survey
 
 - [A Survey on Mixture of Experts](https://arxiv.org/pdf/2407.06204)
