@@ -368,6 +368,14 @@ This collection focuses particularly on methods to make MoE models more efficien
 
   - 摘要：本文介绍了一种名为**高效专家剪枝 (EEP)** 的方法，这是一种**无梯度进化策略**，用于剪枝**稀疏专家混合 (SMoE)** 大型语言模型。尽管 SMoE 模型每次只激活一部分参数，从而提高了效率，但其大量的参数数量和对 GPU 内存的巨大需求阻碍了其广泛部署。EEP 通过采用一种新颖的**专家合并**技术来有效地微调剪枝后的模型，解决了这个问题。与基于梯度的方法不同，EEP 仅依赖于模型推理，因此计算成本更低。该方法通过操作**专家合并矩阵 (WEM)** 和**路由映射矩阵 (WRM)** 来搜索最佳剪枝模式。这些矩阵中的一热向量表示剪枝，而连续值表示路由权重和专家的聚合。在四种不同模型大小（来自 Mixtral、Qwen1.5 和 Qwen2）和超过 10 个数据集上的实验表明，EEP 显著优于基线方法。具体来说，它在**Mixtral 8 × 7B-Instruct** 中实现了大量的参数减少，而性能损失最小（例如，剪枝高达 75% 的专家），或者通过剪枝 50% 的专家并激活一个更少的专家来实现 1.41 倍的加速。结果突出了 EEP 在减少专家总数（节省 GPU 内存）和减少活动专家数量（加速推理）方面的有效性。作者声称可以使用补充材料中提供的代码（在提供的文本中未包含）重现结果。
 
+- Less is MoE: Trimming Experts in Domain-Specialist Language Models
+  - Authors: Haoze He, Xinkai Zou, Xuan Jiang, Xingyuan Ding, Ao Qu, Juncheng Billy Li, Heather Miller
+  - Link: https://arxiv.org/pdf/2606.05538
+  - Code: https://github.com/HectorHHZ/Less-is-MoE
+  - Pub: EMNLP 2026 (Main, Oral)
+  - Summary: This paper finds that existing **MoE compression** methods hold up on commonsense reasoning but collapse on general-purpose benchmarks, and traces the failure to the granularity of compression. Capability is spread across experts but concentrated in a tiny number of **FFN intermediate dimensions**: in Qwen1.5-MoE, removing 12 of 1.35M routed-FFN intermediate dimensions collapses GSM8K accuracy while factual knowledge largely survives. Fisher importance finds these dimensions better than activation-, router-score- and magnitude-based scores. The proposed **Fisher-MoE** prunes *inside* each expert, removing intermediate dimensions ranked by Fisher importance instead of dropping or merging whole experts. At a 50% MoE compression ratio it preserves model capability, cuts weight memory by about 45% and raises inference throughput by 21%, on Qwen1.5-MoE, Qwen3-MoE and OLMoE.
+  - 摘要: 本文发现现有的 MoE 压缩方法在常识推理上表现尚可，但在通用基准上会严重失效，并将原因归结为压缩粒度：模型能力分散在各个专家之间，却集中在极少数 FFN 中间维度上。在 Qwen1.5-MoE 中，删掉 135 万个路由 FFN 中间维度里的 12 个，GSM8K 准确率就会崩溃，而事实知识基本不受影响。Fisher 重要性比基于激活、路由分数和权重幅值的指标更能找出这些维度。作者提出 Fisher-MoE，在专家内部按 Fisher 重要性删除 FFN 中间维度，而不是丢弃或合并整个专家。在 50% 的 MoE 压缩率下，它保持了模型能力，权重内存减少约 45%，推理吞吐提升 21%，实验覆盖 Qwen1.5-MoE、Qwen3-MoE 和 OLMoE。
+
 ### Quantization
 
 - QMoE: Practical Sub-1-Bit Compression of Trillion-Parameter Models
