@@ -143,6 +143,15 @@ This collection focuses particularly on methods to make MoE models more efficien
   - 摘要: 本文介绍了LongCat-Flash-Thinking，一个高效的5600亿参数开源混合专家模型（MoE），其先进能力通过精心设计的训练过程得以实现。模型采用了冷启动训练策略，显著提升了推理潜力，并在多个领域（如STEM、代码、代理推理）中实现了优化解耦，最终通过动态异步回滚系统（DORA）加速训练速度超过三倍。LongCat-Flash-Thinking在复杂推理任务中表现出色，特别是在代理推理方面，平均令牌消耗减少了64.5%，同时保持了任务准确性。 #混合专家 #MoE #效率#混合专家 #MoE #效率#混合专家 #MoE #效率
 
 
+- Preserving Long-Tailed Expert Information in Mixture-of-Experts Tuning
+  - Authors: Haoze He, Xingyuan Ding, Xuan Jiang, Xinkai Zou, Alex Cheng, Yibo Zhao, Juncheng Billy Li, Heather Miller
+  - Link: https://arxiv.org/pdf/2604.23036
+  - Code: https://github.com/HectorHHZ/ExpertCondenser
+  - Pub: COLM 2026
+  - Summary: This paper studies supervised fine-tuning (SFT) of **Mixture-of-Experts (MoE)** LLMs. A pruning study shows that removing rarely activated experts still causes large drops, so the long tail of experts holds knowledge that the frequently routed "super experts" do not cover. The proposed **ExpertCondenser** drops the auxiliary load-balancing loss and instead adds a trainable per-expert bias to the router logits, so experts that matter less for the task fall out of use. A small set of **condenser experts** (r=2) is always selected but still gated per token, which removes the gradient starvation of rarely routed experts and gives information from the long tail a persistent path. It outperforms DenseMixer and ESFT by 2.5%+ on math and commonsense reasoning across OLMoE, Qwen1.5-MoE, DeepSeek-V2-Lite, GPT-OSS and Qwen3-30B, and because the condenser experts stay on every rank it halves expert-parallel all-to-all traffic compared with SFT.
+  - 摘要: 本文研究混合专家（MoE）大模型的监督微调（SFT）。剪枝实验表明，即使删除很少被激活的专家，性能也会明显下降，说明长尾专家中保存着"超级专家"之外的知识。作者提出 ExpertCondenser：去掉辅助负载均衡损失，在路由 logits 上为每个专家加入可训练偏置，使与任务无关的专家逐渐不被选中；同时设置少量（r=2）始终被选中、但仍按 token 门控的 condenser 专家，缓解低频专家的梯度饥饿问题，并为长尾信息提供持续的学习通路。在 OLMoE、Qwen1.5-MoE、DeepSeek-V2-Lite、GPT-OSS 和 Qwen3-30B 上，数学与常识推理平均比 DenseMixer 和 ESFT 高 2.5% 以上；由于 condenser 专家在每张卡上复制，专家并行下的 all-to-all 通信量比 SFT 减少一半。
+
+
 - MoEC: Mixture of Expert Clusters
   - Authors: Yuan Xie, Shaohan Huang, Tianyu Chen, Furu Wei
   - Link: https://arxiv.org/pdf/2207.09094
